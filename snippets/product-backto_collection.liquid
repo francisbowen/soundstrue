@@ -1,0 +1,28 @@
+{% if collection %}
+
+  {% for tag in product.tags %}
+    {% if tag contains 'backto_collection_name:' %}
+        {% assign collection_name = tag | split: ':' | last %}
+    {% elsif tag contains 'backto_collection_new_name:' %}
+        {% assign collection_new_name = tag | split: ':' | last %}
+    {% elsif tag contains 'backto_collection_new_link:' %}
+        {% assign collection_new_link = tag | split: ':' | last %}
+    {% endif %}
+  {% endfor %}
+
+  {% if collection.handle == collection_name %}
+    <div class="text-center return-link-wrapper page-width">
+        <a href="{{ collection_new_link }}" class="btn btn--secondary btn--has-icon-before return-link">
+            {% include 'icon-arrow-left' %}
+            {{ 'products.product.back_to_collection' | t: title: collection_new_name }}
+        </a>
+    </div>
+  {% else %}
+    <div class="text-center return-link-wrapper page-width"></div>
+        <a href="{{ collection.url }}" class="btn btn--secondary btn--has-icon-before return-link">
+            {% include 'icon-arrow-left' %}
+            {{ 'products.product.back_to_collection' | t: title: collection.title }}
+        </a>
+    </div>
+  {% endif %}  
+{% endif %}

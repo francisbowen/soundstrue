@@ -1,0 +1,1871 @@
+{
+  "current": {
+    "wamon": true,
+    "trollblock": true,
+    "debug": false,
+    "logo_color": "#ffffff",
+    "regular_color": "#333333",
+    "banner_color": "#ffffff",
+    "headline_color": "#333333",
+    "headline_footer_text_color": "#ffffff",
+    "sub_footer_text_color": "#ae3333",
+    "sale_color": "#ae3333",
+    "was_price_color": "#ae3333",
+    "product_hover_text_color": "#ffffff",
+    "promo_text_color": "#333333",
+    "shop_home_page_content_text_color": "#333333",
+    "newsletter_popup_color": "#333333",
+    "newsletter_section_color": "#333333",
+    "collection_filter_color": "#333333",
+    "top_bar_color": "#ffffff",
+    "top_bar_color_hover": "#ffffff",
+    "nav_color": "#ffffff",
+    "nav_color_home": "#ffffff",
+    "nav_color_hover": "#ffffff",
+    "link_color": "#333333",
+    "link_hover_color": "#000000",
+    "sidebar_nav_color": "#333333",
+    "sidebar_nav_color_hover": "#000000",
+    "sub_footer_link_color": "#ae3333",
+    "sub_footer_link_color_hover": "#ae3333",
+    "btn_color": "#000000",
+    "banner_button_color": "#ffffff",
+    "btn_hover_color": "#ae3333",
+    "btn_text_color": "#ffffff",
+    "button_style": "square",
+    "read_more_style": "button",
+    "swatch_style": "square",
+    "table_styles_enabled": false,
+    "slideshow_arrow_size": "regular",
+    "arrow_color": "#333333",
+    "slideshow_button_style": true,
+    "slideshow_nav_buttons": false,
+    "border_color": "#d3d3d3",
+    "headline_border_color": "#aaaaaa",
+    "headline_border": "1",
+    "divider_style": "solid",
+    "sub_footer_border_color": "#000000",
+    "sale_banner_color": "#ae3333",
+    "new_banner_color": "#ae3333",
+    "banner_style": "square",
+    "search_section_color": "#333333",
+    "search_section_bg_color": "#cccccc",
+    "testimonial_color": "#ffffff",
+    "testimonial_bg_color": "#666666",
+    "featured_promotions_color": "#fff",
+    "featured_promotions_color_hover": "#fff",
+    "featured_promotions_background": "#000",
+    "featured_promotions_mobile_background": true,
+    "modal_background_color": "#ffffff",
+    "modal_text_color": "#2b2e38",
+    "shop_bg_color": "#ffffff",
+    "custom_bg": "",
+    "repeat_bg": "repeat",
+    "bg_fixed": false,
+    "bg_stretched": false,
+    "top_bar_bg_color": "#000000",
+    "top_bar_cart_bg_color": "#d54d4d",
+    "minicart_bg_color": "#ffffff",
+    "banner_placeholder_background_color": "#666666",
+    "banner_background_color": "#000000",
+    "header_bg_color": "#888888",
+    "header_background": true,
+    "transparent_header": true,
+    "promo_bg_color": "#cccccc",
+    "shop_home_page_content_bg_color": "#ffffff",
+    "featured_links_background": "#ffffff",
+    "product_hover_bg_color": "#000000",
+    "sub_footer_color": "#000000",
+    "footer_bg": "",
+    "footer_bg_stretched": false,
+    "newsletter_popup_background_color": "#ffffff",
+    "newsletter_section_background_color": "#ffffff",
+    "password_page_text_color": "#ffffff",
+    "password_page_background_color": "#000000",
+    "logo__font": "open_sans_n4",
+    "logo_font_style": "none",
+    "logo_font_size": 20,
+    "top_bar_font_size": 12,
+    "top_bar_letter_spacing": 1,
+    "nav__font": "open_sans_n4",
+    "nav_font_style": "none",
+    "nav_font_size": 14,
+    "nav_letter_spacing": 1,
+    "nav_shadow": true,
+    "button_weight": "normal",
+    "button_font_style": "none",
+    "button_font_size": 14,
+    "mega_text_font_size": 14,
+    "mega_text_letter_spacing": 1,
+    "headline__font": "open_sans_n4",
+    "headline_font_style": "none",
+    "headline_font_size": 24,
+    "headline_letter_spacing": 2,
+    "slideshow_headline__font": "open_sans_n4",
+    "slideshow_headline_font_style": "none",
+    "slideshow_headline_size": 56,
+    "slideshow_headline_letter_spacing": 1,
+    "slideshow_headline_shadow": true,
+    "slideshow_subtitle__font": "open_sans_n4",
+    "slideshow_subtitle_font_style": "none",
+    "slideshow_subtitle_size": 20,
+    "slideshow_subtitle_letter_spacing": 1,
+    "slideshow_shadow": true,
+    "regular__font": "open_sans_n4",
+    "regular_font_style": "none",
+    "regular_font_size": 15,
+    "footer_logo_font_size": 20,
+    "footer_heading_font_size": 18,
+    "footer_font_size": 14,
+    "mega_menu_1": true,
+    "mega_menu_2": true,
+    "mega_menu_3": true,
+    "mega_menu_4": true,
+    "mega_menu_5": true,
+    "mega_menu_6": true,
+    "mega_menu_7": true,
+    "mega_menu_8": true,
+    "search_option": "products",
+    "search_pagination_type": "basic_pagination",
+    "enable_autocomplete": true,
+    "search_to_display": 5,
+    "type_header_font": "work_sans_n6",
+    "type_header_base_size": 26,
+    "type_base_font": "work_sans_n4",
+    "type_base_size": 16,
+    "type_bold_product_titles": false,
+    "share_image": "",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "favicon": "shopify:\/\/shop_images\/android-chrome-512x512.png",
+    "shipping_calculator": "Enabled",
+    "shipping_calculator_heading": "Get shipping estimates",
+    "shipping_calculator_default_country": "United States",
+    "shipping_calculator_submit_button_label": "Calculate shipping",
+    "shipping_calculator_submit_button_label_disabled": "Calculating...",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/Sounds-True-logo.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#0652af",
+    "checkout_button_color": "#c74d10",
+    "checkout_error_color": "#e32c2b",
+    "color_text": "#3d4246",
+    "color_body_text": "#69727b",
+    "color_sale_text": "#557b97",
+    "color_button": "#557b97",
+    "color_button_text": "#fff",
+    "color_small_button_text_border": "#3d4246",
+    "color_text_field_text": "#000",
+    "color_text_field_border": "#949494",
+    "color_text_field": "#fff",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#3d4246",
+    "image_overlay_opacity": 40,
+    "color_borders": "#e8e9eb",
+    "color_body_bg": "#fff",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "promo_text": "",
+          "social_icons_header": false,
+          "phone_number": "",
+          "top_bar_menu": "",
+          "show_cart": true,
+          "cart_icon": "cart",
+          "logo_display_width": 205,
+          "main_linklist": "main-navigation",
+          "main_linklist2": "",
+          "vertical_menu": false,
+          "search_enabled": true,
+          "fixed_header": false,
+          "logo_position": "left",
+          "logo_alignment": "center",
+          "menu_position": "block",
+          "menu_alignment": "center",
+          "logo_top_padding": 10,
+          "menu_top_padding": 0
+        }
+      },
+      "featured-collections": {
+        "type": "collection",
+        "settings": {
+          "title": "NEW RELEASES",
+          "collection": "new-releases",
+          "grid": 5,
+          "rows": 1,
+          "show_vendor": false,
+          "show_shop_all": true,
+          "shop_all_link_text": "<p>shop all &gt;&gt;<\/p>"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "1565906154634": {
+            "type": "menu",
+            "settings": {
+              "show_footer_title": true,
+              "menu": "soundstrue-footer-menu-primary",
+              "container_width": 25,
+              "show_custom_link": false
+            }
+          },
+          "1565906172930": {
+            "type": "menu",
+            "settings": {
+              "show_footer_title": true,
+              "menu": "soundstrue-footer-menu-two",
+              "container_width": 25,
+              "show_custom_link": false
+            }
+          },
+          "1565906184774": {
+            "type": "menu",
+            "settings": {
+              "show_footer_title": true,
+              "menu": "soundstrue-footer-menu-three",
+              "container_width": 25,
+              "show_custom_link": false
+            }
+          },
+          "1565906209242": {
+            "type": "menu",
+            "settings": {
+              "show_footer_title": true,
+              "menu": "soundstrue-footer-menu-four",
+              "container_width": 25,
+              "show_custom_link": false
+            }
+          }
+        },
+        "block_order": [
+          "1565906154634",
+          "1565906172930",
+          "1565906184774",
+          "1565906209242"
+        ],
+        "settings": {
+          "show_payment_icons": false,
+          "show_copyright": false,
+          "copyright_text": ""
+        }
+      },
+      "1561406431449": {
+        "type": "text-and-cta",
+        "settings": {
+          "heading": "Walking Together",
+          "content": "Free Resources for Healing Racism & Creating a More Compassionate World",
+          "text_size": "medium",
+          "button_text": "Join Us",
+          "btn_bg_color": "#5b6770",
+          "btn_txt_color": "#ffffff",
+          "button_link": "https:\/\/product.soundstrue.com\/walking-together\/?utm_campaign=wt&utm_medium=homepage&utm_source=site"
+        }
+      },
+      "1561406623925": {
+        "type": "custom-feature-columns",
+        "blocks": {
+          "1561406623925-0": {
+            "type": "feature_column",
+            "settings": {
+              "enable_icon_image": true,
+              "block_bg_image": "shopify:\/\/shop_images\/PJM58-swimlane-banners-02_21-jc-v1-healing_meditations-min.jpg",
+              "align_text": "center",
+              "title": "Healing <br>Meditations",
+              "title_color": "#ffffff",
+              "subtitle": "",
+              "text_color": "#ffffff",
+              "button_label": "Browse",
+              "button_color": "#ffffff",
+              "button_link": "https:\/\/www.soundstrue.com\/collections\/search-result?type=product&q=healing+meditation"
+            }
+          },
+          "1561406623925-1": {
+            "type": "feature_column",
+            "settings": {
+              "enable_icon_image": true,
+              "block_bg_image": "shopify:\/\/shop_images\/PJM58-swimlane-banners-02_21-jc-v1-rediscover_self_compassion-min.jpg",
+              "align_text": "center",
+              "title": "Rediscover<br>Self Compassion",
+              "title_color": "#ffffff",
+              "subtitle": "",
+              "text_color": "#ffffff",
+              "button_label": "Browse",
+              "button_color": "#ffffff",
+              "button_link": "https:\/\/www.soundstrue.com\/collections\/self-compassion"
+            }
+          },
+          "1561406623925-2": {
+            "type": "feature_column",
+            "settings": {
+              "enable_icon_image": true,
+              "block_bg_image": "shopify:\/\/shop_images\/PJM58-swimlane-banners-02_21-jc-v1-resources_healing_trauma-min.jpg",
+              "align_text": "center",
+              "title": "Resources for <br>Healing Trauma",
+              "title_color": "#ffffff",
+              "subtitle": "",
+              "text_color": "#ffffff",
+              "button_label": "Browse",
+              "button_color": "#ffffff",
+              "button_link": "https:\/\/www.soundstrue.com\/collections\/search-result?type=product&q=trauma"
+            }
+          }
+        },
+        "block_order": [
+          "1561406623925-0",
+          "1561406623925-1",
+          "1561406623925-2"
+        ],
+        "settings": {
+          "bg_alignment": "center center",
+          "title": "",
+          "heading_color": "#ffffff",
+          "show_margin": true,
+          "class_list": ""
+        }
+      },
+      "1561406984848": {
+        "type": "custom-feature-columns",
+        "blocks": {
+          "1561406984848-0": {
+            "type": "feature_column",
+            "settings": {
+              "enable_icon_image": true,
+              "icon_image": "shopify:\/\/shop_images\/meditation-music-icon.png",
+              "align_text": "center",
+              "title": "Meditation<br> Music",
+              "title_color": "#ffffff",
+              "subtitle": "",
+              "text_color": "#ffffff",
+              "button_label": "Browse",
+              "button_color": "#ffffff",
+              "button_link": "shopify:\/\/collections\/meditation-music"
+            }
+          },
+          "1561406984848-1": {
+            "type": "feature_column",
+            "settings": {
+              "enable_icon_image": true,
+              "icon_image": "shopify:\/\/shop_images\/professional-development-icon.png",
+              "align_text": "center",
+              "title": "Professional<br> Development",
+              "title_color": "#ffffff",
+              "subtitle": "",
+              "text_color": "#ffffff",
+              "button_label": "Browse",
+              "button_color": "#ffffff",
+              "button_link": "shopify:\/\/collections\/professional-development"
+            }
+          },
+          "1561406984848-2": {
+            "type": "feature_column",
+            "settings": {
+              "enable_icon_image": true,
+              "icon_image": "shopify:\/\/shop_images\/intro-teachings-icon.png",
+              "align_text": "center",
+              "title": "Introductory<br> Teachings",
+              "title_color": "#ffffff",
+              "subtitle": "",
+              "text_color": "#ffffff",
+              "button_label": "Browse",
+              "button_color": "#ffffff",
+              "button_link": "shopify:\/\/collections\/introductory-teachings"
+            }
+          }
+        },
+        "block_order": [
+          "1561406984848-0",
+          "1561406984848-1",
+          "1561406984848-2"
+        ],
+        "settings": {
+          "bg_image": "shopify:\/\/shop_images\/home-section-2-background.jpg",
+          "bg_alignment": "left center",
+          "title": "",
+          "heading_color": "#ffffff",
+          "show_margin": false,
+          "class_list": "custom-feature-with-icons"
+        }
+      },
+      "collection-sidebar": {
+        "type": "collection-sidebar",
+        "blocks": {
+          "1565814578788": {
+            "type": "menu",
+            "settings": {
+              "title": "Collections",
+              "menu": "main-menu",
+              "collapsed": false
+            }
+          }
+        },
+        "block_order": [
+          "1565814578788"
+        ],
+        "settings": {
+          "enable_sidebar": true,
+          "filter_style": "sidebar",
+          "tags_combine": false,
+          "enable_sort": true
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "layout": "grid",
+          "grid": 3,
+          "rows": 2,
+          "show_collection_image": true,
+          "show_vendor": false,
+          "sort_enable": true,
+          "tags_enable": true
+        }
+      },
+      "1565906293007": {
+        "type": "custom-slideshow",
+        "blocks": {
+          "dbc50ca0-5eb6-485e-a361-eb4718021dc9": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/ST-summer_sale-flexsliders-1-jc-v1-2-A-summer_solstice-min.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/ST-summer_sale-flexsliders-1-jc-v1-2-A-summer_solstice-min_abee1cbb-b0ec-47e3-8248-6316b9bc86ba.jpg",
+              "alignment": "center center",
+              "slide_title": "Ignite Your Inner Light",
+              "subheading": "With our Summer Solstice Sale",
+              "button_label": "Save up to 75%",
+              "button_link": "https:\/\/www.soundstrue.com\/collections\/summer-solstice"
+            }
+          },
+          "2be70945-cf46-4205-8e74-515538d4ee35": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/ST-summer_sale-flexsliders-1-jc-v1-4-summit_sale-min.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/ST-summer_sale-flexsliders-1-jc-v1-4-summit_sale-min_6e52f71b-8d0e-4c40-a7b9-96ae7b62c367.jpg",
+              "alignment": "center center",
+              "slide_title": "Follow Your Curiosity & Learn Something New",
+              "subheading": "Our collection of summits explores a wide range of topics: mindfulness and   meditation, trauma and energy healing, and more",
+              "button_label": "Save up to 80%",
+              "button_link": "shopify:\/\/collections\/summit-sale"
+            }
+          },
+          "cfa1ebad-470e-4a10-bb02-817f975eb38a": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Flexslider-JAN17-2020-inner-MBA-bg_1.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/Flexslider-JAN17-2020-inner-MBA-bg_1.jpg",
+              "alignment": "center center",
+              "slide_title": "Transform Yourself, Accelerate Your Business",
+              "subheading": "The Inner MBA",
+              "button_label": "LEARN MORE",
+              "button_link": "https:\/\/innermba.soundstrue.com\/"
+            }
+          },
+          "a19be36c-3c8b-414d-87a6-a4c586f2e3ed": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Flexsliders-MARCH-2021-Grounded-bg.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/Flexsliders-MARCH-2021-Grounded-bg.jpg",
+              "alignment": "center center",
+              "slide_title": "GROUNDED",
+              "subheading": "Connect with the Soil and Heal from The Ground Up",
+              "button_label": "SHOP NOW",
+              "button_link": "https:\/\/www.soundstrue.com\/products\/grounded"
+            }
+          },
+          "f5f6cb11-1c8f-438c-a8bf-7e4aef7b6a63": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Flexsliders-JAN25-2021-Being-You-bg.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/Flexsliders-JAN25-2021-Being-You-bg.jpg",
+              "alignment": "center center",
+              "slide_title": "Being You by Elena Brower",
+              "subheading": "A journal for discovery, creativity, and empowerment",
+              "button_label": "SHOP NOW",
+              "button_link": "https:\/\/www.soundstrue.com\/products\/being-you-1?utm_source=site&utm_medium=banner&utm_campaign=beingyouelenabrowerjournal"
+            }
+          }
+        },
+        "block_order": [
+          "dbc50ca0-5eb6-485e-a361-eb4718021dc9",
+          "2be70945-cf46-4205-8e74-515538d4ee35",
+          "cfa1ebad-470e-4a10-bb02-817f975eb38a",
+          "a19be36c-3c8b-414d-87a6-a4c586f2e3ed",
+          "f5f6cb11-1c8f-438c-a8bf-7e4aef7b6a63"
+        ],
+        "settings": {
+          "slideshow_height": "adapt",
+          "text_size": "medium",
+          "text_alignment": "center center",
+          "show_overlay": false,
+          "autorotate": false,
+          "autorotate_speed": 5
+        }
+      },
+      "1566314985451": {
+        "type": "collection",
+        "settings": {
+          "title": "Bestsellers",
+          "collection": "bestsellers",
+          "grid": 5,
+          "rows": 1,
+          "show_vendor": false,
+          "show_shop_all": true,
+          "shop_all_link_text": "<p>shop all &gt;&gt;<\/p>"
+        }
+      },
+      "1566315379687": {
+        "type": "collection",
+        "settings": {
+          "title": "Summer Solstice",
+          "collection": "summer-solstice",
+          "grid": 5,
+          "rows": 1,
+          "show_vendor": false,
+          "show_shop_all": true,
+          "shop_all_link_text": "<p>shop all &gt;&gt;<\/p>"
+        }
+      },
+      "1566315867461": {
+        "type": "quotes",
+        "blocks": {
+          "1566315867461-0": {
+            "type": "quote",
+            "settings": {
+              "quote_image": "shopify:\/\/shop_images\/white-quote.png",
+              "quote": "<p>Every time I’m in my darkest spots, or need a burst of inspiration, Sounds True is here. So Thanks beyond belief to everyone who makes this great resource available to us.”<\/p>",
+              "author": "Jasper",
+              "text_alignment": "left"
+            }
+          },
+          "1566315867461-1": {
+            "type": "quote",
+            "settings": {
+              "quote_image": "shopify:\/\/shop_images\/white-quote.png",
+              "quote": "<p>I wanted to thank you all for all of your help and guidance I’ve received during the past year. It has changed my life in so many ways. I appreciate everything and could never thank you enough”<\/p>",
+              "author": "Jamie",
+              "text_alignment": "left"
+            }
+          },
+          "1566315867461-2": {
+            "type": "quote",
+            "settings": {
+              "quote_image": "shopify:\/\/shop_images\/white-quote.png",
+              "quote": "<p>Sounds True provides the most valuable and abundant high-quality free content of any organization I’ve ever come across. I am extremely grateful for your generosity.”<\/p>",
+              "author": "Sayid",
+              "text_alignment": "left"
+            }
+          }
+        },
+        "block_order": [
+          "1566315867461-0",
+          "1566315867461-1",
+          "1566315867461-2"
+        ],
+        "settings": {
+          "bg_color": "#e1e8ed",
+          "title": "PRAISE FOR SOUNDS TRUE"
+        }
+      },
+      "mega-menu-1": {
+        "type": "mega-menu-1",
+        "blocks": {
+          "mega-menu-1-1": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "popular topics",
+              "featured_product": "",
+              "image_caption_top": "",
+              "menu_1": "popular-topics",
+              "menu_1_link": "shopify:\/\/collections\/self-compassion",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": true,
+              "see_all_url": "https:\/\/soundstrue.myshopify.com\/pages\/collection-overview",
+              "see_all_label": "All Topics"
+            }
+          },
+          "mega-menu-1-2": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "format",
+              "featured_product": "",
+              "image_caption_top": "",
+              "menu_1": "formats",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          },
+          "1570135624896": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "Trending Now",
+              "featured_product": "new-release",
+              "image_caption_top": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          },
+          "1570145501950": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "Bestseller",
+              "featured_product": "bestseller-1",
+              "image_caption_top": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-1-1",
+          "mega-menu-1-2",
+          "1570135624896",
+          "1570145501950"
+        ],
+        "settings": {
+          "parent": "shop"
+        }
+      },
+      "mega-menu-2": {
+        "type": "mega-menu-2",
+        "blocks": {
+          "1570200330534": {
+            "type": "column",
+            "settings": {
+              "richtext_title": "",
+              "richtext_top": "",
+              "featured_product": "",
+              "image_top": "shopify:\/\/shop_images\/wof.png",
+              "image_caption_top": "Wim Hof",
+              "image_link_top": "https:\/\/www.soundstrue.com\/blogs\/authors\/wim-hof",
+              "author_article": "authors\/wim-hof",
+              "author_article_additional": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": true,
+              "see_all_url": "https:\/\/soundstrue.myshopify.com\/blogs\/authors?view=24",
+              "see_all_label": "see all authors"
+            }
+          },
+          "1570200965619": {
+            "type": "column",
+            "settings": {
+              "richtext_title": "",
+              "richtext_top": "",
+              "featured_product": "",
+              "image_top": "shopify:\/\/shop_images\/Untitled_design_-_2020-12-04T154708.891.png",
+              "image_caption_top": "Ram Dass",
+              "image_link_top": "https:\/\/www.soundstrue.com\/blogs\/authors\/ram-dass",
+              "author_article": "authors\/ram-dass",
+              "author_article_additional": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          },
+          "1570202475912": {
+            "type": "column",
+            "settings": {
+              "richtext_title": "",
+              "richtext_top": "",
+              "featured_product": "",
+              "image_top": "shopify:\/\/shop_images\/Untitled_design_32.png",
+              "image_caption_top": "Clarissa Pinkola Estes",
+              "image_link_top": "https:\/\/www.soundstrue.com\/blogs\/authors\/clarissa-pinkola-estes",
+              "author_article": "authors\/mariam-gates",
+              "author_article_additional": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          },
+          "af50f16b-8e0d-45cc-be00-e2d5adf44d8a": {
+            "type": "column",
+            "settings": {
+              "richtext_title": "",
+              "richtext_top": "",
+              "featured_product": "",
+              "image_top": "shopify:\/\/shop_images\/Untitled_design_33.png",
+              "image_caption_top": "Alice Walker",
+              "image_link_top": "https:\/\/www.soundstrue.com\/blogs\/authors\/alice-walker",
+              "author_article": "",
+              "author_article_additional": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          },
+          "mega-menu-2-4": {
+            "type": "column",
+            "settings": {
+              "richtext_title": "Popular Now",
+              "richtext_top": "",
+              "featured_product": "new-by",
+              "image_caption_top": "",
+              "author_article": "",
+              "author_article_additional": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": true,
+              "see_all_label": "See all from author"
+            }
+          }
+        },
+        "block_order": [
+          "1570200330534",
+          "1570200965619",
+          "1570202475912",
+          "af50f16b-8e0d-45cc-be00-e2d5adf44d8a",
+          "mega-menu-2-4"
+        ],
+        "settings": {
+          "parent": "authors",
+          "section_title": "customer favorites"
+        }
+      },
+      "mega-menu-3": {
+        "type": "mega-menu-3",
+        "blocks": {
+          "mega-menu-3-0": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "featured_product": "",
+              "image_caption_top": "",
+              "menu_1": "topics",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": true,
+              "see_all_url": "https:\/\/soundstrue.myshopify.com\/pages\/collection-overview",
+              "see_all_label": "all topics"
+            }
+          },
+          "mega-menu-3-1": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "featured_product": "",
+              "image_caption_top": "",
+              "menu_1": "topics-2",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          },
+          "mega-menu-3-2": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "featured_product": "",
+              "image_caption_top": "",
+              "menu_1": "topics-3",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          },
+          "mega-menu-3-3": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "Bestseller",
+              "featured_product": "bestseller",
+              "image_caption_top": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": false,
+              "see_all_label": "See All Topics"
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-3-0",
+          "mega-menu-3-1",
+          "mega-menu-3-2",
+          "mega-menu-3-3"
+        ],
+        "settings": {
+          "parent": "topics"
+        }
+      },
+      "mega-menu-4": {
+        "type": "mega-menu-4",
+        "blocks": {
+          "mega-menu-4-0": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "New Release",
+              "featured_product": "new-release-1",
+              "image_caption_top": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": true,
+              "see_all_url": "https:\/\/soundstrue.myshopify.com\/collections\/online-learning",
+              "see_all_label": "see all online learning"
+            }
+          },
+          "mega-menu-4-1": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "Bestseller",
+              "featured_product": "bestseller-2",
+              "image_caption_top": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          },
+          "mega-menu-4-2": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "Customer Favorite",
+              "featured_product": "customer-favorite",
+              "image_caption_top": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-4-0",
+          "mega-menu-4-1",
+          "mega-menu-4-2"
+        ],
+        "settings": {
+          "parent": "online learning"
+        }
+      },
+      "mega-menu-5": {
+        "type": "mega-menu-5",
+        "blocks": {
+          "mega-menu-5-0": {
+            "type": "column",
+            "settings": {
+              "richtext_title": "",
+              "richtext_top": "",
+              "featured_product": "trainings-1",
+              "image_caption_top": "",
+              "author_article": "",
+              "author_article_additional": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "<p><\/p><p><\/p>",
+              "see_all": true,
+              "see_all_url": "shopify:\/\/collections\/trainings",
+              "see_all_label": "see all trainings"
+            }
+          },
+          "mega-menu-5-1": {
+            "type": "column",
+            "settings": {
+              "richtext_title": "",
+              "richtext_top": "",
+              "featured_product": "trainings-2",
+              "image_caption_top": "",
+              "author_article": "",
+              "author_article_additional": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": false,
+              "see_all_url": "https:\/\/soundstrue.myshopify.com\/collections\/trainings",
+              "see_all_label": ""
+            }
+          },
+          "mega-menu-5-4": {
+            "type": "column",
+            "settings": {
+              "richtext_title": "",
+              "richtext_top": "",
+              "featured_product": "trainings-3",
+              "image_caption_top": "",
+              "author_article": "",
+              "author_article_additional": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-5-0",
+          "mega-menu-5-1",
+          "mega-menu-5-4"
+        ],
+        "settings": {
+          "parent": "events & trainings",
+          "section_title": "upcoming sounds true trainings"
+        }
+      },
+      "1569835752828": {
+        "type": "custom-author-blog",
+        "disabled": true,
+        "blocks": {
+          "1569835788670": {
+            "type": "author_info",
+            "settings": {
+              "author_article": "authors\/tara-brach"
+            }
+          },
+          "1585080973019": {
+            "type": "author_info",
+            "settings": {
+              "author_article": ""
+            }
+          },
+          "1569835803087": {
+            "type": "author_info",
+            "settings": {
+              "author_article": "authors\/thich-nhat-hanh"
+            }
+          },
+          "1569835811632": {
+            "type": "author_info",
+            "settings": {
+              "author_article": "authors\/pema-chodron"
+            }
+          },
+          "1584562831390": {
+            "type": "author_info",
+            "settings": {
+              "author_article": "authors\/eckhart-tolle"
+            }
+          }
+        },
+        "block_order": [
+          "1569835788670",
+          "1585080973019",
+          "1569835803087",
+          "1569835811632",
+          "1584562831390"
+        ],
+        "settings": {
+          "title": "Our Authors",
+          "title_color": "#5b6770",
+          "author_name_color": "#0652af",
+          "show_shop_all": true,
+          "shop_all_link_text": "<p>shop all &gt;&gt;<\/p>",
+          "shop_all_link": "https:\/\/soundstrue.myshopify.com\/blogs\/authors?page=2&view=24"
+        }
+      },
+      "1569836822903": {
+        "type": "insights-at-the-edge",
+        "settings": {
+          "bg_image": "shopify:\/\/shop_images\/insights-background.jpg",
+          "bg_alignment": "center center",
+          "section_image": "shopify:\/\/shop_images\/Untitled_design_-_2021-06-08T170953.600.png",
+          "title_image": "shopify:\/\/shop_images\/IATE-logo.png",
+          "title": "There’s a Ritual for That",
+          "title_color": "#2e3b44",
+          "sub_title": "Ashley River Brant",
+          "sub_title_color": "#2e3b44",
+          "content": "<p><br\/>Tami Simon talks with Ashley River Brant about the power of ritual to help us heal, discover our purpose, and deepen our connection with earth, spirit, and self.<br\/><\/p><p><br\/><br\/><\/p>",
+          "button_label": "Go to Podcast",
+          "button_link": "https:\/\/resources.soundstrue.com\/podcast\/theres-a-ritual-for-that\/",
+          "button_color": "#ffffff",
+          "button_bg_color": "#5b6770",
+          "button_border_color": "#5b6770"
+        }
+      },
+      "mega-menu-6": {
+        "type": "mega-menu-6",
+        "blocks": {
+          "mega-menu-6-0": {
+            "type": "column",
+            "settings": {
+              "richtext_title": "customer favorites",
+              "richtext_top": "",
+              "featured_product": "",
+              "image_caption_top": "",
+              "author_article": "",
+              "author_article_additional": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_bottom": "shopify:\/\/shop_images\/Untitled_design_-_2020-07-29T104917.984_58abf441-5088-49c1-823b-a786e09024ef.png",
+              "image_caption_bottom": "",
+              "image_link_bottom": "https:\/\/www.resources.soundstrue.com\/contributor\/ruth-king\/",
+              "richtext_bottom": "<p><a href=\"https:\/\/www.resources.soundstrue.com\/podcast\/ruth-king-mindful-of-race\/\" title=\"https:\/\/www.resources.soundstrue.com\/podcast\/ruth-king-mindful-of-race\/\">Ruth King: Mindful of Race<\/a><\/p><p>Tuesday, June 18, 2019<\/p><p><\/p>",
+              "see_all": true,
+              "see_all_url": "https:\/\/resources.soundstrue.com\/customer-favorites\/",
+              "see_all_label": "see all customer favorites"
+            }
+          },
+          "mega-menu-6-1": {
+            "type": "column",
+            "settings": {
+              "richtext_title": "",
+              "richtext_top": "",
+              "featured_product": "",
+              "image_caption_top": "",
+              "author_article": "",
+              "author_article_additional": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_bottom": "shopify:\/\/shop_images\/Untitled_design_-_2021-04-28T144203.651.png",
+              "image_caption_bottom": "",
+              "richtext_bottom": "<p><a href=\"https:\/\/resources.soundstrue.com\/podcast\/are-you-feeling-connected-right-now\/\" title=\"https:\/\/resources.soundstrue.com\/podcast\/are-you-feeling-connected-right-now\/\">Dr Kristine Klussman: Are you feeling connected right now?<\/a><\/p><p><\/p><p>Tuesday, April 27th, 2021<\/p>",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          },
+          "1587704321410": {
+            "type": "column",
+            "settings": {
+              "richtext_title": "",
+              "richtext_top": "",
+              "featured_product": "",
+              "image_caption_top": "",
+              "author_article": "",
+              "author_article_additional": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_bottom": "shopify:\/\/shop_images\/Untitled_design_-_2021-04-28T145540.851.png",
+              "image_caption_bottom": "",
+              "image_link_bottom": "https:\/\/resources.soundstrue.com\/podcast\/terri-cole-becoming-a-boundary-boss\/",
+              "richtext_bottom": "<p><a href=\"https:\/\/resources.soundstrue.com\/podcast\/terri-cole-becoming-a-boundary-boss\/\" title=\"https:\/\/resources.soundstrue.com\/podcast\/terri-cole-becoming-a-boundary-boss\/\">Terri Cole: Becoming a Boundary Boss<\/a><\/p><p>Tuesday, April 20th, 2020<\/p>",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          },
+          "mega-menu-6-3": {
+            "type": "column",
+            "settings": {
+              "richtext_title": "most recent podcast",
+              "richtext_top": "",
+              "featured_product": "",
+              "image_caption_top": "",
+              "author_article": "",
+              "author_article_additional": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_bottom": "shopify:\/\/shop_images\/Untitled_design_-_2021-05-05T152642.027.png",
+              "image_caption_bottom": "",
+              "image_link_bottom": "https:\/\/resources.soundstrue.com\/podcast\/knowing-the-connection-with-those-we-love-survives-death\/",
+              "richtext_bottom": "<p><a href=\"https:\/\/resources.soundstrue.com\/podcast\/are-you-feeling-connected-right-now\/\" title=\"https:\/\/resources.soundstrue.com\/podcast\/knowing-the-connection-with-those-we-love-survives-death\/\">Knowing the Connection with Those We Love Survives Death<\/a><\/p><p><\/p><p>Tuesday, May 4th, 2021<\/p>",
+              "see_all": false,
+              "see_all_url": "https:\/\/resources.soundstrue.com\/podcast\/",
+              "see_all_label": "see all podcasts"
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-6-0",
+          "mega-menu-6-1",
+          "1587704321410",
+          "mega-menu-6-3"
+        ],
+        "settings": {
+          "parent": "podcasts"
+        }
+      },
+      "mega-menu-7": {
+        "type": "mega-menu-7",
+        "blocks": {
+          "mega-menu-7-0": {
+            "type": "column",
+            "settings": {
+              "richtext_title": "customer favorites",
+              "richtext_top": "",
+              "featured_product": "",
+              "image_top": "shopify:\/\/shop_images\/Untitled_design_-_2020-06-27T081234.632.png",
+              "image_caption_top": "Standing Together, And Stepping Up <a href=\"https:\/\/soundstrue.myshopify.com\/blogs\/authors\/tami-simon\" target=\"_blank\">Tami Simon<\/a>",
+              "image_link_top": "https:\/\/www.resources.soundstrue.com\/blog\/standing-together-and-stepping-up\/",
+              "author_article": "",
+              "author_article_additional": "",
+              "blog_posts": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": true,
+              "see_all_url": "https:\/\/resources.soundstrue.com\/customer-favorites\/",
+              "see_all_label": "see all customer favorites"
+            }
+          },
+          "mega-menu-7-1": {
+            "type": "column",
+            "settings": {
+              "richtext_title": "",
+              "richtext_top": "",
+              "featured_product": "",
+              "image_top": "shopify:\/\/shop_images\/Untitled_design_-_2021-03-23T144648.036.png",
+              "image_caption_top": "Setting Intentions To Clear The Mind <a href=\"https:\/\/resources.soundstrue.com\/blog\/setting-intentions-to-clear-the-mind\/\" target=\"_blank\"> Sadie Radinsky<\/a>",
+              "image_link_top": "https:\/\/resources.soundstrue.com\/blog\/setting-intentions-to-clear-the-mind\/",
+              "author_article": "",
+              "author_article_additional": "",
+              "blog_posts": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          },
+          "mega-menu-7-2": {
+            "type": "column",
+            "settings": {
+              "richtext_title": "most recent blog posts",
+              "richtext_top": "",
+              "featured_product": "",
+              "image_top": "shopify:\/\/shop_images\/Untitled_design_-_2021-03-23T143113.924.png",
+              "image_caption_top": "The Importance Of Being Vulnerable <a href=\"https:\/\/resources.soundstrue.com\/blog\/the-importance-of-being-vulnerable\/\" target=\"_blank\">Amy B. Scher<\/a>",
+              "image_link_top": "https:\/\/resources.soundstrue.com\/blog\/the-importance-of-being-vulnerable\/",
+              "author_article": "",
+              "author_article_additional": "",
+              "blog_posts": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": true,
+              "see_all_url": "https:\/\/resources.soundstrue.com\/most-recent\/",
+              "see_all_label": "see all most recent blog posts"
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-7-0",
+          "mega-menu-7-1",
+          "mega-menu-7-2"
+        ],
+        "settings": {
+          "parent": "blog",
+          "section_title": ""
+        }
+      },
+      "mega-menu-8": {
+        "type": "mega-menu-8",
+        "blocks": {
+          "mega-menu-8-0": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "about sounds true",
+              "featured_product": "",
+              "image_caption_top": "",
+              "menu_1": "soundstrue-footer-menu-four",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          },
+          "mega-menu-8-1": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "staff favorites",
+              "featured_product": "staff-favorites-mega-menu",
+              "image_caption_top": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": true,
+              "see_all_url": "https:\/\/www.soundstrue.com\/pages\/staff-favorites",
+              "see_all_label": "see all staff favorites"
+            }
+          },
+          "mega-menu-8-2": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "customer service",
+              "featured_product": "",
+              "image_caption_top": "",
+              "menu_1": "soundstrue-footer-menu-two",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          },
+          "mega-menu-8-3": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "connect with us",
+              "featured_product": "",
+              "image_caption_top": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": "<div class=\"footer\"><ul class=\"social-links\">        <li><a href=\"https:\/\/www.facebook.com\/soundstrue\" title=\"Facebook\" class=\"footer-facebook links social-media\" target=\"_blank\" aria-describedby=\"a11y-new-window-external-message\" rel=\"noopener\"><span class=\"icon facebook\"><em>Facebook<\/em><\/span><\/a><\/li>        <li><a href=\"https:\/\/twitter.com\/soundstrue\" title=\"Twitter\" class=\"footer-twitter links social-media\" target=\"_blank\" aria-describedby=\"a11y-new-window-external-message\" rel=\"noopener\"><span class=\"icon twitter\"><em>Twitter<\/em><\/span><\/a><\/li>        <li><a href=\"https:\/\/www.youtube.com\/user\/SoundsTrueVideos\" title=\"YouTube\" class=\"footer-youtube links social-media\" target=\"_blank\" aria-describedby=\"a11y-new-window-external-message\" rel=\"noopener\"><span class=\"icon youtube\"><em>YouTube<\/em><\/span><\/a><\/li>        <li><a href=\"https:\/\/www.instagram.com\/soundstrue\" title=\"Instagram\" class=\"footer-instagram links social-media\" target=\"_blank\" aria-describedby=\"a11y-new-window-external-message\" rel=\"noopener\"><span class=\"icon instagram\"><em>Instagram<\/em><\/span><\/a><\/li>        <li><a href=\"https:\/\/www.pinterest.com\/soundstrue\" title=\"Pinterest\" class=\"footer-pinterest links social-media\" target=\"_blank\" aria-describedby=\"a11y-new-window-external-message\" rel=\"noopener\"><span class=\"icon pinterest\"><em>Pinterest<\/em><\/span><\/a><\/li>        <li><a href=\"https:\/\/open.spotify.com\/user\/sounds_true\" title=\"Spotify\" class=\"footer-spotify links social-media\" target=\"_blank\" aria-describedby=\"a11y-new-window-external-message\" rel=\"noopener\"><span class=\"icon spotify\"><em>Spotify<\/em><\/span><\/a><\/li>        <li><a href=\"https:\/\/manyvoices.soundstrue.com\" title=\"Blog\" class=\"footer-blog links social-media\" target=\"_blank\" aria-describedby=\"a11y-new-window-external-message\" rel=\"noopener\"><span class=\"icon blog\"><em>Blog<\/em><\/span><\/a><\/li>    <\/ul><\/div>",
+              "see_all": false,
+              "see_all_label": ""
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-8-0",
+          "mega-menu-8-1",
+          "mega-menu-8-2",
+          "mega-menu-8-3"
+        ],
+        "settings": {
+          "parent": "contact us"
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "image_size": "medium",
+          "show_quantity_selector": false,
+          "show_variant_labels": true,
+          "show_vendor": false,
+          "enable_zoom": false,
+          "enable_payment_button": false,
+          "show_share_buttons": true,
+          "gaurantee_popup_title": "100% SATISFACTION GUARANTEE",
+          "gaurantee_popup_content": "<p>We unconditionally guarantee your satisfaction with all Sounds True products for one year when purchased via our website or catalog. If a Sounds True product fails to meet your expectations&mdash;for any reason&mdash;simply return it with receipt for a full refund. For items purchased from Sounds True that are manufactured by other companies, we indicate the warranty period in the product description.<\/p>\n<p>Please note: Refund requests over 120 days from the purchase date will receive a check, as funds cannot be returned to the credit card due to fraud protection policies.<\/p>\n<p>All downloadable audio and video titles are also covered by a one-year guarantee.<\/p>"
+        }
+      },
+      "product-template-events": {
+        "type": "product-template-events",
+        "settings": {
+          "image_size": "medium",
+          "show_quantity_selector": false,
+          "show_variant_labels": true,
+          "show_vendor": false,
+          "enable_zoom": false,
+          "enable_payment_button": true,
+          "show_share_buttons": true,
+          "gaurantee_popup_title": "100% SATISFACTION GUARANTEE",
+          "gaurantee_popup_content": "<p>Event and Training cancellation policies vary by program. Please click the 'More Information' button on the product page to see specifics.<\/p>"
+        }
+      },
+      "product-template-online-course": {
+        "type": "product-template-online-course",
+        "settings": {
+          "image_size": "medium",
+          "show_quantity_selector": false,
+          "show_variant_labels": true,
+          "show_vendor": false,
+          "enable_zoom": false,
+          "enable_payment_button": true,
+          "show_share_buttons": true,
+          "gaurantee_popup_title": "100% SATISFACTION GUARANTEE",
+          "gaurantee_popup_content": "<p>We unconditionally guarantee your satisfaction with all Sounds True products for one year when purchased via our website or catalog. If a Sounds True product fails to meet your expectations&mdash;for any reason&mdash;simply return it with receipt for a full refund. For items purchased from Sounds True that are manufactured by other companies, we indicate the warranty period in the product description.<\/p>\n<p>Please note: Refund requests over 120 days from the purchase date will receive a check, as funds cannot be returned to the credit card due to fraud protection policies.<\/p>\n<p>All downloadable audio and video titles are also covered by a one-year guarantee.<\/p>\n<p><\/p>"
+        }
+      },
+      "nextopia-collection-left-sidebar": {
+        "type": "nextopia-collection-left-sidebar",
+        "settings": {}
+      },
+      "nextopia-collection-right-sidebar": {
+        "type": "nextopia-collection-right-sidebar",
+        "settings": {}
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "display_type": "all",
+          "sort": "alphabetical",
+          "grid": 3
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "blog_show_author": true,
+          "blog_show_date": true,
+          "show_share_buttons": true,
+          "layout": "grid",
+          "grid": 3,
+          "rows": 8
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {}
+      },
+      "1600021647038": {
+        "type": "custom-feature-author-2",
+        "blocks": {
+          "1600021647038-0": {
+            "type": "author_info",
+            "settings": {
+              "author_image": "shopify:\/\/shop_images\/Untitled_design_-_2021-03-15T112600.922.png",
+              "author_link": "shopify:\/\/blogs\/authors\/pema-chodron",
+              "author_name": "Pema Chodron",
+              "author_name_color": "#0652af"
+            }
+          },
+          "1600021647038-1": {
+            "type": "author_info",
+            "settings": {
+              "author_image": "shopify:\/\/shop_images\/Untitled_design_-_2021-03-15T112416.431.png",
+              "author_link": "shopify:\/\/blogs\/authors\/eckhart-tolle",
+              "author_name": "Eckhart Tolle",
+              "author_name_color": "#0652af"
+            }
+          },
+          "1600021647038-2": {
+            "type": "author_info",
+            "settings": {
+              "author_image": "shopify:\/\/shop_images\/Untitled_design_-_2021-03-15T112310.961.png",
+              "author_link": "shopify:\/\/blogs\/authors\/wim-hof",
+              "author_name": "Wim Hof",
+              "author_name_color": "#0652af"
+            }
+          },
+          "1600021647038-3": {
+            "type": "author_info",
+            "settings": {
+              "author_image": "shopify:\/\/shop_images\/Untitled_design_-_2021-04-14T152117.370.png",
+              "author_link": "shopify:\/\/blogs\/authors\/tara-brach",
+              "author_name": "Tara Brach",
+              "author_name_color": "#0652af"
+            }
+          },
+          "1600021647038-4": {
+            "type": "author_info",
+            "settings": {
+              "author_image": "shopify:\/\/shop_images\/Untitled_design_-_2021-02-01T103220.237.png",
+              "author_link": "shopify:\/\/blogs\/authors\/justin-michael-williams",
+              "author_name": "Justin Michael Williams",
+              "author_name_color": "#0652af"
+            }
+          }
+        },
+        "block_order": [
+          "1600021647038-0",
+          "1600021647038-1",
+          "1600021647038-2",
+          "1600021647038-3",
+          "1600021647038-4"
+        ],
+        "settings": {
+          "title": "Our Authors",
+          "title_color": ""
+        }
+      },
+      "gift-card-with-purchase": {
+        "type": "gift-card-with-purchase",
+        "blocks": {
+          "ec3e67c7-bfb8-44f7-9272-ec5c375a6886": {
+            "type": "amount",
+            "settings": {
+              "title": "Free $5 Gift Card with Purchase over $25",
+              "cart_threshold": 25,
+              "gift_card_amount": 5
+            }
+          },
+          "0d07880d-9ece-4a85-b3f2-c04c398aeccd": {
+            "type": "amount",
+            "settings": {
+              "title": "Free $10 Gift Card with Purchase over $50",
+              "cart_threshold": 50,
+              "gift_card_amount": 10
+            }
+          },
+          "9db686ff-bb0a-4fb5-96d7-300d961256c5": {
+            "type": "amount",
+            "settings": {
+              "title": "Free $25 Gift Card with Purchase over $75",
+              "cart_threshold": 75,
+              "gift_card_amount": 25
+            }
+          }
+        },
+        "block_order": [
+          "ec3e67c7-bfb8-44f7-9272-ec5c375a6886",
+          "0d07880d-9ece-4a85-b3f2-c04c398aeccd",
+          "9db686ff-bb0a-4fb5-96d7-300d961256c5"
+        ],
+        "settings": {
+          "enable": false,
+          "gift_card_product": "egift-card"
+        }
+      },
+      "account": {
+        "type": "account",
+        "blocks": {
+          "bd25397e-5842-4316-bf92-56746e4893c0": {
+            "type": "digital_library",
+            "settings": {
+              "title": "ACCESS YOUR DIGITAL PRODUCTS",
+              "link_text": "My Library"
+            }
+          },
+          "a18fa7ae-d69e-4620-89de-f62b59fd3883": {
+            "type": "contact_info",
+            "settings": {
+              "title": "CONTACT INFORMATION"
+            }
+          },
+          "6f030506-6d67-42dc-aa5a-e741603f1a18": {
+            "type": "recharge_subcription",
+            "settings": {
+              "title": "Payment Plan",
+              "link_text": "Manage Payment Plan"
+            }
+          },
+          "5cfed006-749f-41cc-8aa1-dacf50e5aba9": {
+            "type": "address_book",
+            "settings": {
+              "title": "ADDRESS BOOK"
+            }
+          },
+          "2562e793-c83b-42bb-87c3-d4e0af4fac2e": {
+            "type": "order_history",
+            "settings": {
+              "title": "ORDER HISTORY",
+              "no_order": ""
+            }
+          }
+        },
+        "block_order": [
+          "bd25397e-5842-4316-bf92-56746e4893c0",
+          "a18fa7ae-d69e-4620-89de-f62b59fd3883",
+          "6f030506-6d67-42dc-aa5a-e741603f1a18",
+          "5cfed006-749f-41cc-8aa1-dacf50e5aba9",
+          "2562e793-c83b-42bb-87c3-d4e0af4fac2e"
+        ],
+        "settings": {}
+      }
+    },
+    "content_for_index": [
+      "1565906293007",
+      "1561406431449",
+      "1561406623925",
+      "featured-collections",
+      "1566314985451",
+      "1561406984848",
+      "1566315379687",
+      "1569836822903",
+      "1566315867461",
+      "1569835752828",
+      "1600021647038"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "color_text": "#3d4246",
+      "color_body_text": "#69727b",
+      "color_sale_text": "#557B97",
+      "color_borders": "#e8e9eb",
+      "color_button": "#557B97",
+      "color_button_text": "#fff",
+      "color_small_button_text_border": "#3d4246",
+      "color_text_field": "#fff",
+      "color_text_field_text": "#000",
+      "color_text_field_border": "#949494",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#3d4246",
+      "image_overlay_opacity": 40,
+      "color_body_bg": "#fff",
+      "type_header_font": "work_sans_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "work_sans_n4",
+      "type_base_size": 16,
+      "type_bold_product_titles": false,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {}
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {
+            "text_size": "large"
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "image",
+              "settings": {}
+            },
+            "slideshow-1": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "slideshow-1"
+          ],
+          "settings": {}
+        },
+        "featured-collections": {
+          "type": "collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "feature-row": {
+          "type": "feature-row",
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "newsletter": {
+              "type": "newsletter",
+              "settings": {}
+            }
+          },
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "hero",
+        "featured-collections",
+        "feature-row",
+        "slideshow"
+      ]
+    },
+    "Light": {
+      "color_text": "#162950",
+      "color_body_text": "#6d6d6d",
+      "color_sale_text": "#DA2F0C",
+      "color_borders": "#e4e4e4",
+      "color_button": "#DA2F0C",
+      "color_button_text": "#ffffff",
+      "color_small_button_text_border": "#162950",
+      "color_text_field": "#ffffff",
+      "color_text_field_text": "#162950",
+      "color_text_field_border": "#909090",
+      "color_image_overlay_text": "#ffffff",
+      "color_image_overlay": "#3d3d3d",
+      "image_overlay_opacity": 40,
+      "color_body_bg": "#f8f8f8",
+      "type_header_font": "muli_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "muli_n4",
+      "type_base_size": 18,
+      "type_bold_product_titles": true,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "social_twitter_link": "",
+      "social_facebook_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_tumblr_link": "",
+      "social_snapchat_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "favicon": "",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "small",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#e8f3f6",
+      "checkout_heading_font": "Roboto",
+      "checkout_body_font": "Source Sans Pro",
+      "checkout_accent_color": "#1990c6",
+      "checkout_button_color": "#23314e",
+      "checkout_error_color": "#ff6d6d",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "logo": "",
+            "main_linklist": "main-menu"
+          }
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {
+            "alignment": "center",
+            "hero_size": "x-large",
+            "text_size": "large"
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "alignment": "center center"
+              }
+            },
+            "1492095993817": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "alignment": "center"
+              }
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "1492095993817"
+          ],
+          "settings": {
+            "slideshow_height": "medium",
+            "text_size": "medium",
+            "autorotate": false,
+            "autorotate_speed": 5
+          }
+        },
+        "featured-collections": {
+          "type": "collection",
+          "settings": {
+            "grid": 3,
+            "rows": 1,
+            "show_vendor": true
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "image_size": "medium",
+            "show_quantity_selector": false,
+            "show_variant_labels": true,
+            "show_vendor": false,
+            "enable_zoom": true,
+            "show_share_buttons": true
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "layout": "grid",
+            "grid": 2,
+            "rows": 2,
+            "show_collection_image": true,
+            "show_vendor": false,
+            "sort_enable": true,
+            "tags_enable": true
+          }
+        },
+        "1492033809691": {
+          "type": "map",
+          "settings": {}
+        },
+        "1492033877875": {
+          "type": "quotes",
+          "blocks": {
+            "1492033877875-0": {
+              "type": "quote",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1492033877875-0"
+          ],
+          "settings": {}
+        },
+        "1492033924902": {
+          "type": "custom-content",
+          "blocks": {
+            "1492033924902-0": {
+              "type": "text",
+              "settings": {
+                "width": "100%",
+                "alignment": "center",
+                "align_text": "center"
+              }
+            }
+          },
+          "block_order": [
+            "1492033924902-0"
+          ],
+          "settings": {
+            "title": ""
+          }
+        },
+        "1492096252560": {
+          "type": "collection-list",
+          "blocks": {
+            "1492096252560-0": {
+              "type": "featured_collection",
+              "settings": {}
+            },
+            "1492096252560-1": {
+              "type": "featured_collection",
+              "settings": {}
+            },
+            "1492096252560-2": {
+              "type": "featured_collection",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1492096252560-0",
+            "1492096252560-1",
+            "1492096252560-2"
+          ],
+          "settings": {
+            "grid": 3
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {}
+        },
+        "article-template": {
+          "type": "article-template",
+          "settings": {
+            "blog_show_author": true,
+            "blog_show_date": true,
+            "show_share_buttons": true
+          }
+        },
+        "cart-template": {
+          "type": "cart-template",
+          "settings": {
+            "cart_notes_enable": false
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "newsletter": {
+              "type": "newsletter",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "newsletter"
+          ],
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "hero",
+        "featured-collections",
+        "slideshow",
+        "1492033924902",
+        "1492096252560",
+        "1492033877875",
+        "1492033809691"
+      ]
+    }
+  }
+}

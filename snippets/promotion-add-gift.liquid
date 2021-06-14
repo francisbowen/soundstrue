@@ -1,0 +1,7 @@
+{% comment %} check if product has free gifts {% endcomment %}
+{% if variant.available and variant.metafields.promotion.first %}
+    {% assign gifts = variant.metafields.promotion.gift_products | split: "," %}
+    {% for gift in gifts %}
+        <input type="hidden" name="gifts[]" value="{{gift}}" data-gift-input>
+    {%  endfor %}
+{%  endif %}

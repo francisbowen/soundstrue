@@ -1,0 +1,131 @@
+{% assign author_blog_handle = 'authors' %}
+
+<div class="page-width our-authors">
+    {% if section.settings.title != blank %}
+        <div class="section-header text-center">
+            <h2 class="section-header-title" style="color: {{ section.settings.title_color }};">{{ section.settings.title | escape }}</h2>
+            {% if section.settings.show_shop_all %}
+                {% if section.settings.shop_all_link_text != blank %}
+                    <a {% if section.settings.shop_all_link != blank %}href="{{ section.settings.shop_all_link }}"{% endif %} class="shop-all-link" aria-label="shop all">
+                        {{ section.settings.shop_all_link_text }}
+                    </a>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endif %}
+    
+    {% if section.blocks.size > 0 %}
+        <ul class="logo-bar">
+            {% for block in section.blocks %}
+                {% if block.settings.author_article != blank %}
+                    <li class="logo-bar__item author-info" {{ block.shopify_attributes }}>
+                        {% for article in blogs[author_blog_handle].articles %}
+                            {% if article.handle == block.settings.author_article %}
+                                <a href="{% if article.url != blank %}{{ article.url }}{% else %}#{% endif %}" 
+                                class="logo-bar__link author-link">
+                                    {% if article.image.src != blank %}
+                                        {% assign src = article.image.src %}
+                                        <div class="logo-bar__image author-image" 
+                                                style="background-image: url('{{ src | img_url: 'medium' }}');
+                                                    background-size: cover;
+                                                    background-position: center;">
+                                        </div>
+                                    {% elsif article.content contains "<img" %}
+                                        {% assign src = article.content | split: 'src="' %}
+                                        {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn' | replace: 'http:http://', 'http://' | remove: 'https:' %}
+                                        <div class="logo-bar__image author-image" 
+                                                style="background-image: url('{{ src }}');
+                                                    background-size: cover;
+                                                    background-position: center;">
+                                        </div>
+                                    {% else %}
+                                        {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+                                    {% endif %}
+                                    
+                                    {% if article.title != blank %}
+                                        <div class="logo-bar__link author-name"
+                                            style="color: {{ section.settings.author_name_color }};">
+                                            {{ article.title }}
+                                        </div>
+                                    {% endif %}
+                                </a>
+                                {% break %}
+                            {% endif %}
+                        {% endfor %}
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    {% if section.blocks.size == 0 %}
+        {% include 'no-blocks' %}
+    {% endif %}
+</div>
+
+{% schema %}
+    {
+        "name": "Author Blog",
+        "class": "index-section",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Heading",
+                "default": "Our Authors"
+            },
+            {
+                "type": "color",
+                "id": "title_color",
+                "label": "Heading color"
+            },
+            {
+                "type": "color",
+                "id": "author_name_color",
+                "label": "Author name color"
+            },
+            {
+                "type": "checkbox",
+                "id": "show_shop_all",
+                "label": "Show 'shop all' link",
+                "default": false
+            },
+            {
+                "type": "richtext",
+                "id": "shop_all_link_text",
+                "label": "Shop All link text"
+            },
+            {
+                "type": "url",
+                "id": "shop_all_link",
+                "label": "Shop All link"
+            }
+        ],
+        "blocks": [
+        {
+            "type": "author_info",
+            "name": "Author Info",
+            "settings": [
+                {
+                    "type": "article",
+                    "id": "author_article",
+                    "label": "Select Article"
+                }
+            ]
+          }
+        ],
+        "presets": [
+            {
+                "name": "Author Blog",
+                "category": "Blog"
+            }
+        ]
+    }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+  

@@ -1,0 +1,27 @@
+{%- layout none -%}
+{% if search.performed %}
+  {%- assign search_parts = search.terms | split:' ' -%}
+  {%- assign desired_product = search_parts[0] | strip -%}
+  {%- assign desired_variant = search_parts[1] | strip | times:1 -%}
+  {%- assign product = all_products[desired_product] -%}
+  {% for variant in product.variants %}
+    {% if variant.id == desired_variant %}
+      {% if variant.available %}
+        {
+          "main_product": {{ variant.id }},
+          "main_product_title": "{{ product.title | escape }}"{% if product.metafields.subscriptions.subscription_id.size > 0 %},
+          "subscription_id": {{ product.metafields.subscriptions.subscription_id }}{% endif %}{% if product.metafields.subscriptions.original_to_hidden_variant_map.size > 0 %},
+          "original_to_hidden_variant_map": {{ product.metafields.subscriptions.original_to_hidden_variant_map | replace: '=>', ':' }}{% endif %}{% unless variant.metafields.promotion.size < 1 %},{% endunless %}
+          {% if variant.metafields.promotion.first %}
+            {% assign gifts = variant.metafields.promotion.gift_products | split: "," %}
+            "gifts": [
+              {% for gift in gifts %}
+                {{gift}}{%- unless forloop.last %},{% endunless -%}
+              {%  endfor %}
+            ]
+          {%  endif %}
+        }
+      {%  endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}

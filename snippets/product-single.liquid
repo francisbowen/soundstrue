@@ -1,0 +1,11 @@
+{%- assign collection = collections[block.settings.featured_product] -%}
+{%- assign max_height = 200 -%}
+{% comment %} 
+<h2 class="mega-menu-title">{{ collection.title }}</h2> {% endcomment %}
+<ul class="grid grid--uniform{% if collection.products_count > 0 %} grid--view-items{% endif %}">
+        {% for product in collection.products %}
+          <li class="grid__item grid__item--{{section.id}} {{ grid_item_width }}">
+              {% include 'product-mega-menu', max_height: max_height %}
+          </li>
+        {% endfor %}
+</ul>

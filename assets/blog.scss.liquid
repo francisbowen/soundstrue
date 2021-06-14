@@ -1,0 +1,182 @@
+/*============================================================================
+  Variables
+==============================================================================*/
+
+$color_white: #ffffff;
+$color_grey: #c0c0c0;
+$color_grey_hover: #8d8d8d;
+$color_md_grey: #767676;
+$color_dk_grey: #333333;
+$color_focus_blue: #5e9ed6;
+$color_orange: #fb6300;
+$color_orange_hover: #e24a00;
+$color_logo_blue: #506a9f;
+$color_logo_green: #4a773c;
+$color_bt_green: #69a14b;
+$color_bt_blue: #4069bf;
+$color_bt_blue_hover: #2750a6;
+$color_lt_grey: #f0f0f0;
+$color_error: #df280a;
+
+// New colors
+$color_heading: #5b6770;
+$color_accent_2: #3e4d58;
+$color_text: #2e3b44;
+$color_ratings: #ecbd00;
+$color_shopping: #c74d10;
+$color_shopping_hover: #b74e19;
+$color_links: #0652af;
+$colorDrawerBorder: #343535;
+$colorBorder: #343535;
+$gutter: 30px;
+$type_body_text_center: center;
+
+
+/*============================================================================
+  Blog Page Styles
+==============================================================================*/
+
+.blog {
+    .author-blogs.our-authors {
+        .section-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .logo-bar {
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            justify-content: flex-start;
+
+            .author-info {
+                margin: 0;
+                max-width: 100%;
+                width: 50%;
+
+                @media only screen and (min-width: 480px) {
+                    width: 33.33333%;
+                }
+
+                @media only screen and (min-width: 992px) {
+                    width: 20%;
+                }
+
+                .author-image {
+                    width: 130px;
+                    height: 130px;
+
+                    @media only screen and (min-width: 360px) {
+                        width: 140px;
+                        height: 140px;
+                    }
+
+                    @media only screen and (min-width: 550px) {
+                        width: 160px;
+                        height: 160px;
+                    }
+
+                    @media only screen and (min-width: 640px) {
+                        width: 180px;
+                        height: 180px;
+                    }
+
+                    @media only screen and (min-width: 768px) {
+                        width: 200px;
+                        height: 200px;
+                    }
+
+                    @media only screen and (min-width: 992px) {
+                        width: 180px;
+                        height: 180px;
+                    }
+
+                    @media only screen and (min-width: 1100px) {
+                        width: 200px;
+                        height: 200px;
+                    }
+                }
+
+                .author-name {
+                    color: $color_links;
+                }
+            }
+        }
+    }
+}
+
+.author-filter--wrappper {
+    background: #fff;
+    border-top: 1px solid silver;
+    padding: 10px 10px 0 0;
+    margin-bottom: 50px;
+    text-align: center;
+    ul{
+        margin: 0;
+        padding: 0;
+        li{
+            display: inline-block;
+            &.active{
+                a {
+                    text-decoration: underline;
+                    color: #5B6770;
+                }
+            }
+    a {
+        padding: 12px;
+        font-weight: bold;
+        color: #0652af;
+        font-size: 20px;
+        &:hover{
+            color: #0652af;
+            text-decoration: underline;
+        }
+    }
+}
+}
+}
+.for-desktop{
+    display: block;
+    @media only screen and (max-width: 767px) {
+        display: none;
+    }
+}
+.for-mobile{
+    display: none;
+    @media only screen and (max-width: 767px) {
+        display: block;
+    }
+}
+
+.load-more-authors {
+    text-align:center;
+}
+
+.blog .author-blogs.our-authors li.logo-bar__item.author-info img {
+    width: 80%;
+}
+.author-blogs {
+  .toolbar{
+        .pagination {
+            @media screen and (max-width:767px){
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+        .toolbar-item{
+            @media screen and (max-width:767px){
+                width: 100%;
+            }
+            .results-per-page{
+                @media screen and (max-width:767px){
+                    width: 130px;
+                    margin: 0 auto;
+                }
+            }
+            .pdp-pagination{
+                @media screen and (max-width:767px){
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,115 @@
+{%- assign limit = 64 -%}
+
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{%- assign pageUrl = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last | replace:'\/','/' | replace:'%20',' ' | replace:'\u0026','&' -%}
+{%- for i in (1..1) -%}
+  {%- unless pageUrl contains "?" -%}{% break %}{%- endunless -%}
+  {%- if pageUrl contains "limit=32" -%}{%- assign limit = 32 -%}{%- endif -%}
+  {%- if pageUrl contains "limit=64" -%}{%- assign limit = 64 -%}{%- endif -%}
+  {%- if pageUrl contains "limit=128" -%}{%- assign limit = 128 -%}{%- endif -%}
+{%- endfor -%}
+
+{% paginate blog.articles by limit %}
+
+<div class="author-blogs page-width our-authors">
+  <header class="section-header">
+    <h2 class="section-header-title">{{ page_title }}</h2>
+  </header>
+  {%- if blog.handle == "authors" -%}
+  {%- assign alphabets = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z" | split: ',' -%}
+  <div class="author-filter--wrappper">
+    <select name="author" class="for-mobile author-dropdown" onchange="window.location=this.value;">
+      <option value="{{ blog.url }}" {% unless current_tags %}selected{% endunless %}>All</option>
+      {%- comment -%}
+      <option value="{{ blog.url }}/tagged/filter-number" {% if current_tags contains 'filter--number' %}selected{% endif %}>#</option>
+      {%- endcomment -%}
+      {% for alphabet in alphabets %}
+      {%- assign alpha_tag = "filter-" | append: alphabet -%}
+      {% if blog.all_tags contains alpha_tag %}
+      <option value="{{ blog.url }}/tagged/filter-{{ alphabet }}" {% if current_tags contains alpha_tag %}selected{% endif %}>{{ alphabet }}</option>
+      {% endif%}
+      {% endfor %}
+    </select>
+    <ul class="for-desktop">
+      <li {% unless current_tags %}class="active"{% endunless %}>
+        <a href="{{ blog.url }}">All</a>
+      </li>
+      {%- comment -%}
+      <li {% if current_tags contains 'filter--number' %}class="active"{% endif %}>
+        {{ '#' | link_to_tag: 'filter--number' }}
+      </li>
+      {%- endcomment -%}
+    {%- for alphabet in alphabets -%}
+      {%- assign alpha_tag = "filter-" | append: alphabet -%}
+      {%- if blog.all_tags contains alpha_tag -%}
+      {%- if current_tags contains alpha_tag -%}
+      <li class="active">{{ alphabet | upcase | link_to_tag: alpha_tag }}</li>
+      {%- else -%}
+      <li data="{{ current_tags }} is-eq {{ alpha_tag }}">{{ alphabet | upcase | link_to_tag: alpha_tag }}</li>
+      {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+  </div>
+  {%- endif -%}
+  
+  <div class="toolbar-top">
+    {% include 'collection-toolbar' %}
+  </div>
+  
+<div class="logo-bar" id="artists">
+  {%- assign all_authors = blog.articles | sort: 'title' -%}
+    {% for article in all_authors %}
+      <li class="logo-bar__item author-info">
+        <a href="{% if article.url != blank %}{{ article.url }}{% else %}#{% endif %}" 
+            class="logo-bar__link author-link">
+          {% if article.image.src != blank %}
+            {% assign src = article.image.src %}
+            <div class="logo-bar__image author-image" 
+                  style="background-image: url('{{ src | img_url: 'medium' }}');
+                        background-size: cover;
+                        background-position: center;">
+            </div>
+          {% elsif article.content contains "<img" %}
+            {% assign src = article.content | split: 'src="' %}
+            {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn' | replace: 'http:http://', 'http://' | remove: 'https:' %}
+            <div class="logo-bar__image author-image" 
+                  style="background-image: url('{{ src }}');
+                        background-size: cover;
+                        background-position: center;">
+            </div>
+          {% else %}
+          <div class="logo-bar__image author-image" 
+                  style="background-image: url('{{ 'Sounds_True-no-image.png' | file_img_url: 'master'  }}');
+                        background-size: cover;
+                        background-position: center;">
+            </div>
+          
+          
+            
+          {% endif %}
+          {% if article.title != blank %}
+            <div class="logo-bar__link author-name"
+                  style="color: {{ section.settings.author_name_color }};">
+              {{ article.title }}
+            </div>
+          {% endif %}
+        </a>
+      </li>
+    {% endfor %}
+</div>
+
+  <div class="toolbar-bottom">
+    {% include 'collection-toolbar' %}
+  </div>
+</div>
+{% endpaginate %}
+
+<script>
+if ( $( ".pdp-pagination span" ).length==2 ) {
+ 
+    $( ".pdp-pagination" ).hide();
+ 
+}
+
+</script>

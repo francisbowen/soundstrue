@@ -1,0 +1,21 @@
+<div class="sort-by-dropdown">
+    {% if section.settings.sort_enable or template contains 'article' %}
+        <div class="sort-by-wrapper">
+            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+            <label for="SortBy">{{ 'collections.sorting.title' | t }}</label>
+            <select name="sort_by" id="SortBy"
+                    class="filter-sort-by"
+                    aria-describedby="a11y-refresh-page-message a11y-selection-message"
+                    data-default-sortby="{{ collection.default_sort_by }}"
+            >
+                {%- for option in collection.sort_options -%}
+                    {%- assign option_name = option.name | downcase -%}
+                    {% unless option_name contains 'alphabet' %}
+                        <option value="{{ option.value }}" {% if option.value == sort_by %}selected="selected"{% endif %}>{{ option.name }}</option>
+                    {% endunless %}
+                {%- endfor -%}
+            </select>
+        </div>
+    {% endif %}
+</div>
+    

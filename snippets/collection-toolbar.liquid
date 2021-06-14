@@ -1,0 +1,67 @@
+<div class="toolbar">
+    {% if template contains 'collection'  or template contains 'article' %}
+        <div class="filter-and-sort">
+            <div class="toolbar-item">
+                {% include 'collection-sort-by-dropdown' %}
+            </div>
+        </div>
+    {% endif %}
+    <div class="pagination">
+        <div class="toolbar-item">
+            {% include 'collection-show-per-page' %}
+        </div>
+
+        <div class="toolbar-item">
+            <div class="hide">{% include 'collection-pagination' %}</div>
+    
+  <div class="pdp-pagination">
+      {%- assign lastPage = paginate.pages -%}
+      {%- assign secondLastPage = lastPage | minus: 1 -%}
+      {% if paginate.current_page == lastPage or paginate.current_page == secondLastPage %}
+      {%- assign paginate_from = paginate.current_page | minus: 4 -%}
+        {%- assign paginate_to = paginate.current_page | plus: 4 -%}
+      {% else %}
+      {%- assign paginate_from = paginate.current_page | minus: 2 -%}
+        {%- assign paginate_to = paginate.current_page | plus: 2 -%}
+      {% endif %}
+      
+      {%- assign dots_end = paginate.pages | minus: 4 -%}
+    {%- if paginate.previous-%}
+      <span class="prev"><a href="{{ paginate.previous.url }}">{% include 'pagination-arrow-left' %}</a></span>
+      {%- endif -%}
+      {% for i in (1..paginate.pages) %}
+      {%- if i == paginate.pages and paginate.current_page <= dots_end -%}
+      <span class="deco">…</span>
+      {%- endif -%}
+      {%- if i == 1 -%}
+      {%- if paginate.current_page == i -%}
+      <span class="page first current">{{ i }}</span>
+      {%- else -%}
+      <span class="page first"><a href="{{ collection.url }}?page={{ i }}">{{ i }}</a></span>
+      {%- endif -%}
+      {%- elsif i == paginate.pages -%}
+      {%- if paginate.current_page == i -%}
+      <span class="page last current">{{ i }}</span>
+      {%- else -%}
+      <span class="page last"><a href="{{ collection.url }}?page={{ i }}">{{ i }}</a></span>
+      {%- endif -%}
+      {%- else -%}
+      {%- if i >= paginate_from and i <= paginate_to or i <= 5  -%}
+      {%- if paginate.current_page == i -%}
+      <span class="page last current">{{ i }}</span>
+      {%- else -%}
+      <span class="page last"><a href="{{ collection.url }}?page={{ i }}">{{ i }}</a></span>
+      {%- endif -%}
+      {%- endif -%}
+      {%- endif -%}
+      {%- if i == 1 and paginate.current_page > 4  -%}
+      <span class="deco">…</span>
+      {%- endif -%}
+      {% endfor %}
+      {%- if paginate.next -%}
+      <span class="next"><a href="{{ paginate.next.url }}">{% include 'pagination-arrow-right' %}</a></span>
+      {%- endif -%}
+  </div>
+        </div>
+    </div>
+</div>

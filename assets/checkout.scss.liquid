@@ -1,0 +1,410 @@
+/*================ Variables ================*/
+
+$color_heading: #5b6770;
+$color_text: #2e3b44;
+$color_links: #0652af;
+$color_grey: #c0c0c0;
+$color_white: #ffffff;
+$color_focus_blue: #5e9ed6;
+$global_font_family: "Montserrat", Verdana, Arial, sans-serif;
+$global_outline: 2px solid $color_focus_blue !important;
+
+
+/*================ Checkout Pages General Styles ================*/
+
+.go-daddy-badge {
+    margin-bottom: 10px;
+    text-align: right;
+}
+.logged-in-customer-information__avatar-wrapper{
+    display: none !important;
+}
+.btn:focus {
+    outline: 0;
+}
+
+.logo-wrapper {
+    text-align: center;
+    .logo {
+        display: block !important;
+        &:focus {
+            outline: $global_outline;
+        }
+    }
+}
+
+.digital-download-info {
+    text-align: center;
+    .btn {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: $color_links;
+        &:hover {
+            background-color: $color_links;
+        }
+    }
+}
+
+.checkout-progress-wrapper {
+    display: flex;
+    justify-content: center;
+    .breadcrumb {
+        margin-top: 4em !important;
+        flex-wrap: nowrap;
+        .breadcrumb__item {
+            flex-direction: column;
+            position: relative;
+            width: 85px;
+            &:before {
+                content: '';
+                position: absolute;
+                top: -35px;
+                width: 30px;
+                height: 30px;
+                background: #FFF;
+                border-radius: 50px;
+                border: 2px solid #767676;
+                z-index: 1;
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                top: -20px;
+                left: 50px;
+                width: 85px;
+                height: 2px;
+                background: #767676;;
+            }
+            &:last-child:after {
+                width: 0;
+                height: 0;
+            }
+            &:nth-child(1) a:before {
+                content: '1'
+            }
+            &:nth-child(2) a:before,
+            &:nth-child(2) span:before {
+                content: '2'
+            }
+            &:nth-child(3) a:before,
+            &:nth-child(3) span:before {
+                content: '3'
+            }
+            &:nth-child(4) a:before,
+            &:nth-child(4) span:before {
+                content: '4'
+            }
+            &.breadcrumb__item--completed {
+                &:before {
+                    background: #5C6770;
+                    border-color: #5C6770;
+                }
+                &:after {
+                    background: #5C6770;
+                }
+                a {
+                    color: #5C6770;
+                    &:before {
+                        color: #FFF;
+                    }
+                }
+            }
+            &.breadcrumb__item--current {
+                &:before {
+                    border-color: #5C6770;
+                }
+                span{
+                    color: #5C6770;
+                    &:before {
+                        color: #5C6770;
+                    }
+                }
+            }
+            a, span {
+                display: flex;
+                justify-content: center;
+                color: #767676;
+                &:before {
+                    position: absolute;
+                    top: -33px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 30px;
+                    height: 30px;
+                    font-size: 16px;
+                    color: #767676;
+                    z-index: 2;
+                }
+            }
+            .icon-svg {
+                display: none;
+            }
+        }
+    }
+}
+
+.checkout-template {
+    .content {
+        .main {
+            .main__header {
+                .breadcrumb__link,
+                .breadcrumb__text {
+                    font-size: 14px;
+                    font-family: $global_font_family;
+                    font-weight: 300;
+                }
+
+                .breadcrumb__link {
+                    &:focus {
+                        outline: $global_outline;
+                    }
+                }
+            }
+
+            .main__content {
+                .os-header {
+                    .os-header__hanging-icon {
+                        color: $color_links;
+                    }
+                }
+
+                .input-checkbox:checked,
+                .input-radio:checked {
+                    border: none;
+                    -webkit-box-shadow: 0 0 0 10px $color_links inset;
+                    box-shadow: 0 0 0 10px $color_links inset;
+                }
+
+                .radio__label,
+                .checkbox__label {
+                    font-size: 16px;
+                    font-family: $global_font_family;
+                    color: $color_text;
+                    font-weight: normal;
+                }
+
+                
+                .step__sections {
+                    .section {
+                        .section__title {
+                            font-size: 18px;
+                            font-family: $global_font_family;
+                            font-weight: 400;
+                            text-transform: uppercase;
+                            color: $color_heading;
+                        }
+
+                        .section__text {
+                            font-size: 14px;
+                            font-family: $global_font_family;
+                            font-weight: 300;
+                            color: $color_text;
+                        }
+
+                        .section__content {
+                            .logged-in-customer-information__paragraph {
+                                & > * {
+                                    font-size: 14px;
+                                    font-family: $global_font_family;
+                                    font-weight: 300;
+                                }
+
+                                & > span {
+                                    color: $color_heading;
+                                }
+
+                                & > a {
+                                    text-transform: uppercase;
+
+                                    &:focus {
+                                        outline: $global_outline;
+                                    }
+                                }
+                            }
+
+                            .field__input {
+                                font-size: 14px;
+                                font-family: $global_font_family;
+                                color: $color_text;
+                                font-weight: 300;
+                                border: 1px solid $color_grey;
+                            }
+                        }
+
+                        .content-box {
+                            border: 1px solid $color_grey;
+
+                            .content-box__row {
+                                .review-block {
+                                    & * {
+                                        font-size: 16px;
+                                        font-family: $global_font_family;
+                                        font-weight: 300;
+                                    }
+
+                                    a,
+                                    button {
+                                        &:focus {
+                                            outline: $global_outline;
+                                        }
+                                    }
+
+                                    .review-block__label {
+                                        color: $color_heading;
+                                    }
+                                }
+                            }
+                        }
+
+                        .payment-method-wrapper {
+                            font-size: 16px;
+                            font-family: $global_font_family;
+                            font-weight: 500;
+                            text-transform: uppercase;
+                            color: $color_text;
+                        }
+                    }
+
+                    .step__footer {
+                        .step__footer__previous-link {
+                            font-size: 14px;
+                            font-family: $global_font_family;
+                            font-weight: 400;
+                        }
+    
+                        .btn {
+                            padding: 10px 18px;
+                            border-radius: 0;
+    
+                            span {
+                                color: $color_white;
+                                font-size: 16px;
+                                font-family: $global_font_family;
+                                font-weight: 400;
+                                text-transform: uppercase;
+                                letter-spacing: normal;
+                                line-height: 19px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .sidebar {
+            .sidebar__content {
+                .order-summary {
+                    & * {
+                        font-size: 16px;
+                        font-family: $global_font_family;
+                        font-weight: 300;
+                        color: $color_text;
+                        line-height: 24px;
+                    }
+                  .field__input-btn {
+                    span {
+                    	color:#fff;
+                      &.visually-hidden-on-mobile {
+                      	position:static;
+                        margin:0;
+                      }
+                    }
+                    svg {
+                    	display:none !important;
+                    }
+                    
+                  	
+                  }
+
+                    a,
+                    button {
+                        &:focus {
+                            outline: $global_outline;
+                        }
+                    }
+                    button {
+                        &:focus {
+                            outline-offset: -2px;
+                        }
+                    }
+
+                    .product-thumbnail__quantity {
+                        font-size: 12px;
+                        color: $color_white;
+                    }
+
+                    .order-summary__section--product-list::after,
+                    .total-line-table th:before,
+                    .total-line-table td:before {
+                        background-color: $color_grey;
+                    }
+
+                    .order-summary__section--total-lines {
+                        border-bottom: 1px solid $color_grey;
+                    }
+
+                    .total-line-table__footer {
+                        & * {
+                            font-weight: 500;
+                        }
+
+                        .payment-due__currency {
+                            position: relative;
+                            top: 3px;
+                        }
+                    }
+
+                    .order-summary__scroll-indicator {
+                        background-color: rgba(50,50,50,0.75) !important;
+                        color: #FFF !important;
+                        & * {
+                            color: #FFF;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.input-checkbox,
+.input-radio,
+.field__input,
+.rc-anchor-light .rc-anchor-pt a,
+.rc-anchor-light .rc-anchor-pt a:link,
+.rc-anchor-light .rc-anchor-pt a:visited,
+.step__footer__continue-btn,
+.step__footer__previous-link,
+.policy-list__item a {
+    &:focus {
+        outline: $global_outline;
+    }
+}
+
+.input-checkbox,
+.field__input,
+.step__footer__continue-btn {
+    &:focus {
+        outline-offset: -2px;
+    }
+}
+
+.input-radio {
+    &:focus {
+        outline-offset: -10px;
+    }
+}
+
+.field__input {
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.input-checkbox,
+.input-radio {
+    &:focus {
+        border: 2px solid $color_focus_blue !important;
+    }
+}

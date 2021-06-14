@@ -1,0 +1,218 @@
+{% assign is_subscription_customer = false %}
+{% for tag in customer.tags %}
+{% if tag == 'Active Subscriber' or tag == "Inactive Subscriber" or tag == "Subscription card declined" %}
+{% assign is_subscription_customer = true %}
+{% break %}
+{% endif %}
+{% endfor %}
+<div class="section-content text-left" >
+<div class="grid myaccount">
+    {% for block in section.blocks %}
+        {% case block.type %}
+            {% when 'digital_library' %}
+                <!-- Access Digital Library -->    
+            <div class="grid__item myaccount__contact-info">
+                <h2>{{ block.settings.title }}</h2>
+                <div class="section-header text-left digital">
+                    <p id="rc_link_container">
+                        <a href="https://digitallibrary.soundstrue.com/login">
+                        <img class="account-library" src="//cdn.shopify.com/s/files/1/0253/2822/2307/t/71/assets/library_small.png?v=14068478942144347878">
+                        {{ block.settings.link_text }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+            {% when 'contact_info' %}
+            <div class="grid__item myaccount__contact-info">
+                <h2>
+                    {%- if block.settings.title != blank -%}
+                        {{ block.settings.title }}
+                    {%- else -%}
+                        {{ 'customer.account.contact_info' | t }}
+                    {%- endif -%}
+                </h2>
+                <p class="customer-name">{{ customer.name }}</p>
+                <p class="customer-email">{{ customer.email }}</p>
+            </div>
+            {% when 'recharge_subcription' %}
+            {% if is_subscription_customer %}
+            <div class="grid__item myaccount__contact-info">
+              <h2>{{ block.settings.title }}</h2>
+              <!-- Begin ReCharge code -->
+              <p id="rc_link_container">
+                  <a href="/tools/recurring/login">{{ block.settings.link_text }}</a>
+              </p>
+              <!-- End ReCharge code -->
+            </div>
+          {% endif %}
+            {% when 'address_book' %}
+            <div class="grid__item myaccount__address-book">
+                <h2>
+                    {%- if block.settings.title != blank -%}
+                        {{ block.settings.title }}
+                    {%- else -%}
+                    {{ 'customer.account.address_book' | t }}
+                    {%- endif -%}
+                </h2>
+                {{ customer.default_address | format_address }}
+                <p><a href="/account/addresses" class="btn btn--small view-addresses-btn">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+              </div>
+            {% when 'order_history' %}
+            <div class="grid__item myaccount__order-history">
+                <h2>
+                    {%- if block.settings.title != blank -%}
+                        {{ block.settings.title }}
+                    {%- else -%}
+                        {{ 'customer.orders.title' | t }}
+                    {%- endif -%}
+                </h2>
+          
+                {% paginate customer.orders by 20 %}
+                  {% if customer.orders.size != 0 %}
+          
+                    <table class="responsive-table">
+                      <thead>
+                        <tr>
+                          <th scope="col">{{ 'customer.orders.order_number' | t }}</th>
+                          <th scope="col">{{ 'customer.orders.date' | t }}</th>
+                          <th scope="col">{{ 'customer.orders.payment_status' | t }}</th>
+                          <th scope="col">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                          <th scope="col">{{ 'customer.orders.total' | t }}</th>
+                          <th scope="col">{{ 'customer.orders.action' | t }}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for order in customer.orders %}
+                          <tr>
+                            <td data-label="{{ 'customer.orders.order_number' | t }}" scope="row">{{ order.name }}</td>
+                            <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: "%m/%d/%Y" }}</td>
+                            <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                            <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                            <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                            <td data-label="{{ 'customer.orders.action' | t }}">
+                              <a href="{{ order.customer_url }}" class="view-order-link" aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}">{{ 'customer.orders.view_order' | t }}</a>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  {% else %}
+                    <p>
+                        {%- if block.settings.no_order != blank -%}
+                            {{ block.settings.no_order }}
+                        {%- else -%}
+                            {{ 'customer.orders.none' | t }}
+                        {%- endif -%}
+                    </p>
+          
+                  {% endif %}
+                  {% if paginate.pages > 1 %}
+                    {% include 'pagination' %}
+                  {% endif %}
+                {% endpaginate %}
+              </div>
+            {% else %}
+            <div class="grid__item myaccount__contact-info">
+                <h2>{{ block.settings.title }}</h2>
+                <div class="section-header text-left">
+                    {{ block.settings.copy  }}
+                </div>
+            </div>
+        {% endcase %}
+    {% endfor %}
+
+    </div>
+  </div>
+{% schema %}
+    {
+        "name": "Customer Account",
+        "blocks": [
+            {
+                "type":"digital_library",
+                "name":"Digital Library",
+                "settings":[
+                    {
+                        "type":"text",
+                        "id":"title",
+                        "label":"Title"
+                    },
+                    {
+                        "type":"text",
+                        "id":"link_text",
+                        "label":"Library Link Text"
+                    }
+                ]
+            },
+            {
+                "type":"contact_info",
+                "name":"Contact Information",
+                "settings":[
+                    {
+                        "type":"text",
+                        "id":"title",
+                        "label":"Title"
+                    }
+                ]
+            },
+            {
+                "type":"recharge_subcription",
+                "name":"Recurring Customers",
+                "settings":[
+                    {
+                        "type":"text",
+                        "id":"title",
+                        "label":"Title"
+                    },
+                    {
+                        "type":"text",
+                        "id":"link_text",
+                        "label":"Library Link Text"
+                    }
+                ]
+            },
+            {
+                "type":"address_book",
+                "name":"Address Book",
+                "settings":[
+                    {
+                        "type":"text",
+                        "id":"title",
+                        "label":"Title"
+                    }
+                ]
+            },
+            {
+                "type":"order_history",
+                "name":"Order History",
+                "settings":[
+                    {
+                        "type":"text",
+                        "id":"title",
+                        "label":"Title"
+                    },
+                    {
+                        "type":"text",
+                        "id":"no_order",
+                        "label":"No order placeholder"
+                    }
+                ]
+            },
+            {
+                "type":"copy",
+                "name":"Copy Block",
+                "settings":[
+                    {
+                        "type":"text",
+                        "id":"title",
+                        "label":"Title"
+                    },
+                    {
+                        "type":"html",
+                        "id":"copy",
+                        "label":"Copy"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

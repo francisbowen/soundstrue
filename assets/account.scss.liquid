@@ -1,0 +1,458 @@
+/*================ Variables ================*/
+
+$color_white: #fff;
+$color_heading: #5b6770;
+$color_heading_border: #cccccc;
+$color_text: #2e3b44;
+$color_links: #0652af;
+$color_table_heading_bg: #f4f4f4;
+$color_table_heading_border: #c0c0c0;
+$color_indicate_require: #df280a;
+$label_color: #636363;
+
+
+/*================ General Account Styles ================*/
+
+.indicate {
+    font-size: 13px;
+    padding-bottom: 10px;
+    font-style: italic;
+
+    .mark {
+        color: $color_indicate_require;
+        font-size: 24px;
+        line-height: 1px;
+        vertical-align: middle;
+    }
+}
+
+.field {
+    &.required {
+        label:before {
+            content: '* ';
+            color: $color_indicate_require;
+            font-size: 24px;
+            line-height: 1px;
+            vertical-align: middle;
+        }
+    }
+}
+
+
+/*================ Login Page Styles ================*/
+
+.customers-login, .customers-register {
+    .form-vertical {
+        #customer_login, #reset_password, #new_password, #RegisterForm {
+            #RecoverPassword,
+            #customer_register_link {
+                color: $color_links;
+            }
+
+            .login_btn {
+                background-color: $color_links;
+                font-size: 13px;
+                min-width: 50%;
+            }
+        }
+        #RegisterForm {
+            position: relative;
+
+            .loading-overlay {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                background: rgba(255,255,255,.75);
+            }
+        }
+    }
+
+    // Message displayed on login page for checkout guest users
+    .login-to-checkout {
+        display: none;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    // Message displayed on login page for all users
+    .general-login-message {
+        margin-bottom: 25px;
+        text-align: center;
+
+        a {
+            color: $color_links;
+        }
+    }
+}
+
+
+/*================ Account Pages General Styles ================*/
+
+.customers-account,
+.customers-order,
+.customers-addresses {
+    .section-header,
+    .section-footer {
+        padding: 0 20px;
+        a {
+            color: $color_links;
+            border: 0;
+            text-decoration: none;
+            
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    h1 {
+        color: $color_heading;
+        font-weight: 400;
+        font-size: 24px;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        width: 18px;
+        height: 18px;
+        -webkit-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        position: relative;
+        cursor: pointer;
+        border: 1px solid $color_links;
+        margin-bottom: 0;
+        padding: 10px;
+
+        &:checked {
+            -webkit-box-shadow: 0 0 0 10px $color_links inset;
+            box-shadow: 0 0 0 10px $color_links inset;
+        }
+    }
+
+    .view-addresses-btn,
+    .address-new-toggle,
+    .address-edit-toggle,
+    .add-address,
+    .update-address {
+        background-color: $color_links;
+        color: $color_white;
+        border: 1px solid $color_links;
+        font-size: 13px;
+        line-height: 1;
+        padding: 10px 15px;
+        margin: 0;
+        height: 36px;
+
+        &:hover {
+            background-color: $color_links;
+            color: $color_white;
+            border: 1px solid $color_links;
+        }
+    }
+
+    .address-delete,
+    .cancel-btn {
+        background-color: $color_white;
+        color: $color_links;
+        border: 1px solid $color_links;
+        font-size: 14px;
+        font-weight: 400;
+        text-transform: capitalize;
+        line-height: 1;
+        padding: 10px 15px;
+        margin: 0;
+        height: 36px;
+
+        &:hover {
+            background-color: $color_white;
+            color: $color_links;
+            border: 1px solid $color_links;
+        }
+    }
+
+    .myaccount {
+        .grid__item {
+            display: flex;
+            flex-direction: column;
+            -webkit-flex: 1 1 100%;
+            -moz-flex: 1 1 100%;
+            -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+            margin-bottom: 45px;
+            padding: 0 20px 30px;
+
+            &.myaccount__order-history {
+                table {
+                    thead,
+                    tfoot {
+                        background-color: $color_table_heading_bg;
+                    }
+                    tr {
+                        border-bottom: 1px solid $color_table_heading_border;
+
+                        th,
+                        td {
+                            color: $color_text;
+                            border: 0;
+                            padding: 10px 14px;
+                            font-size: 14px;
+
+                            @media only screen and (min-width: 480px) {
+                                font-size: 16px;
+                            }
+                        }
+
+                        th {
+                            text-transform: uppercase;
+                            font-weight: 400;
+                        }
+                        td {
+                            font-weight: 300;
+                        }
+                    }
+
+                    .view-order-link {
+                        color: $color_links;
+                        font-size: 16px;
+                        border: 0;
+                        
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+
+            h2 {
+                color: $color_text;
+                font-size: 15px;
+                font-weight: 500;
+                padding: 10px 0;
+                border-bottom: 1px solid $color_heading_border;
+                border-top: 1px solid $color_heading_border;
+            }
+
+            h3 {
+                color: $color_text;
+                font-size: 14px;
+                font-weight: 400;
+            }
+
+            p {
+                color: $color_text;
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 1.5;
+                margin-bottom: 10px; 
+
+                &.customer-name, 
+                &.customer-email {
+                    line-height: 16px;
+                }
+            }
+
+            #rc_link_container a {
+                color: $color_links;
+            }
+        }
+    }
+}
+
+
+/*================ Order Details Page ================*/
+
+.customers-order {
+    .myaccount {
+        .grid__item {
+            padding-bottom: 0;
+            margin-bottom: 20px;
+
+            &.myaccount__order-info {
+                .order-date {
+                    text-transform: uppercase;
+                }
+            }
+
+            &.myaccount__address-book {
+                flex-direction: column;
+
+                @media only screen and (min-width: 992px) {
+                    flex-direction: row;
+                }
+            }
+
+            &.myaccount__order-history {
+                h1 {
+                    color: $color_text;
+                }
+
+                table {
+                    .order-table__product {
+                        text-align: left;
+
+                        .product-title a {
+                            color: $label_color;
+                            border: 0;
+                        }
+
+                        .note {
+                            padding: 7px;
+                            margin: 0;
+
+                            @media only screen and (min-width: 992px) {
+                                margin-bottom: 25px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .grid__subitem {
+                display: flex;
+                flex-direction: column;
+                -webkit-flex: 1 1 50%;
+                -moz-flex: 1 1 50%;
+                -ms-flex: 1 1 50%;
+                flex: 1 1 50%;
+                padding: 20px;
+                margin: 20px 0;
+                border: 1px solid $color_table_heading_border;
+
+                @media only screen and (min-width: 992px) {
+                    margin: 20px;
+                }
+
+                &:first-child {
+                    margin-left: 0;
+                }
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }   
+}
+
+
+/*================ Address Details Page ================*/
+
+.customers-addresses {
+    .section-header {
+        position: relative;
+
+        h1 {
+            text-align: center;
+
+            @media only screen and (min-width: 640px) {
+                text-align: left;
+            }
+        }
+
+        .address-new-toggle {
+            width: 100%;
+            position: static;
+            margin-bottom: 15px;
+
+            @media only screen and (min-width: 640px) {
+                width: auto;
+                position: absolute;
+                right: 20px;
+                top: 0;
+                margin: 0;
+            }
+        }
+    }
+
+    .myaccount {
+        .grid__item {
+            padding-bottom: 0;
+            margin-bottom: 0;
+
+            h2 {
+                color: $color_heading;
+                border: none;
+                margin: 0;
+                padding: 20px 0;
+                font-size: 22px;
+
+                &.default-address-label {
+                    font-size: 14px;
+                }
+            }
+
+            h3 {
+                color: $label_color;
+                border-bottom: 1px solid #ededed;
+                font-size: 18px;
+                font-weight: 500;
+                padding: 10px 0;
+                margin: 20px 0;
+            }
+
+            ul.address-list {
+                display: block;
+                margin: 0;
+
+                @media only screen and (min-width: 750px) {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                }
+
+                & > li {
+                    margin-bottom: 40px;
+
+                    @media only screen and (min-width: 750px) {
+                        flex: 1 1 45%;
+                        max-width: 45%;
+
+                        &:nth-child(even) {
+                            margin-left: 30px;
+                        }
+                    }
+                }
+            }
+
+            .field {
+                label {
+                    font-size: 14px;
+                }
+                input, 
+                select {
+                    border-bottom: 1px solid $color_table_heading_border;
+                    font-size: 15px;
+                    margin-bottom: 10px;
+                    padding: 0 15px;
+                    min-height: 40px;
+                }
+            }
+
+            .checkbox-wrap {
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 20px;
+        
+                label {
+                    color: $label_color;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
+
+/*================ Recharge Payment Plan Page ================*/
+#ReCharge {
+    #ReCharge-Nav {
+        ul.nav {
+            background: #fff;
+        }
+    }
+}

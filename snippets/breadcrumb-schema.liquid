@@ -1,0 +1,97 @@
+<!---JSON SCHEMA BreadcrumbList--->
+<script type="application/ld+json">
+{
+    "@context":"http://schema.org",
+    "@type":"BreadcrumbList",
+    "@id":"{{ shop.url }}",
+    "itemListElement":[
+        {
+            "@type":"ListItem",
+            "position":1,
+            "item":{
+                "@id":"{{ page_title }}",
+                "url":"{{ shop.url }}",
+                "name":"{{ page_title }}"
+            }
+        }
+
+        {% if template contains 'product' %}
+            {% if collection.handle %}
+                ,
+                    {
+                        "@type":"ListItem",
+                        "position":2,
+                        "item":{
+                            "@id":"{{ collection.title }}",
+                            "url":"{{ shop.url }}{{ collection.handle }}",
+                            "name":"{{ collection.title }}"
+                        }
+                    }
+            {% endif %}
+
+        {% elsif template == 'blog' %}
+            ,
+                {
+                    "@type":"ListItem",
+                    "position":2,
+                    "item":{
+                        "@id":"{{ blog.title }}",
+                        "url":"{{ shop.url }}{{ blog.url }}",
+                        "name":"{{ blog.title }}"
+                    }
+                }
+
+        {% elsif template == 'article' %}
+            ,
+                {
+                    "@type":"ListItem",
+                    "position":2,
+                    "item":{
+                        "@id":"{{ blog.title }}",
+                        "url":"{{ shop.url }}{{ blog.url }}",
+                        "name":"{{ blog.title }}"
+                    }
+                }
+
+        {% elsif template == 'customers/addresses' or template == 'customers/order' %}
+            ,
+                {
+                    "@type":"ListItem",
+                    "position":2,
+                    "item":{
+                        "@id":"{{ 'customer.account.title' | t }}",
+                        "url":"{{ shop.url }}account",
+                        "name":"{{ page_title }}"
+                    }
+                }
+
+        {% elsif template == 'customers/account' %}
+            ,
+                {
+                    "@type":"ListItem",
+                    "position":2,
+                    "item":{
+                        "@id":"{{ 'customer.account.title' | t }}",
+                        "url":"{{ shop.url }}account",
+                        "name":"{{ page_title }}"
+                    }
+                }
+        {% elsif template contains 'search' %}
+            ,
+                {
+                    "@type":"ListItem",
+                    "position":2,
+                    "item":{
+                        "@id":"{{ page_title }}",
+                        "url":"{{ shop.url }}search",
+                        "name":"{{ page_title }}"
+                    }
+                }
+
+        {% else %}
+
+        {% endif %}
+
+        ]
+    }
+</script>

@@ -1,0 +1,32 @@
+<div class="results-per-page">
+    <div class="items-per-page-count">
+        {% if template contains 'collection' or template contains 'article' %}
+            <span>Products: </span><span class="beginning-item-count">1</span>-<span class="ending-item-count">6</span> Of <span class="total-item-count">{{ collection.products_count }}</span>
+        {% else %}
+            <span>Authors: </span><span class="beginning-item-count">1</span>-<span class="ending-item-count">6</span> Of <span class="total-item-count">{{ blog.articles_count }}</span>
+        {% endif %}
+    </div>
+
+    <div class="items-per-page-wrapper">
+        <label for="items-per-page">Show:</label>
+        <select id="items-per-page" class="items-per-page" title="Results per page">
+            {% if template contains 'collection' or template contains 'article' %}
+                <option value="/collections/{{ collection.handle }}?limit=32" {% if limit == 32 %}selected="selected"{% endif %}>32</option>
+                <option value="/collections/{{ collection.handle }}?limit=64" {% if limit == 64 %}selected="selected"{% endif %}>64</option>
+                <option value="/collections/{{ collection.handle }}?limit=128" {% if limit == 128 %}selected="selected"{% endif %}>128</option>
+            {% else %}
+            <option value="/blogs/{{ blog.handle }}?limit=32" {% if limit == 32 %}selected="selected"{% endif %}>32</option>
+            <option value="/blogs/{{ blog.handle }}?limit=64" {% if limit == 64 %}selected="selected"{% endif %}>64</option>
+            <option value="/blogs/{{ blog.handle }}?limit=128" {% if limit == 128 %}selected="selected"{% endif %}>128</option>
+            {% endif %}
+        </select>
+    </div>
+
+    {% comment %}
+    {% if template contains 'blog' %}
+        <div class="sort-items">
+            <button class="sort-by-swicher"></button>
+        </div>
+    {% endif %}
+  {% endcomment %}
+</div>

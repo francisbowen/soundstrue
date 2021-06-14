@@ -1,0 +1,44 @@
+{% assign author_blog_handle = 'test-blog-author' %}
+<div class="our-authors" id="mega-menu-authors">
+    <ul class="logo-bar">
+       <li class="logo-bar__item author-info">
+            {% for article in blogs[author_blog_handle].articles %}  
+            {% if article.handle == block.settings.blog_posts %}   
+                <a href="{% if article.url != blank %}{{ article.url }}{% else %}#{% endif %}" class="author-link">
+                    {% if article.image.src != blank %}
+                        {% assign src = article.image.src %}
+                        <div class="logo-bar__image author-image" 
+                                style="background-image: url('{{ src | img_url: 'medium' }}');
+                                    background-size: cover;
+                                    background-position: center;">
+                        </div>
+                    {% elsif article.content contains "<img" %}
+                        {% assign src = article.content | split: 'src="' %}
+                        {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn' | replace: 'http:http://', 'http://' | remove: 'https:' %}
+                        <div class="logo-bar__image author-image" 
+                                style="background-image: url('{{ src }}');
+                                    background-size: cover;
+                                    background-position: center;">
+                        </div>
+                    {% else %}
+                        {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {% endif %}
+                    </a>
+                    {% if article.title != blank %}
+                        <div class="article__author">
+                            {{ article.title }}
+                        </div>
+                    {% endif %}
+                    <span class="article__date">
+                        {{ article.published_at | time_tag: format: 'date' }}
+                    </span>
+                    <a href="{{ article.url }}">
+                    <div class="logo-bar__link author-name">{{ article.author }}</div>
+                    </a>
+                {% break %}
+                </a>
+                {% endif %}
+            {% endfor %}
+        </li>
+    </ul>
+</div>

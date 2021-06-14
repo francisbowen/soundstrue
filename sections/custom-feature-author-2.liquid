@@ -1,0 +1,121 @@
+<div class="page-width our-authors">
+  {% if section.settings.title != blank %}
+    <div class="section-header text-center">
+      <h2 style="display: inline;color: {{ section.settings.title_color }};">{{ section.settings.title | escape }}</h2>
+      
+      <a href="/blogs/authors?view=24" class="shop-all-link no-focus" aria-label="shop all">
+              <p>view all &gt;&gt;</p>
+      </a>
+      
+    </div>
+  {% endif %}
+
+  {% if section.blocks.size > 0 %}
+    <ul class="logo-bar">
+      {% for block in section.blocks %}
+        <li class="logo-bar__item author-info" {{ block.shopify_attributes }}>
+          <a href="{% if block.settings.author_link != blank %}{{ block.settings.author_link }}{% else %}#{% endif %}" 
+             class="logo-bar__link author-link">
+            {% if block.settings.author_image != blank %}
+              {{ block.settings.author_image | img_url: '160x160', scale: 2 | img_tag: block.settings.author_image.alt, 'logo-bar__image author-image' }}
+            {% else %}
+              {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+            
+            {% if block.settings.author_name != blank %}
+              <div class="logo-bar__link author-name" style="color: {{ block.settings.author_name_color }};">
+                {{ block.settings.author_name }}
+              </div>
+            {% endif %}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  
+  
+  
+  
+  {% if section.blocks.size == 0 %}
+    {% include 'no-blocks' %}
+  {% endif %}
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Author List",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Our Authors"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Heading color"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "author_info",
+        "name": "Author Info",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "author_image",
+            "label": "Author Image"
+          },
+          {
+            "type": "url",
+            "id": "author_link",
+            "label": "Author Link"
+          },
+          {
+            "type": "text",
+            "id": "author_name",
+            "label": "Author Name"
+          },
+          {
+            "type": "color",
+            "id": "author_name_color",
+            "label": "Author name color"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Author List",
+        "category": "Image",    
+        "blocks": [
+          {
+            "type": "author_info"
+          },
+          {
+            "type": "author_info"
+          },
+          {
+            "type": "author_info"
+          },
+          {
+            "type": "author_info"
+          },
+          {
+            "type": "author_info"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

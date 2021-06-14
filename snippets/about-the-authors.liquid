@@ -1,0 +1,34 @@
+{% assign author_blog_handle = 'authors' %}
+{% assign blog_handle = 'authors/' %}
+{% assign author_links_array = author_link_metafield | split: "||" %}
+
+<div class="pdp-content-details about-the-authors">
+    <h2 class="pdp-meta-title"> ABOUT THE AUTHORS </h2>
+
+    <div class="product-single__description rte">
+        {% for author_link_object in author_links_array %}
+            {% assign author_handle_array = author_link_object | split: blog_handle %}
+            {% assign author = author_handle_array[1] %}
+
+            {% for article in blogs[author_blog_handle].articles %}
+                {% assign author_handle = blog_handle | append: author %}
+                {% if article.handle == author_handle %}
+                    <div class="about-the-author-details">
+                        {% if article.title != blank %}
+                            <div class="author-name--hidden">
+                                {{ article.title }}
+                            </div>
+                        {% endif %}
+                        {% if article.content != blank %}
+                            <div class="author-content">
+                                {{ article.content | truncatewords: 50 }}
+                                <a href="{{ article.url }}" class="read-more">Read More</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>

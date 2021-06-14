@@ -1,0 +1,26 @@
+{% comment %}
+<link rel="manifest" href="https://cdn.shopify.com/s/files/1/0253/2822/2307/files/manifest.json?v=1613072928">
+
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m,n){i.moengage_object=r;t={};q=function(f){return function(){(i.moengage_q=i.moengage_q||[]).push({f:f,a:arguments})}};f=['track_event','add_user_attribute','add_first_name','add_last_name','add_email','add_mobile','add_user_name','add_gender','add_birthday','destroy_session','add_unique_user_id','moe_events','call_web_push','track','location_type_attribute'],h={onsite:["getData"]};for(k in f){t[f[k]]=q(f[k])}a=s.createElement(o);m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);i.moe=i.moe||function(){n=arguments[0];return t};a.onload=function(){if(n){i[r]=moe(n)}}})(window,document,'script','https://cdn.moengage.com/webpush/moe_webSdk.min.latest.js','Moengage')
+  Moengage = moe({
+    app_id:'WTQY85O7CESUQFKQCLMB75O1',
+    debug_logs: 0,
+    swPath: '/tools/moengage/sw.js',
+    swScope: '/'
+  });
+  {% if customer.id > 0 %}
+  Moengage.add_unique_user_id({{ customer.id }});
+  {% endif %}
+  {% if customer.first_name %}
+  Moengage.add_first_name("{{ customer.first_name }}");
+  {% endif %}
+  {% if customer.last_name %}
+  Moengage.add_last_name("{{ customer.last_name }}");
+  {% endif %}    
+  {% if customer.email %}
+  Moengage.add_email("{{ customer.email }}");
+  {% endif %}                
+                          
+</script>
+{% endcomment %}

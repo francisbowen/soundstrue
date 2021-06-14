@@ -1,0 +1,82 @@
+{% comment %}
+  The contents of the collection.nextopia.liquid template can be found in /sections/nextopia-collection-template.liquid
+{% endcomment %}
+<div class="page-width">
+    <div class="grid">
+        <h1 class="page-title medium-up--hide">
+            <span>
+                <span class="visually-hidden">{{ 'collections.general.collection_label' | t }}: </span>
+                {{ collection.title }}
+            </span>
+        </h1>
+
+        <div class="nextopia-collection-template grid">
+            <div class="grid__item medium-up--one-fifth grid__item--sidebar">
+                {% section 'nextopia-collection-left-sidebar' %}
+            </div>
+            <div class="grid__item medium-up--three-fifths grid__item--content">
+                {% section 'collection-template' %}
+            </div>
+            <div class="grid__item medium-up--one-fifth grid__item--sidebar">
+                {% section 'nextopia-collection-right-sidebar' %}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+var nextopiaHackHasRun = false;
+$("body").on('DOMSubtreeModified', "", function() {
+  if($('.nextopia-collection-main-content li.grid__item').length > 0 && !nextopiaHackHasRun) {
+    nextopiaHackHasRun = true;
+    $('.nextopia-collection-main-content li.grid__item').each(function() {
+      var elem = $(this);
+      var doPriceSwitch = false;
+      var oneTimePrice = 0;
+      //console.log(elem.data('nextopia-variant'));
+      var variants = elem.data('nextopia-variant').split('||');
+      for (i = 0; i < variants.length; i++) {
+        //console.log(' - '+i+': '+variants[i]);
+        var variantData = variants[i].split('::');
+        for (i2 = 0; i2 < variantData.length; i2++) {
+          //console.log(' - - '+i2+': '+variantData[i2]);
+        }      
+        if(variantData[6] == 'One-Time Payment') {
+          oneTimePrice = variantData[9];
+          //console.log('oneTimePrice: '+oneTimePrice);
+        }
+        if(variantData[6].includes('Monthly Payments')) {
+          doPriceSwitch = true;
+          //console.log('doPriceSwitch');
+        }
+      }
+      if(doPriceSwitch && oneTimePrice > 0) {
+        elem.find('.replace-one-time-payment').text('$'+oneTimePrice);
+      }
+      //hide duplicate crossed out prices
+      elem.find('.quickview-wrapper .price-item:eq(2)').remove();
+	  //remove double strike through pricing
+      var strikePriceEleme = elem.find('.product-card .testClass5').first();
+      var clearPriceEleme = elem.find('.product-card .testClass6').first();
+      console.log('strikePriceEleme: '+strikePriceEleme.text().trim()+' clearPriceEleme: '+clearPriceEleme.text().trim());
+      if(strikePriceEleme.text().trim() == clearPriceEleme.text().trim()) {
+        console.log('remove strikePriceEleme');
+        strikePriceEleme.remove();
+      }
+        
+      
+    });
+  }
+});
+  
+  setTimeout(function() {
+    nextopiaHackHasRun = true
+  },2000);
+
+
+/*
+$( document ).ajaxComplete(function() {
+  console.log('data-nextopia-variant ajax complete '+$('.nextopia-collection-main-content li.grid__item').length);
+
+});
+*/
+</script>

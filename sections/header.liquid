@@ -1,0 +1,938 @@
+<div id="pxu_cst"></div>
+{% comment %}
+** Header - default view **
+- Static section
+{% endcomment %}
+
+{% comment %} Structured data {% endcomment %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "{{ shop.name }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ shop.url }}/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "url": "{{ shop.url }}{{ page.url }}"
+    }
+  </script>
+
+{% if template.name == 'index' %}
+
+  <!---JSON SCHEMA ProfessionalService--->
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "ProfessionalService",
+    "name": "{{ shop.name }}",
+    "image": "https://cdn.shopify.com/s/files/1/0253/2822/2307/files/Sounds-True-logo_f4ff7dea-ee6d-41e7-90b5-3554e09ad3d5.png?v=1579049257",
+    "url": "{{ shop.url }}",
+    "description": "{{ page_description | escape }}",
+    "telephone": "+1-800-333-9185",
+    "priceRange": "$",
+    "hasMap": "https://www.google.com/maps/place/413+S+Arthur+Ave,+Louisville,+CO+80027/@39.9644635,-105.1273529,17z/data=!3m1!4b1!4m5!3m4!1s0x876bf4aa64150107:0x1b0a1b8361c971e5!8m2!3d39.9644594!4d-105.1251589",
+    "sameAs": [
+      "https://www.facebook.com/soundstrue",
+      "https://twitter.com/soundstrue",
+      "https://www.youtube.com/user/SoundsTrueVideos",
+      "https://www.instagram.com/soundstrue",
+      "https://www.pinterest.com/soundstrue",
+      "https://open.spotify.com/user/sounds_true",
+      "https://manyvoices.soundstrue.com"
+    ],
+    "openingHours": [
+      "M-F 8:00am - 5:00pm CST"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "413 S. Arthur Avenue",
+      "addressLocality": "Louisville",
+      "postalCode": "80027",
+      "addressCountry": "US",
+      "addressRegion": "CO"
+    },
+    "location": {
+      "@type": "Place",
+      "geo": {
+        "@type": "GeoCircle",
+        "geoRadius": "50",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "39.9644635",
+          "longitude": "-105.1273529"
+        }
+      }
+    }
+  }
+</script>
+{% else %}
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "url": "{{ shop.url }}{{ page.url }}",
+    "name": "{{ shop.name }}",
+    "logo": "https://cdn.shopify.com/s/files/1/0253/2822/2307/files/Sounds-True-logo_f4ff7dea-ee6d-41e7-90b5-3554e09ad3d5.png?v=1579049257",
+     "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+1-800-333-9185",
+      "contactType": "customer service",
+      "email": "support@soundstrue.com",
+      "areaServed": [
+        "Nationwide"
+      ],
+      "contactOption": [
+        "TollFree"
+      ],
+      "availableLanguage": [
+        "English"
+      ]
+    }],
+      "sameAs": [
+        "https://www.facebook.com/soundstrue",
+        "https://twitter.com/soundstrue",
+        "https://www.youtube.com/user/SoundsTrueVideos",
+        "https://www.instagram.com/soundstrue",
+        "https://www.pinterest.com/soundstrue",
+        "https://open.spotify.com/user/sounds_true",
+        "https://manyvoices.soundstrue.com"
+    ]
+  }
+</script>
+{% endif %}
+{% if template contains "index" %}
+  {% assign feature_image = true %}
+{% elsif template contains "collection" %}
+  {% assign feature_image = true %}
+{% elsif template contains "blog" %}
+  {% assign feature_image = true %}
+{% elsif template contains "article" %}
+  {% assign feature_image = true %}
+{% elsif template contains "contact" %}
+  {% assign feature_image = true %}
+{% elsif template contains "product" %}
+  {% assign feature_image = true %}
+{% elsif template contains "gallery" %}
+  {% assign feature_image = true %}
+{% elsif template contains "banner" %}
+  {% assign feature_image = true %}
+{% elsif template contains "details" %}
+  {% assign feature_image = true %}
+{% elsif template contains "faq" %}
+  {% assign feature_image = true %}
+{% elsif template contains "search" %}
+  {% assign feature_image = true %}
+{% elsif template contains "cart" %}
+  {% assign feature_image = true %}
+{% else %}
+  {% assign feature_image = false %}
+{% endif %}
+
+{% comment %}Main navigation{% endcomment %}
+<header class="mobile">
+  {% if section.settings.promo_text != blank %}
+    <div class="promo_banner">
+      <div class="promo_banner__content">
+        {{ section.settings.promo_text }}
+      </div>
+      <div class="promo_banner-close"></div>
+    </div>
+  {% endif %}
+  <div class="header {% if feature_image and settings.header_background == false %}is-absolute {% endif %} header-fixed--{{ section.settings.fixed_header }} {% if settings.header_background %}header-background--solid{% endif %}">
+    <div class="top_bar clearfix">
+      <div class="page-width">
+        {% if section.settings.social_icons_header %}
+          {% include 'social-icons' %}
+        {% endif %}
+        <ul class="menu left">
+          {% if section.settings.phone_number != blank %}
+            tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '-', '' }}">{{ section.settings.phone_number }}</a></li>
+          {% endif %}
+          {% if section.settings.top_bar_menu != blank %}
+            {% for link in linklists[section.settings.top_bar_menu].links %}
+              {{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+
+        <ul class="menu right">
+          <li id="welcome">
+            <p>Welcome{% if customer %}, {{customer.first_name}}{% else %}!{% endif %}</p>
+          </li>
+
+          {% if customer %}
+            <li id="library">
+              <img src="{{ 'library.png' | asset_img_url }}" class="lazyload"/>
+              <a href="https://digitallibrary.soundstrue.com/my-library" target="_self"> <span>{{ 'layout.general.library' | t }}</span></a>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 304.02 287.93"><defs><style>.cls-1{fill:#5b6770;}</style></defs><title>account</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><g id="ic_profile"><path class="cls-1" d="M152,171.08c-46.44,0-84.22-38.37-84.22-85.54S105.57,0,152,0s84.22,38.37,84.22,85.54S198.45,171.08,152,171.08Zm0-145c-32,0-58.12,26.67-58.12,59.44S120,145,152,145s58.12-26.67,58.12-59.44S184.06,26.1,152,26.1Z"/><path class="cls-1" d="M291,287.93a13,13,0,0,1-11.59-7,144.52,144.52,0,0,0-45.29-51.6c-11.55-8.08-25.1-6.07-46.25-2.13-11.39,2.12-23.16,4.32-35.84,4.32s-24.45-2.19-35.83-4.31c-21.17-3.94-34.74-5.95-46.31,2.15a144.75,144.75,0,0,0-45.24,51.57,13.05,13.05,0,0,1-23.16-12,170.91,170.91,0,0,1,53.44-60.92c21.13-14.78,44-10.53,66-6.42,10.22,1.9,20.78,3.86,31.06,3.86s20.84-2,31.05-3.87c22.07-4.12,44.88-8.37,66,6.39a170.81,170.81,0,0,1,53.49,61A13.07,13.07,0,0,1,291,287.93Z"/><path class="cls-1" d="M152,171.08c-46.44,0-84.22-38.37-84.22-85.54S105.57,0,152,0s84.22,38.37,84.22,85.54S198.45,171.08,152,171.08Zm0-145c-32,0-58.12,26.67-58.12,59.44S120,145,152,145s58.12-26.67,58.12-59.44S184.06,26.1,152,26.1Z"/><path class="cls-1" d="M291,287.93a13,13,0,0,1-11.59-7,144.52,144.52,0,0,0-45.29-51.6c-11.55-8.08-25.1-6.07-46.25-2.13-11.39,2.12-23.16,4.32-35.84,4.32s-24.45-2.19-35.83-4.31c-21.17-3.94-34.74-5.95-46.31,2.15a144.75,144.75,0,0,0-45.24,51.57,13.05,13.05,0,0,1-23.16-12,170.91,170.91,0,0,1,53.44-60.92c21.13-14.78,44-10.53,66-6.42,10.22,1.9,20.78,3.86,31.06,3.86s20.84-2,31.05-3.87c22.07-4.12,44.88-8.37,66,6.39a170.81,170.81,0,0,1,53.49,61A13.07,13.07,0,0,1,291,287.93Z"/></g></g></g></svg>
+              <a href="/account"> <span>{{ 'layout.general.my_account' | t }}</span></a>
+            </li>
+          {% else %}
+         
+            <li id="login">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256.68 282.24"><defs><style>.cls-1{fill:#5b6770;}</style></defs><title>login</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M214.53,0H38.37A12.79,12.79,0,0,0,25.58,12.78V38.45A12.79,12.79,0,0,0,38.35,51.24h0A12.79,12.79,0,0,0,51.14,38.46V25.57H214.53c9.14,0,16.58,8.66,16.58,19.3V237.38c0,10.64-7.44,19.3-16.58,19.3l-163.38,0V243.79a12.79,12.79,0,0,0-25.57,0v25.66a12.78,12.78,0,0,0,12.79,12.78H214.53c23.24,0,42.15-20.12,42.15-44.86V44.87C256.68,20.13,237.77,0,214.53,0Z"/><path class="cls-1" d="M59.8,177.81a12.78,12.78,0,1,0,18.08,18.08l46.22-46.22a12.64,12.64,0,0,0,.85-.94c.12-.14.23-.3.34-.45s.28-.36.4-.55a6.42,6.42,0,0,0,.34-.56c.11-.17.21-.34.31-.51s.19-.39.28-.59.17-.36.25-.55.15-.39.22-.58.14-.39.2-.6.11-.39.16-.59.11-.41.15-.62.07-.47.11-.7.05-.36.07-.54a11.79,11.79,0,0,0,0-2.52c0-.18,0-.36-.07-.54s-.07-.47-.11-.7-.1-.41-.15-.61-.1-.41-.16-.6-.13-.4-.2-.6-.14-.39-.22-.58-.17-.37-.25-.55-.18-.39-.28-.59-.2-.34-.31-.51-.21-.38-.34-.56-.26-.36-.4-.55l-.34-.45a12.64,12.64,0,0,0-.85-.94L77.88,85.37A12.78,12.78,0,0,0,59.8,103.45l24.4,24.4H12.78a12.79,12.79,0,0,0,0,25.57H84.2Z"/></g></g></svg>
+              <a href="/account" class="icon-loginmy account"> <span>{{ 'layout.general.login_register' | t }}</span></a>
+            </li>
+          {% endif %}
+   
+          {% if section.settings.show_cart %}
+            <li id="cart">
+              <div class="cart_container"  id="mini-cart">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 278 284.6"><defs><style>.cls-1{fill:#5b6770;}</style></defs><title>cart</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M124.78,175.8,256,162.24a11.36,11.36,0,0,0,10.14-9.88l11.8-91.79A11.41,11.41,0,0,0,267,47.72L80,41.49,67.45,11.55a11.41,11.41,0,0,0-9.39-7L12.54.06A11.39,11.39,0,0,0,.06,10.27,11.42,11.42,0,0,0,10.27,22.75L49,26.61l56.89,136.06-7.68,8.57-.09.1c-4.22,4.85-17.09,19.62-10.64,33.79,6,13.12,23.46,13.5,25.43,13.5H258.49a11.4,11.4,0,0,0,0-22.8H113a16.43,16.43,0,0,1-3.83-.57c.71-1.62,2.37-4.5,6.17-8.88Zm1.69-23.1L89.64,64.62,253.7,70.09l-9,70.4Z"/><path class="cls-1" d="M238.3,224a30.29,30.29,0,1,0,30.29,30.29A30.32,30.32,0,0,0,238.3,224Zm7.49,30.29a7.49,7.49,0,1,1-7.49-7.49A7.5,7.5,0,0,1,245.79,254.32Z"/><path class="cls-1" d="M116.72,224A30.29,30.29,0,1,0,147,254.32,30.32,30.32,0,0,0,116.72,224Zm7.48,30.29a7.49,7.49,0,1,1-7.48-7.49A7.5,7.5,0,0,1,124.2,254.32Z"/></g></g></svg>
+                <a href="/cart" class="mini_cart dropdown_link" data-no-instant>
+                  <span class="cart-label">
+                    <span>shopping cart</span>
+                  </span>
+                  <span class="cart_count">
+                    {% if cart.item_count > 0 %}
+                      ({{ cart.item_count }})
+                    {% endif %}
+                  </span>
+                </a>
+                {% unless settings.cart_action == 'ajax' and template contains 'cart' %}
+                
+{%- comment -%}
+register digital downloads in cart already 
+in order to disable add to cart if already
+present
+{%- endcomment -%}
+{%- assign digital_items_in_cart = '' -%}
+{%- for item in cart.items -%}
+  {%- if item.requires_shipping == false -%}
+    {% capture digital_items_in_cart -%}{{ digital_items_in_cart }},{{ item.variant.id }}{%- endcapture -%}
+  {%- endif %}
+{%- endfor -%}                
+                
+                  <div class="cart_content animated fadeIn">
+                    <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">
+                      <p class="empty_cart">{{ 'layout.general.empty_cart' | t }}</p>
+                    </div>
+                    <form action="/checkout" method="post" data-money-format="{{ shop.money_format }}" data-shop-currency="{{ shop.currency }}" data-shop-name="{{ shop.name | escape }}" class="js-cart_content__form {% if cart.item_count == 0 %}hidden{% endif %}">
+                      <a class="cart_content__continue-shopping secondary_button">
+                        {{ 'cart.general.continue_shopping_link_html' | t }}
+                      </a>
+                      <ul class="cart_items js-cart_items clearfix">
+                        {% assign total_saving = 0 %}
+                        {% for item in cart.items %}
+                          {% if item.variant.compare_at_price > item.variant.price %}
+                            {% assign saving = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity %}
+                            {% assign total_saving = saving | plus: total_saving %}
+                          {% endif %}
+
+                          <li class="cart_item clearfix">
+                            <a href="{{ item.url }}">
+                              {% if item.image %}
+                                <div class="cart_image">
+                                  <img src="{{ item | img_url: '320x' }}" alt="{{ item.title | escape }}" class="lazyload" />
+                                </div>
+                              {% endif %}
+
+                              <div class="cart_item__title">
+                                <div class="item_title">
+                                  {{ item.product.title }}
+                                  {% unless item.product.has_only_default_variant or item.variant.title contains "Title" %}
+                                    -
+                                    {% for option in item.product.options %}
+                                      {{ item.variant.options[forloop.index0] }} {% unless forloop.last %}/{% endunless %}
+                                    {% endfor %}
+                                  {% endunless %}
+                                  {% if item.price == 0 %}
+                                  <div class="free-gift-text">
+                                    <strong>Your Free gift</strong>
+                                  </div>
+                                  {% endif %}
+                                  {% if item.properties %}
+                                    <div class="flx-rev">
+                                      {% for p in item.properties %}
+                                        {% assign first_character_in_key = p.first | truncate: 1, '' %}
+                                        {% if p.last != blank %}
+                                          <div class="line-item">
+                                            {% case p.first %}
+                                              {% when '_Msg' %}
+                                                Message:
+                                              {% when '_From' %}
+                                                From:
+                                              {% when 'subscription_id' %}
+                                                {% comment %} Subscription ID: {% endcomment %}
+                                              {% when 'shipping_interval_frequency' %}
+                                                {% assign freq_int = p.last %}
+                                              {% when 'shipping_interval_unit_type' %}
+                                                {% assign int_type = p.last %}
+                                              {% else %}
+                                                {% unless first_character_in_key == '_' %}
+                                                {{ p.first }}:
+                                                {% endunless %}
+                                            {% endcase %}
+
+                                            {% comment %} Ensures concatenated line items for ReCharge subscriptions are not rendered in loop {% endcomment %}
+                                            {% unless p.first == 'subscription_id' or p.first == 'shipping_interval_frequency' or p.first == 'shipping_interval_unit_type' or first_character_in_key == '_' %}
+                                              {{ p.last }}
+                                            {% endunless %}
+                                            {% comment %} Ensures the _Msg and _From values for gift cards are still shown {% endcomment %}
+                                            {% if p.first == '_Msg' or p.first == '_From' %}
+                                              {{ p.last }}
+                                            {% endif %}
+                                          </div>
+                                        {% endif %}
+                                      {% endfor %}
+
+                                      {% comment %} Concat two line items into one for ReCharge subscriptions {% endcomment %}
+                                      {% if freq_int != blank and int_type != blank %}
+                                        <div class="line-item">Frequency: {{freq_int}} {{int_type}}</div>
+                                      {% endif %}
+                                    </div>
+                                  {% endif %}
+                                </div>
+                                {% if item.line_level_discount_allocations.size > 0 %}
+                                  {% for discount_allocation in item.line_level_discount_allocations %}
+                                    <p class="notification-discount meta">
+                                      <strong>{{ 'cart.general.discount' | t }}</strong>: {{ discount_allocation.discount_application.title }} {%- comment -%}(-<span class="money">{{ discount_allocation.amount | money }}</span>){%- endcomment -%}</p>
+                                  {% endfor %}
+                                {% endif %}
+                              </a>
+                              <div class="left product-quantity-box">
+                                <span aria-label="Decrease quantity button" class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
+                                <input type="number" aria-label="Quantity input text field" min="0" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" {% if item.requires_shipping == false and digital_items_in_cart contains item.variant.id %} disabled="disabled" {% endif %}/>
+                                {%- unless item.requires_shipping == false and digital_items_in_cart contains item.variant.id -%}
+                                <span aria-label="Increase quantity button" class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
+                                {%- endunless -%}                                
+                              </div>
+                            </div>
+
+                            <strong class="right price">
+                              {% if item.line_level_discount_allocations.size > 0 %}
+                                <span class="money">
+                                  {{ item.final_price | money }}
+                                </span>
+                              {% endif %}
+                              <span class="money {% if item.line_level_discount_allocations.size > 0 %}was_price{% endif %}">
+                                {{ item.original_price | money }}
+
+                              </span>
+                            </strong>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                      <ul class="cart_checkout">
+                        {% if cart.cart_level_discount_applications != blank %}
+                          <li class="cart_discounts js-cart_discounts sale">
+                          {% for discount_application in cart.cart_level_discount_applications %}
+                            <span class="right">
+                              {{ discount_application.title }} (-<span class="money">{{ discount_application.total_allocated_amount | money }}</span>)
+                            </span>
+                          {% endfor %}
+                          <span>{{ 'cart.general.discount' | t }}</span>
+                          </li>
+                        {% endif %}
+                        {% if settings.display_savings %}
+                          <li class="cart_savings sale js-cart_savings">
+                            {% if total_saving > 0 %}
+                              <span class="right">
+                                <span class="money">{{ total_saving | money }}</span>
+                              </span>
+                              <span>{{ 'layout.general.savings' | t }}</span>
+                            {% endif %}
+                          </li>
+                        {% endif %}
+                        <li class="cart_subtotal js-cart_subtotal">
+                          <span>{{ 'layout.general.subtotal' | t }}: </span>
+                          <span class="money">{{ cart.total_price | money }}</span>
+                        </li>
+                        <li class="cart_actions">
+                          {% if settings.display_special_instructions and settings.go_to_checkout %}
+                            <textarea id="note" name="note" rows="2" placeholder="{{ 'layout.general.cart_note' | t }}" class="clearfix">{{ cart.note }}</textarea>
+                          {% endif %}
+
+                          {% if settings.display_tos_checkbox and settings.go_to_checkout %}
+                            <p class="tos">
+                              <input type="checkbox" class="tos_agree" id="sliding_agree" required />
+                                <label class="tos_label">
+                                  {{ 'cart.general.agree_to_terms_html' | t }}
+                                </label>
+                                {% if settings.tos_page != blank %}
+                                  <a href="{{ pages[settings.tos_page].url }}" target="_blank" class="tos_icon">{{ 'cart.general.view_terms' | t }}</a>
+                                {% endif %}
+                            </p>
+                          {% endif %}
+
+                          {% if settings.cart_message != blank %}
+                            <div class="cart_text">
+                              {{ settings.cart_message }}
+                            </div>
+                          {% endif %}
+                          <button type="button" onClick="window.location='/checkout'" class="action_button add_to_cart">{% if settings.show_lock_icon %}<span class="icon-lock"></span>{% endif %}{{ 'layout.general.checkout' | t }}</button>
+                          {% comment %}{% if settings.go_to_checkout %}
+                            <button type="submit" onClick="window.location='/checkout'" class="action_button add_to_cart">{% if settings.show_lock_icon %}<span class="icon-lock"></span>{% endif %}{{ 'layout.general.checkout' | t }}</button>
+                          {% else %}
+                            <button type="submit" name="checkout" value="checkout" class="action_button add_to_cart">{% if settings.show_lock_icon %}<span class="icon-lock"></span>{% endif %}{{ 'layout.general.go_to_cart' | t }} </button>
+                          {% endif %}{% endcomment %}
+                        </li>
+                        <li class="view_cart">
+                            <a href="/cart" class="view_shopping_cart">
+                              <span>{{ 'cart.general.view_shopping_cart' | t }}</span>
+                            </a>
+                        </li>
+                      </ul>
+                    </form>
+                  </div>
+                {% endunless %}
+              </div>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+    <div class="page-width header-wrapper">
+      <div class="medium-up--one-half align-left">
+        <div class="logo text-align--{{ section.settings.logo_alignment }}">
+          <a aria-label="Sounds True Waking Up the World" class="site-header__logo-link" href="/">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255.76 57.52"><defs><style>.cls-1{fill:#5b6770;}.cls-2{fill:#becbb2 !important;}</style></defs><title>Asset 1</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M64.73,21c-1.64,0-2.86.76-2.86,2.29,0,1.75,1.83,2.29,3.62,2.78,3,.84,6.26,1.79,6.26,5.95,0,4-3.28,6.11-7.36,6.11a18.38,18.38,0,0,1-7-1.18V31.63l3.43-.26V33.2a1.14,1.14,0,0,0,.88,1.29,7.33,7.33,0,0,0,2.52.39c1.9,0,3-.73,3-2.33,0-1.83-1.68-2.18-3.74-2.71-2.82-.73-5.91-1.68-5.91-5.92,0-4,3.35-6.06,7.36-6.06a14.71,14.71,0,0,1,6.33,1.52V24l-3.43.27v-1.6a1.15,1.15,0,0,0-.88-1.3A5.65,5.65,0,0,0,64.73,21Z"/><path class="cls-1" d="M83.24,17.86c2.82,0,8.51.88,8.51,9.65,0,7.33-4.09,10.69-9.12,10.69S74.16,34.91,74.16,28C74.16,20.07,79.31,17.86,83.24,17.86Zm3.85,10.26c0-4.27-1-6.9-4.08-6.9s-4.24,2.59-4.24,6.25.5,7.37,4.16,7.37C85.91,34.84,87.09,32.09,87.09,28.12Z"/><path class="cls-1" d="M114,37.62h-6.19V35.14a7.43,7.43,0,0,1-6.18,3c-3.81,0-5.91-2.1-5.91-6.6V22.7c0-.8-.31-1-1-1.06l-1.22-.08V18.43h6.72v12.1c0,2.32.38,4.08,2.82,4.08a3.76,3.76,0,0,0,4.09-3.78v-8c0-.84-.23-1.11-1-1.14L105,21.56V18.43h6.72v15c0,.84.22,1,1,1.1l1.34.12Z"/><path class="cls-1" d="M116.06,18.43h6.44v2.48a7.52,7.52,0,0,1,6.19-3.05c3.81,0,6.06,2.13,6.06,6.64v10l2.18.11v3h-9.08v-2.9l1.26-.11c.72-.08,1.1-.31,1.1-1.26V25.49c0-2.52-.53-4.12-3.13-4.12a3.76,3.76,0,0,0-3.93,3.85v9.24l2.18.11v3h-9.08v-2.9l1.26-.11c.72-.08,1.1-.31,1.1-1.26V22.78c0-.84-.26-1.14-1-1.18l-1.6-.12Z"/><path class="cls-1" d="M151.89,18.32V14.46c0-.65-.35-.88-1-.91l-1.64-.12v-3h7.1v23.2c0,.64.31.87,1,.87l1.33.08v3h-6.18V35.37l-.12,0a5.86,5.86,0,0,1-5.18,2.79c-6,0-7.71-4.58-7.71-9.35,0-6.52,3.36-10.91,9.31-10.91A10,10,0,0,1,151.89,18.32Zm0,3.47a7.24,7.24,0,0,0-2.9-.61c-3.63,0-4.85,3.43-4.85,7.17,0,3.47.84,6.41,4.12,6.41,2.14,0,3.63-1.41,3.63-3.09Z"/><path class="cls-1" d="M168.64,21c-1.64,0-2.86.76-2.86,2.29,0,1.75,1.83,2.29,3.62,2.78,3,.84,6.26,1.79,6.26,5.95,0,4-3.28,6.11-7.36,6.11a18.47,18.47,0,0,1-7-1.18V31.63l3.44-.26V33.2a1.14,1.14,0,0,0,.88,1.29,7.31,7.31,0,0,0,2.51.39c1.91,0,3-.73,3-2.33,0-1.83-1.68-2.18-3.74-2.71-2.82-.73-5.91-1.68-5.91-5.92,0-4,3.35-6.06,7.36-6.06a14.75,14.75,0,0,1,6.33,1.52V24l-3.43.27v-1.6a1.15,1.15,0,0,0-.88-1.3A5.65,5.65,0,0,0,168.64,21Z"/><path class="cls-1" d="M192.41,14.39v4h5.08l-.38,3.21h-4.7v10c0,2.33.92,3,2.48,3a5.13,5.13,0,0,0,2.6-.81l1.14,2.94a9,9,0,0,1-4.84,1.34c-6,0-5.92-3.67-5.92-6.34V21.64h-2.71l.38-2.79c2.68-.23,3.59-2.29,4.39-4.46Z"/><path class="cls-1" d="M202.45,22.78c0-.84-.23-1.11-.95-1.14l-1.61-.12V18.43h6.45v2.86a6,6,0,0,1,5.42-3.43,8,8,0,0,1,3.66.84v5.68l-3.55.27V22.89c0-.45-.07-.8-.38-.95a2.28,2.28,0,0,0-1-.19A3.54,3.54,0,0,0,207,25.6v8.86l3.32.15v3H200.08v-2.9l1.26-.11c.73-.08,1.11-.31,1.11-1.26Z"/><path class="cls-1" d="M237.56,37.62h-6.19V35.14a7.43,7.43,0,0,1-6.18,3c-3.81,0-5.91-2.1-5.91-6.6V22.7c0-.8-.31-1-1-1.06l-1.22-.08V18.43h6.72v12.1c0,2.32.38,4.08,2.82,4.08a3.75,3.75,0,0,0,4.08-3.78v-8c0-.84-.22-1.11-.95-1.14l-1.22-.08V18.43h6.72v15c0,.84.22,1,.95,1.1l1.34.12Z"/><path class="cls-1" d="M255.68,23.16c0,5.88-6.37,6.87-10.87,6.91.15,2.48,1.45,4.5,4.69,4.5a8.24,8.24,0,0,0,4.81-1.68L255.76,36A11.05,11.05,0,0,1,249,38.12c-6.48,0-9-4-9-9.65s3.16-10.61,9.42-10.61C253.2,17.86,255.68,19.77,255.68,23.16Zm-6.49-2.06c-3.05,0-4.42,2.94-4.54,5.76,2.83,0,6.83-.68,6.83-3.62A2,2,0,0,0,249.19,21.1Z"/><path class="cls-2" d="M33.26,28.4c2.34-1.32,4.89-2.26,7.33-3.4,4.32-2,8.11-4.69,10.21-9.13A23.77,23.77,0,0,0,52,11.55c-3.11,2.22-5.91,4.58-9,6.38-5.75,3.28-11.25,6.74-14.88,12.58a4.58,4.58,0,0,1,.51-1.88,22,22,0,0,1,9.68-9.41c4.64-2.45,9.16-5.11,11.85-9.95C52.2,5.49,52.51,2.68,51.28,0c-2.44,3.32-4.77,7.14-7.75,10.38-3.41,3.73-7.45,6.86-11.11,10.37A23.4,23.4,0,0,0,26,30.9a23.4,23.4,0,0,0-6.42-10.15c-3.66-3.51-7.7-6.64-11.11-10.37C5.5,7.14,3.16,3.32.72,0-.51,2.68-.2,5.49,1.9,9.27c2.69,4.84,7.21,7.5,11.85,10a22.09,22.09,0,0,1,9.69,9.41,4.74,4.74,0,0,1,.5,1.88c-3.62-5.84-9.13-9.3-14.87-12.58-3.13-1.8-5.93-4.16-9-6.38a23,23,0,0,0,1.18,4.32C3.31,20.31,7.09,23,11.41,25c2.45,1.14,5,2.08,7.34,3.4,4.71,2.67,6,7.19,5.93,12.32a10,10,0,0,1-.56-1.62c-.9-5-3.92-8.31-8.46-10.36a88.82,88.82,0,0,1-8.91-4.09c-2.18-1.28-4-3.24-5.82-4.82-1,2.89.45,6.93,3.86,9.1,2.4,1.53,5.09,2.59,7.58,4A47.77,47.77,0,0,1,20,37.66a8.47,8.47,0,0,1,1.91,9.87c-.13-.89-.22-1.47-.3-2.06a10,10,0,0,0-5.13-7.9l-7.3-4.14c-.83,2.81.12,5.41,3,7.66,1.34,1.07,2.84,1.95,4.1,3.1,5.92,5.44,0,12.34-.93,13.33,2.62-2.83,5.49-5.53,7.6-8.71A24.21,24.21,0,0,0,26,42.29a24.25,24.25,0,0,0,3.07,6.52c2.11,3.18,5,5.88,7.59,8.71-.91-1-6.84-7.89-.92-13.33,1.25-1.15,2.76-2,4.1-3.1,2.84-2.25,3.78-4.85,2.95-7.66l-7.3,4.14a10,10,0,0,0-5.13,7.9c-.07.59-.17,1.17-.29,2.06A8.46,8.46,0,0,1,32,37.66a47.77,47.77,0,0,1,7.66-4.73c2.48-1.41,5.17-2.47,7.57-4,3.41-2.17,4.88-6.21,3.87-9.1-1.87,1.58-3.65,3.54-5.83,4.82a89.68,89.68,0,0,1-8.9,4.09c-4.55,2.05-7.57,5.32-8.46,10.36a11.1,11.1,0,0,1-.56,1.62C27.25,35.59,28.54,31.07,33.26,28.4Z"/><path class="cls-1" d="M61.64,46.69h0l-1.13,4.77H59l-1.6-7.33H58.7l1.12,5.47h0L61,44.72h1.36l1.13,4.89h0l1-5.48h1.31l-1.57,7.33H62.81Z"/><path class="cls-1" d="M70.66,51.46l2.51-7.33h1.49l2.57,7.33H75.8l-.65-1.94H72.59L72,51.46Zm2.19-3h2l-1-3.14h0Z"/><path class="cls-1" d="M86.2,47.12l2.26,4.34H87L85.3,48.2l-1,1.42v1.84H82.93V44.13h1.32v3.68l2.61-3.68h1.42Z"/><path class="cls-1" d="M94.1,51.46V44.13h1.34v7.33Z"/><path class="cls-1" d="M107.55,44.13v7.33h-1.28l-3.14-5.17h0v5.17H101.8V44.13h1.34l3.06,5.1h0v-5.1Z"/><path class="cls-1" d="M119.38,50.89a4.63,4.63,0,0,1-2.55.71c-2,0-3.22-1.23-3.22-3.79,0-2.85,1.7-3.81,3.21-3.81a3,3,0,0,1,2.58,1.32l-1,.73a2,2,0,0,0-1.62-.92c-1.14,0-1.83.95-1.83,2.6s.57,2.77,1.9,2.77a2.58,2.58,0,0,0,1.16-.26v-1.6h-1v-1h2.37Z"/><path class="cls-1" d="M134,44.13v4.94c0,1.08.6,1.4,1.43,1.4a1.23,1.23,0,0,0,1.36-1.34v-5h1.34v5.18c0,1.45-1.12,2.29-2.75,2.29-1.79,0-2.71-.73-2.71-2.46v-5Z"/><path class="cls-1" d="M145.7,51.46h-1.34V44.13h2.51c1.6,0,2.59.77,2.59,2.25,0,1.68-1.18,2.51-2.83,2.51h-.93Zm.78-3.63c1,0,1.6-.34,1.6-1.32s-.65-1.31-1.72-1.31h-.66v2.63Z"/><path class="cls-1" d="M167.42,44.13V45.3H165.3v6.16H164V45.3h-2.06V44.13Z"/><path class="cls-1" d="M179,44.13v7.33H177.6V48.3h-3.09v3.16h-1.33V44.13h1.33v3h3.09v-3Z"/><path class="cls-1" d="M185.29,44.13h4.38V45.3h-3v1.84h2.61v1.17h-2.61v2h3.13v1.16h-4.46Z"/><path class="cls-1" d="M206.46,46.69h0l-1.13,4.77h-1.52l-1.59-7.33h1.33l1.13,5.47h0l1.11-4.88h1.36l1.14,4.89h0l1.05-5.48h1.31l-1.56,7.33h-1.49Z"/><path class="cls-1" d="M219.16,51.6c-1.94,0-3.1-1.27-3.1-3.79,0-2.82,1.69-3.81,3.22-3.81s3,1,3,3.81C222.32,50.34,221.08,51.6,219.16,51.6Zm.08-1.12c1.32,0,1.73-1.31,1.73-2.63,0-1.13-.35-2.72-1.75-2.72s-1.8,1.32-1.8,2.63S217.74,50.48,219.24,50.48Z"/><path class="cls-1" d="M229.72,51.46h-1.33V44.13h2.44c1.6,0,2.62.53,2.62,2a2,2,0,0,1-1.26,1.94,1,1,0,0,1,.6.67L234,51.46h-1.43l-1-2.31c-.15-.34-.33-.57-.72-.57h-1.08Zm1.09-3.93a1.16,1.16,0,0,0,1.28-1.27c0-.94-.57-1.06-1.6-1.06h-.77v2.33Z"/><path class="cls-1" d="M239.71,44.13h1.34V50.3h3.08v1.16h-4.42Z"/><path class="cls-1" d="M250,44.13h2.37a3.08,3.08,0,0,1,3.41,3.41c0,2.89-1.6,3.92-3.36,3.92H250Zm1.33,6.28h1.11c1.23,0,2-.91,2-2.67,0-2-.95-2.54-2.13-2.54h-1Z"/></g></g></svg>
+          </a> 
+        </div>
+      </div>
+      <div class="medium-up--one-half align-right">
+        {% if section.settings.search_enabled %}
+          <div class="search_container" data-autocomplete-{{ settings.enable_autocomplete }}>
+            <form action="/collections/search-result" class="search_form">
+              {% if settings.search_option != 'everything' %}
+                <input type="hidden" name="type" value="product" />
+              {% endif %}
+              <span class="icon-search search-submit"></span>
+              <input type="text" aria-label="Search input field" name="q" placeholder="Search entire store here..." value="{% if search and search.results.first.price %}{{ search.terms | replace: '*', '' }}{% endif %}" autocapitalize="off" autocomplete="off" autocorrect="off" />
+            </form>
+          </div>
+          <li class="search_link">
+            <a href="/collections/search-result" class="icon-search dropdown_link" title="Search our site" data-dropdown-rel="search" data-no-instant="true"></a>
+          </li>
+        {% endif %}
+      </div> 
+    </div>
+    <div class="main_nav_wrapper">
+      <nav class="main_nav clearfix menu-position--{{ section.settings.menu_position }} logo-align--{{ section.settings.logo_position }}">
+        {% assign vertical_menu = section.settings.vertical_menu %}
+
+        {% capture menu_left %}
+          {% if vertical_menu %}
+            {% include 'vertical-menu' with section.settings.main_linklist %}
+          {% else %}
+            {% include 'menu' with section.settings.main_linklist %}
+          {% endif %}
+        {% endcapture %}
+
+        {% capture menu_right %}
+          {% if vertical_menu %}
+            {% include 'vertical-menu' with section.settings.main_linklist2 %}
+          {% else %}
+            {% include 'menu' with section.settings.main_linklist2 %}
+          {% endif %}
+        {% endcapture %}
+
+        {% if section.settings.logo_position == "left" or section.settings.menu_position == "block" %}
+          {{ logo }}
+          <div class="nav">
+            <ul class="menu {{ section.settings.menu_alignment }} clearfix">
+              {{ menu_left }}
+              {{ menu_right }}
+            </ul>
+          </div>
+        {% else %}
+          <div class="nav">
+            <ul class="menu {{ section.settings.menu_alignment }} clearfix">
+              {{ menu_left }}
+            </ul>
+          </div>
+          {{ logo }}
+          <div class="nav">
+            <ul class="menu {% if section.settings.menu_alignment == 'align_left' %}align_right{% elsif section.settings.menu_alignment == 'align_right' %}align_left{% else %}{{ section.settings.menu_alignment }}{% endif %} clearfix">
+              {{ menu_right }}
+            </ul>
+          </div>
+        {% endif %}
+        {% if section.settings.search_enabled %}
+          <div class="dropdown_container center" data-dropdown="search">
+            <div class="dropdown" data-autocomplete-{{ settings.enable_autocomplete }}>
+              <form action="/search" class="header_search_form">
+                {% if settings.search_option != 'everything' %}
+                  <input type="hidden" name="type" value="product" />
+                {% endif %}
+                <span class="icon-search search-submit"></span>
+                <input type="text" aria-label="Search input field" name="q" placeholder="Search entire store here..." autocapitalize="off" autocomplete="off" autocorrect="off" class="search-terms" />
+              </form>
+            </div>
+          </div>
+        {% endif %}
+        {% include 'sub-menu' with section.settings.main_linklist %}
+        {% include 'sub-menu' with section.settings.main_linklist2 %}
+      </nav>
+    </div>
+  </div>
+</header>
+
+{% comment %}Mobile navigation{% endcomment %}
+<header id="header" class="mobile_nav-fixed--{{ section.settings.fixed_header }}">
+  <div class="logo small">
+    <a aria-label="Sounds True Waking Up the World" class="site-header__logo-link" href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255.76 57.52"><defs><style>.cls-1{fill:#5b6770;}.cls-2{fill:#becbb2 !important;}</style></defs><title>Asset 1</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M64.73,21c-1.64,0-2.86.76-2.86,2.29,0,1.75,1.83,2.29,3.62,2.78,3,.84,6.26,1.79,6.26,5.95,0,4-3.28,6.11-7.36,6.11a18.38,18.38,0,0,1-7-1.18V31.63l3.43-.26V33.2a1.14,1.14,0,0,0,.88,1.29,7.33,7.33,0,0,0,2.52.39c1.9,0,3-.73,3-2.33,0-1.83-1.68-2.18-3.74-2.71-2.82-.73-5.91-1.68-5.91-5.92,0-4,3.35-6.06,7.36-6.06a14.71,14.71,0,0,1,6.33,1.52V24l-3.43.27v-1.6a1.15,1.15,0,0,0-.88-1.3A5.65,5.65,0,0,0,64.73,21Z"/><path class="cls-1" d="M83.24,17.86c2.82,0,8.51.88,8.51,9.65,0,7.33-4.09,10.69-9.12,10.69S74.16,34.91,74.16,28C74.16,20.07,79.31,17.86,83.24,17.86Zm3.85,10.26c0-4.27-1-6.9-4.08-6.9s-4.24,2.59-4.24,6.25.5,7.37,4.16,7.37C85.91,34.84,87.09,32.09,87.09,28.12Z"/><path class="cls-1" d="M114,37.62h-6.19V35.14a7.43,7.43,0,0,1-6.18,3c-3.81,0-5.91-2.1-5.91-6.6V22.7c0-.8-.31-1-1-1.06l-1.22-.08V18.43h6.72v12.1c0,2.32.38,4.08,2.82,4.08a3.76,3.76,0,0,0,4.09-3.78v-8c0-.84-.23-1.11-1-1.14L105,21.56V18.43h6.72v15c0,.84.22,1,1,1.1l1.34.12Z"/><path class="cls-1" d="M116.06,18.43h6.44v2.48a7.52,7.52,0,0,1,6.19-3.05c3.81,0,6.06,2.13,6.06,6.64v10l2.18.11v3h-9.08v-2.9l1.26-.11c.72-.08,1.1-.31,1.1-1.26V25.49c0-2.52-.53-4.12-3.13-4.12a3.76,3.76,0,0,0-3.93,3.85v9.24l2.18.11v3h-9.08v-2.9l1.26-.11c.72-.08,1.1-.31,1.1-1.26V22.78c0-.84-.26-1.14-1-1.18l-1.6-.12Z"/><path class="cls-1" d="M151.89,18.32V14.46c0-.65-.35-.88-1-.91l-1.64-.12v-3h7.1v23.2c0,.64.31.87,1,.87l1.33.08v3h-6.18V35.37l-.12,0a5.86,5.86,0,0,1-5.18,2.79c-6,0-7.71-4.58-7.71-9.35,0-6.52,3.36-10.91,9.31-10.91A10,10,0,0,1,151.89,18.32Zm0,3.47a7.24,7.24,0,0,0-2.9-.61c-3.63,0-4.85,3.43-4.85,7.17,0,3.47.84,6.41,4.12,6.41,2.14,0,3.63-1.41,3.63-3.09Z"/><path class="cls-1" d="M168.64,21c-1.64,0-2.86.76-2.86,2.29,0,1.75,1.83,2.29,3.62,2.78,3,.84,6.26,1.79,6.26,5.95,0,4-3.28,6.11-7.36,6.11a18.47,18.47,0,0,1-7-1.18V31.63l3.44-.26V33.2a1.14,1.14,0,0,0,.88,1.29,7.31,7.31,0,0,0,2.51.39c1.91,0,3-.73,3-2.33,0-1.83-1.68-2.18-3.74-2.71-2.82-.73-5.91-1.68-5.91-5.92,0-4,3.35-6.06,7.36-6.06a14.75,14.75,0,0,1,6.33,1.52V24l-3.43.27v-1.6a1.15,1.15,0,0,0-.88-1.3A5.65,5.65,0,0,0,168.64,21Z"/><path class="cls-1" d="M192.41,14.39v4h5.08l-.38,3.21h-4.7v10c0,2.33.92,3,2.48,3a5.13,5.13,0,0,0,2.6-.81l1.14,2.94a9,9,0,0,1-4.84,1.34c-6,0-5.92-3.67-5.92-6.34V21.64h-2.71l.38-2.79c2.68-.23,3.59-2.29,4.39-4.46Z"/><path class="cls-1" d="M202.45,22.78c0-.84-.23-1.11-.95-1.14l-1.61-.12V18.43h6.45v2.86a6,6,0,0,1,5.42-3.43,8,8,0,0,1,3.66.84v5.68l-3.55.27V22.89c0-.45-.07-.8-.38-.95a2.28,2.28,0,0,0-1-.19A3.54,3.54,0,0,0,207,25.6v8.86l3.32.15v3H200.08v-2.9l1.26-.11c.73-.08,1.11-.31,1.11-1.26Z"/><path class="cls-1" d="M237.56,37.62h-6.19V35.14a7.43,7.43,0,0,1-6.18,3c-3.81,0-5.91-2.1-5.91-6.6V22.7c0-.8-.31-1-1-1.06l-1.22-.08V18.43h6.72v12.1c0,2.32.38,4.08,2.82,4.08a3.75,3.75,0,0,0,4.08-3.78v-8c0-.84-.22-1.11-.95-1.14l-1.22-.08V18.43h6.72v15c0,.84.22,1,.95,1.1l1.34.12Z"/><path class="cls-1" d="M255.68,23.16c0,5.88-6.37,6.87-10.87,6.91.15,2.48,1.45,4.5,4.69,4.5a8.24,8.24,0,0,0,4.81-1.68L255.76,36A11.05,11.05,0,0,1,249,38.12c-6.48,0-9-4-9-9.65s3.16-10.61,9.42-10.61C253.2,17.86,255.68,19.77,255.68,23.16Zm-6.49-2.06c-3.05,0-4.42,2.94-4.54,5.76,2.83,0,6.83-.68,6.83-3.62A2,2,0,0,0,249.19,21.1Z"/><path class="cls-2" d="M33.26,28.4c2.34-1.32,4.89-2.26,7.33-3.4,4.32-2,8.11-4.69,10.21-9.13A23.77,23.77,0,0,0,52,11.55c-3.11,2.22-5.91,4.58-9,6.38-5.75,3.28-11.25,6.74-14.88,12.58a4.58,4.58,0,0,1,.51-1.88,22,22,0,0,1,9.68-9.41c4.64-2.45,9.16-5.11,11.85-9.95C52.2,5.49,52.51,2.68,51.28,0c-2.44,3.32-4.77,7.14-7.75,10.38-3.41,3.73-7.45,6.86-11.11,10.37A23.4,23.4,0,0,0,26,30.9a23.4,23.4,0,0,0-6.42-10.15c-3.66-3.51-7.7-6.64-11.11-10.37C5.5,7.14,3.16,3.32.72,0-.51,2.68-.2,5.49,1.9,9.27c2.69,4.84,7.21,7.5,11.85,10a22.09,22.09,0,0,1,9.69,9.41,4.74,4.74,0,0,1,.5,1.88c-3.62-5.84-9.13-9.3-14.87-12.58-3.13-1.8-5.93-4.16-9-6.38a23,23,0,0,0,1.18,4.32C3.31,20.31,7.09,23,11.41,25c2.45,1.14,5,2.08,7.34,3.4,4.71,2.67,6,7.19,5.93,12.32a10,10,0,0,1-.56-1.62c-.9-5-3.92-8.31-8.46-10.36a88.82,88.82,0,0,1-8.91-4.09c-2.18-1.28-4-3.24-5.82-4.82-1,2.89.45,6.93,3.86,9.1,2.4,1.53,5.09,2.59,7.58,4A47.77,47.77,0,0,1,20,37.66a8.47,8.47,0,0,1,1.91,9.87c-.13-.89-.22-1.47-.3-2.06a10,10,0,0,0-5.13-7.9l-7.3-4.14c-.83,2.81.12,5.41,3,7.66,1.34,1.07,2.84,1.95,4.1,3.1,5.92,5.44,0,12.34-.93,13.33,2.62-2.83,5.49-5.53,7.6-8.71A24.21,24.21,0,0,0,26,42.29a24.25,24.25,0,0,0,3.07,6.52c2.11,3.18,5,5.88,7.59,8.71-.91-1-6.84-7.89-.92-13.33,1.25-1.15,2.76-2,4.1-3.1,2.84-2.25,3.78-4.85,2.95-7.66l-7.3,4.14a10,10,0,0,0-5.13,7.9c-.07.59-.17,1.17-.29,2.06A8.46,8.46,0,0,1,32,37.66a47.77,47.77,0,0,1,7.66-4.73c2.48-1.41,5.17-2.47,7.57-4,3.41-2.17,4.88-6.21,3.87-9.1-1.87,1.58-3.65,3.54-5.83,4.82a89.68,89.68,0,0,1-8.9,4.09c-4.55,2.05-7.57,5.32-8.46,10.36a11.1,11.1,0,0,1-.56,1.62C27.25,35.59,28.54,31.07,33.26,28.4Z"/><path class="cls-1" d="M61.64,46.69h0l-1.13,4.77H59l-1.6-7.33H58.7l1.12,5.47h0L61,44.72h1.36l1.13,4.89h0l1-5.48h1.31l-1.57,7.33H62.81Z"/><path class="cls-1" d="M70.66,51.46l2.51-7.33h1.49l2.57,7.33H75.8l-.65-1.94H72.59L72,51.46Zm2.19-3h2l-1-3.14h0Z"/><path class="cls-1" d="M86.2,47.12l2.26,4.34H87L85.3,48.2l-1,1.42v1.84H82.93V44.13h1.32v3.68l2.61-3.68h1.42Z"/><path class="cls-1" d="M94.1,51.46V44.13h1.34v7.33Z"/><path class="cls-1" d="M107.55,44.13v7.33h-1.28l-3.14-5.17h0v5.17H101.8V44.13h1.34l3.06,5.1h0v-5.1Z"/><path class="cls-1" d="M119.38,50.89a4.63,4.63,0,0,1-2.55.71c-2,0-3.22-1.23-3.22-3.79,0-2.85,1.7-3.81,3.21-3.81a3,3,0,0,1,2.58,1.32l-1,.73a2,2,0,0,0-1.62-.92c-1.14,0-1.83.95-1.83,2.6s.57,2.77,1.9,2.77a2.58,2.58,0,0,0,1.16-.26v-1.6h-1v-1h2.37Z"/><path class="cls-1" d="M134,44.13v4.94c0,1.08.6,1.4,1.43,1.4a1.23,1.23,0,0,0,1.36-1.34v-5h1.34v5.18c0,1.45-1.12,2.29-2.75,2.29-1.79,0-2.71-.73-2.71-2.46v-5Z"/><path class="cls-1" d="M145.7,51.46h-1.34V44.13h2.51c1.6,0,2.59.77,2.59,2.25,0,1.68-1.18,2.51-2.83,2.51h-.93Zm.78-3.63c1,0,1.6-.34,1.6-1.32s-.65-1.31-1.72-1.31h-.66v2.63Z"/><path class="cls-1" d="M167.42,44.13V45.3H165.3v6.16H164V45.3h-2.06V44.13Z"/><path class="cls-1" d="M179,44.13v7.33H177.6V48.3h-3.09v3.16h-1.33V44.13h1.33v3h3.09v-3Z"/><path class="cls-1" d="M185.29,44.13h4.38V45.3h-3v1.84h2.61v1.17h-2.61v2h3.13v1.16h-4.46Z"/><path class="cls-1" d="M206.46,46.69h0l-1.13,4.77h-1.52l-1.59-7.33h1.33l1.13,5.47h0l1.11-4.88h1.36l1.14,4.89h0l1.05-5.48h1.31l-1.56,7.33h-1.49Z"/><path class="cls-1" d="M219.16,51.6c-1.94,0-3.1-1.27-3.1-3.79,0-2.82,1.69-3.81,3.22-3.81s3,1,3,3.81C222.32,50.34,221.08,51.6,219.16,51.6Zm.08-1.12c1.32,0,1.73-1.31,1.73-2.63,0-1.13-.35-2.72-1.75-2.72s-1.8,1.32-1.8,2.63S217.74,50.48,219.24,50.48Z"/><path class="cls-1" d="M229.72,51.46h-1.33V44.13h2.44c1.6,0,2.62.53,2.62,2a2,2,0,0,1-1.26,1.94,1,1,0,0,1,.6.67L234,51.46h-1.43l-1-2.31c-.15-.34-.33-.57-.72-.57h-1.08Zm1.09-3.93a1.16,1.16,0,0,0,1.28-1.27c0-.94-.57-1.06-1.6-1.06h-.77v2.33Z"/><path class="cls-1" d="M239.71,44.13h1.34V50.3h3.08v1.16h-4.42Z"/><path class="cls-1" d="M250,44.13h2.37a3.08,3.08,0,0,1,3.41,3.41c0,2.89-1.6,3.92-3.36,3.92H250Zm1.33,6.28h1.11c1.23,0,2-.91,2-2.67,0-2-.95-2.54-2.13-2.54h-1Z"/></g></g></svg>
+    </a> 
+  </div>
+  <nav class="top_bar clearfix mobile">
+    <div class="small--{% if customer %}one-fifth{%  else %}one-quarter{% endif %}">
+      <button class="mobile_nav dropdown_link" aria-haspopup="true" aria-expanded="false" data-dropdown-rel="menu" data-no-instant="true">
+        <div>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <span class="mobile-menu-label">Menu</span>
+      </button>
+    </div>
+    <div class="small--{% if customer %}one-fifth{%  else %}one-quarter{% endif %}">
+      {% if section.settings.search_enabled %}
+        <a href="/#" class="icon-search dropdown_link no-focus" title="Search our site" data-dropdown-rel="search" data-no-instant="true"></a>
+      {% endif %}
+      <span class="mobile-menu-label">Search</span>
+    </div>
+    {% if customer %}
+      <div class="small--one-fifth">
+        <a href="https://digitallibrary.soundstrue.com/my-library" target="_self">{% include 'library-svg' %}</a>
+        <span class="mobile-menu-label">My Library</span>
+      </div>
+    {% else %}
+    {% endif %}
+    <div class="small--{% if customer %}one-fifth{%  else %}one-quarter{% endif %}" id="customr">
+      {% if shop.customer_accounts_enabled %}
+        <a href="/account">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 304.02 287.93"><defs><style>.cls-1{fill:#5b6770;}</style></defs><title>account</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><g id="ic_profile"><path class="cls-1" d="M152,171.08c-46.44,0-84.22-38.37-84.22-85.54S105.57,0,152,0s84.22,38.37,84.22,85.54S198.45,171.08,152,171.08Zm0-145c-32,0-58.12,26.67-58.12,59.44S120,145,152,145s58.12-26.67,58.12-59.44S184.06,26.1,152,26.1Z"/><path class="cls-1" d="M291,287.93a13,13,0,0,1-11.59-7,144.52,144.52,0,0,0-45.29-51.6c-11.55-8.08-25.1-6.07-46.25-2.13-11.39,2.12-23.16,4.32-35.84,4.32s-24.45-2.19-35.83-4.31c-21.17-3.94-34.74-5.95-46.31,2.15a144.75,144.75,0,0,0-45.24,51.57,13.05,13.05,0,0,1-23.16-12,170.91,170.91,0,0,1,53.44-60.92c21.13-14.78,44-10.53,66-6.42,10.22,1.9,20.78,3.86,31.06,3.86s20.84-2,31.05-3.87c22.07-4.12,44.88-8.37,66,6.39a170.81,170.81,0,0,1,53.49,61A13.07,13.07,0,0,1,291,287.93Z"/><path class="cls-1" d="M152,171.08c-46.44,0-84.22-38.37-84.22-85.54S105.57,0,152,0s84.22,38.37,84.22,85.54S198.45,171.08,152,171.08Zm0-145c-32,0-58.12,26.67-58.12,59.44S120,145,152,145s58.12-26.67,58.12-59.44S184.06,26.1,152,26.1Z"/><path class="cls-1" d="M291,287.93a13,13,0,0,1-11.59-7,144.52,144.52,0,0,0-45.29-51.6c-11.55-8.08-25.1-6.07-46.25-2.13-11.39,2.12-23.16,4.32-35.84,4.32s-24.45-2.19-35.83-4.31c-21.17-3.94-34.74-5.95-46.31,2.15a144.75,144.75,0,0,0-45.24,51.57,13.05,13.05,0,0,1-23.16-12,170.91,170.91,0,0,1,53.44-60.92c21.13-14.78,44-10.53,66-6.42,10.22,1.9,20.78,3.86,31.06,3.86s20.84-2,31.05-3.87c22.07-4.12,44.88-8.37,66,6.39a170.81,170.81,0,0,1,53.49,61A13.07,13.07,0,0,1,291,287.93Z"/></g></g></g></svg>
+        </a>
+      {% endif %}
+      <span class="mobile-menu-label">{% if customer %}Account{% else %}Login{% endif %}</span>
+    </div>
+    <div class="small--{% if customer %}one-fifth{%  else %}one-quarter{% endif %}" id="mcart">
+      {% if section.settings.show_cart %}
+        <a href="/cart" class="minicart-mobile">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 278 284.6"><defs><style>.cls-1{fill:#5b6770;}</style></defs><title>cart</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M124.78,175.8,256,162.24a11.36,11.36,0,0,0,10.14-9.88l11.8-91.79A11.41,11.41,0,0,0,267,47.72L80,41.49,67.45,11.55a11.41,11.41,0,0,0-9.39-7L12.54.06A11.39,11.39,0,0,0,.06,10.27,11.42,11.42,0,0,0,10.27,22.75L49,26.61l56.89,136.06-7.68,8.57-.09.1c-4.22,4.85-17.09,19.62-10.64,33.79,6,13.12,23.46,13.5,25.43,13.5H258.49a11.4,11.4,0,0,0,0-22.8H113a16.43,16.43,0,0,1-3.83-.57c.71-1.62,2.37-4.5,6.17-8.88Zm1.69-23.1L89.64,64.62,253.7,70.09l-9,70.4Z"/><path class="cls-1" d="M238.3,224a30.29,30.29,0,1,0,30.29,30.29A30.32,30.32,0,0,0,238.3,224Zm7.49,30.29a7.49,7.49,0,1,1-7.49-7.49A7.5,7.5,0,0,1,245.79,254.32Z"/><path class="cls-1" d="M116.72,224A30.29,30.29,0,1,0,147,254.32,30.32,30.32,0,0,0,116.72,224Zm7.48,30.29a7.49,7.49,0,1,1-7.48-7.49A7.5,7.5,0,0,1,124.2,254.32Z"/></g></g></svg>
+          {% if cart.item_count > 0 %}
+            <span class="cart_count">{{ cart.item_count }}</span>
+          {% endif %}
+        </a>
+      {% endif %}
+      <span class="mobile-menu-label">Cart</span>
+    </div>
+  </nav>
+  {% if section.settings.search_enabled %}
+    <div class="dropdown_container center" data-dropdown="search">
+      <div class="dropdown">
+        <form action="/collections/search-result" class="header_search_form">
+          {% if settings.search_option != 'everything' %}
+            <input type="hidden" name="type" value="product" />
+          {% endif %}
+          <span class="icon-search search-submit"></span>
+          <input type="text" aria-label="Search input field" name="q" placeholder="Search entire store here..." autocapitalize="off" autocomplete="off" autocorrect="off" class="search-terms" />
+        </form>
+      </div>
+    </div>
+  {% endif %}
+  <div class="dropdown_container" data-dropdown="menu">
+    <div class="dropdown">
+      <nav class="medium-up--hide" role="navigation">
+        <ul id="MobileNav" class="mobile-nav">
+          {% for link in linklists[section.settings.main_linklist].links %}
+            {%- assign outerLoopIndex = forloop.index -%}
+  
+            <li class="mobile-nav__item{% unless forloop.last %} border-bottom{% endunless %}">
+              {% if link.links != blank %}
+                {% capture child_list_handle %}{{ link.handle }}-{{ outerLoopIndex }}{% endcapture %}
+                <button type="button" class="btn--link js-toggle-submenu mobile-nav__link" data-target="{{ child_list_handle }}" data-level="1" aria-expanded="false">
+                  <span class="mobile-nav__label">{{ link.title | escape }}</span>
+                  <div class="mobile-nav__icon">
+                    {% include 'icon-chevron-right' %}
+                  </div>
+                </button>
+                <ul class="mobile-nav__dropdown" data-parent="{{ child_list_handle }}" data-level="2">
+                  <li class="visually-hidden" tabindex="-1" data-menu-title="2">
+                    {{- link.title }} {{ 'layout.navigation.menu' | t -}}
+                  </li>
+                  <li class="mobile-nav__item border-bottom">
+                    <div class="mobile-nav__table">
+                      <div class="mobile-nav__table-cell mobile-nav__return">
+                        <button class="btn--link js-toggle-submenu mobile-nav__return-btn" type="button" aria-expanded="true" aria-label="{{ link.title }}">
+                          {% include 'icon-chevron-left' %}
+                        </button>
+                      </div>
+                      <span class="mobile-nav__sublist-link mobile-nav__sublist-header mobile-nav__sublist-header--main-nav-parent">
+                        <span class="mobile-nav__label">{{ link.title | escape }}</span>
+                      </span>
+                    </div>
+                  </li>
+  
+                  {% for childlink in link.links %}
+                    <li class="mobile-nav__item{% unless forloop.last %} border-bottom{% endunless %}">
+                      {% if childlink.links != blank %}
+                        {% capture grandchild_list_handle %}{{ childlink.handle }}-{{ outerLoopIndex }}-{{ forloop.index }}{% endcapture %}
+                        <button type="button" class="btn--link js-toggle-submenu mobile-nav__link mobile-nav__sublist-link" data-target="{{ grandchild_list_handle }}" aria-expanded="false">
+                          <span class="mobile-nav__label">{{ childlink.title | escape }}</span>
+                          <div class="mobile-nav__icon">
+                            {% include 'icon-chevron-right' %}
+                          </div>
+                        </button>
+                        <ul class="mobile-nav__dropdown" data-parent="{{ grandchild_list_handle }}" data-level="3">
+                          <li class="visually-hidden" tabindex="-1" data-menu-title="3">
+                            {{- childlink.title }} {{ 'layout.navigation.menu' | t -}}
+                          </li>
+                          <li class="mobile-nav__item border-bottom">
+                            <div class="mobile-nav__table">
+                              <div class="mobile-nav__table-cell mobile-nav__return">
+                                <button type="button" class="btn--link js-toggle-submenu mobile-nav__return-btn" data-target="{{ child_list_handle }}" aria-expanded="true" aria-label="{{ childlink.title }}">
+                                  {% include 'icon-chevron-left' %}
+                                </button>
+                              </div>
+                              <a href="{{ childlink.url }}"
+                                class="mobile-nav__sublist-link mobile-nav__sublist-header"
+                                {% if childlink.current %} aria-current="page"{% endif %}
+                              >
+                                <span class="mobile-nav__label">{{ childlink.title | escape }}</span>
+                              </a>
+                            </div>
+                          </li>
+                          {% for grandchildlink in childlink.links %}
+                            <li class="mobile-nav__item{% unless forloop.last %} border-bottom{% endunless %}">
+                              <a href="{{ grandchildlink.url }}"
+                                class="mobile-nav__sublist-link"
+                                {% if grandchildlink.current %} aria-current="page"{% endif %}
+                              >
+                                <span class="mobile-nav__label">{{ grandchildlink.title | escape }}</span>
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {% else %}
+                        <a href="{{ childlink.url }}"
+                          class="mobile-nav__sublist-link"
+                          {% if childlink.current %} aria-current="page"{% endif %}
+                        >
+                          <span class="mobile-nav__label">{{ childlink.title | escape }}</span>
+                        </a>
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% else %}
+                <a href="{{ link.url }}"
+                  class="mobile-nav__link{% if link.active %} mobile-nav__link--active{% endif %}"
+                  {% if link.current %} aria-current="page"{% endif %}
+                >
+                  <span class="mobile-nav__label">{{ link.title | escape }}</span>
+                </a>
+              {% endif %}
+            </li>
+          {% endfor %}
+          {% if shop.enabled_currencies.size > 1 %}
+            <li class="mobile-nav__item border-top">
+              {% form 'currency', class: "currency-selector" %}
+                <label for="CurrencySelectorMobile" class="currency-selector__label">{{ 'general.currency.dropdown_label' | t }}</label>
+                <div class="currency-selector__input-wrapper select-group">
+                  <select name="currency" id="CurrencySelectorMobile" class="currency-selector__dropdown" aria-describedby="a11y-refresh-page-message a11y-selection-message" data-currency-selector>
+                    {% for currency in shop.enabled_currencies %}
+                      <option value="{{currency.iso_code}}"{% if currency == cart.currency %} selected="true"{% endif %}>{{currency.iso_code}}</option>
+                    {% endfor %}
+                  </select>
+                  {% include 'icon-chevron-down' %}
+                </div>
+              {% endform %}
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+  {% if section.settings.promo_text != blank %}
+    <div class="promo_banner">
+      <div class="promo_banner__content">
+        {{ section.settings.promo_text }}
+      </div>
+      <div class="promo_banner-close"></div>
+    </div>
+  {% endif %}
+</header>
+
+<style>
+  .main_nav div.logo a {
+    padding-top: {{ section.settings.logo_top_padding }}px;
+    padding-bottom: {{ section.settings.logo_top_padding }}px;
+  }
+
+  div.logo img {
+    max-width: {{ section.settings.logo_display_width }}px;
+  }
+
+  .nav {
+    {% if section.settings.menu_position == "block" %}
+      width: 100%;
+      clear: both;
+    {% elsif section.settings.logo_position == "left" %}
+      width: 84%;
+      float: left;
+    {% else %}
+      width: 42%;
+      float: left;
+    {% endif %}
+  }
+
+  {% if section.settings.menu_top_padding %}
+    .nav ul.menu {
+      padding-top: {{ section.settings.menu_top_padding }}px;
+      padding-bottom: {{ section.settings.menu_top_padding }}px;
+    }
+
+    .sticky_nav ul.menu, .sticky_nav .mini_cart {
+      padding-top: {{ section.settings.menu_top_padding | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.menu_top_padding | divided_by: 2 }}px;
+    }
+  {% endif %}
+
+  {% unless section.settings.show_cart %}
+    #header .top_bar .icon-search {
+      right: 15px;
+    }
+  {% endunless %}
+
+  {% if section.settings.fixed_header == false %}
+  {% else %}
+    body {
+      overscroll-behavior-y: none;
+    }
+  {% endif %}
+
+</style>
+
+{% schema %}
+
+{
+  "name": "Header",
+  "class": "header-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Announcement bar"
+    },
+    {
+      "type": "richtext",
+      "id": "promo_text",
+      "label": "Text",
+      "info": "Maximum character limit is 170"
+    },
+    {
+     "type": "header",
+     "content": "Top bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "social_icons_header",
+      "label": "Show social media header icons",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone number",
+      "info": "1-800-555-5555"
+    },
+    {
+      "type": "link_list",
+      "id": "top_bar_menu",
+      "label": "Menu",
+      "info": "This menu won't show drop-down items"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart",
+      "label": "Show cart",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "cart_icon",
+      "label": "Cart icon",
+      "options": [
+        {
+          "value": "cart",
+          "label": "Cart"
+        },
+        {
+          "value": "bag",
+          "label": "Bag"
+        }
+      ],
+      "default": "cart"
+    },
+    {
+     "type": "header",
+     "content": "Logos"
+    },
+    {
+      "type": "range",
+      "id": "logo_display_width",
+      "label": "Logo display width",
+      "step": 5,
+      "min": 105,
+      "max": 205,
+      "default": 205,
+      "unit": "px"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo",
+      "info": "400 x 100px recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_home",
+      "label": "Secondary logo over content (optional)",
+      "info": "400 x 100px recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_mobile",
+      "label": "Mobile logo",
+      "info": "100 x 50px recommended"
+    },
+    {
+     "type": "header",
+     "content": "Menus"
+    },
+    {
+      "type": "link_list",
+      "id": "main_linklist",
+      "label": "Main menu"
+    },
+    {
+      "type": "link_list",
+      "id": "main_linklist2",
+      "label": "Secondary menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "vertical_menu",
+      "label": "Enable vertical menus",
+      "default": false
+    },
+    {
+     "type": "header",
+     "content": "Search"
+    },
+    {
+      "type": "checkbox",
+      "id": "search_enabled",
+      "label": "Show search",
+      "default": true
+    },
+    {
+     "type": "header",
+     "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "fixed_header",
+      "label": "Fixed ('sticky') header",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "logo_position",
+      "label": "Logo position",
+      "info": "Applies when menu position has been set to 'Inline with logo'",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "logo_alignment",
+      "label": "Logo alignment",
+      "info": "Applies when menu position has been set to 'Under logo'",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "menu_position",
+      "label": "Menu position",
+      "options": [
+        {
+          "value": "inline",
+          "label": "Inline with logo"
+        },
+        {
+          "value": "block",
+          "label": "Under logo"
+        }
+      ],
+      "default": "inline"
+    },
+    {
+      "type": "select",
+      "id": "menu_alignment",
+      "label": "Menu alignment",
+      "options": [
+        {
+          "value": "align_left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "align_right",
+          "label": "Right"
+        }
+      ],
+      "default": "align_left"
+    },
+    {
+      "type": "range",
+      "id": "logo_top_padding",
+      "label": "Logo top padding",
+      "info": "[Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115006910627)",
+      "min": 0,
+      "max": 30,
+      "default": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "menu_top_padding",
+      "label": "Main menu top padding",
+      "info": "[Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115006910627)",
+      "min": 0,
+      "max": 30,
+      "default": 0,
+      "unit": "px"
+    }
+  ]
+}
+
+{% endschema %}

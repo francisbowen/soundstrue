@@ -1,0 +1,173 @@
+{% render 'shogun-products', content: product %}
+{% include 'shogun-products', content: product %}
+{{product.metafields.shogun.above}}
+{% comment %}
+  The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+
+{% section 'product-template' %}
+
+<script>
+  // Override default values of shop.strings for each template.
+  // Alternate product templates can change values of
+  // add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  }
+</script>
+
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "url": {{ shop.url | append: product.url | json }},
+  {%- if product.featured_image -%}
+    {%- assign image_size = product.featured_image.width | append: 'x' -%}
+    "image": [
+      {{ product.featured_image.src | img_url: image_size | prepend: "https:" | json }}
+    ],
+  {%- endif -%}
+  "description": {{ product.description | strip_html | json }},
+  {%- if current_variant.sku != blank -%}
+    "sku": {{ current_variant.sku | json }},
+  {%- endif -%}
+  "brand": {
+    "@type": "Thing",
+    "name": {{ product.vendor | json }}
+  },
+  {% if product.metafields.okendo.ReviewCount > 0 %}
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "{{ product.metafields.okendo.ReviewAverageValue }}",
+        "ratingCount": "{{ product.metafields.okendo.ReviewCount }}"
+      },
+      {% endif %}
+  "offers": [
+    {%- for variant in product.variants -%}
+      {
+        "@type" : "Offer",
+        {%- if variant.sku != blank -%}
+          "sku": {{ variant.sku | json }},
+        {%- endif -%}
+        "availability" : "http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+        "price" : {{ variant.price | divided_by: 100.00 | json }},
+        "priceCurrency" : {{ cart.currency.iso_code | json }},
+        "url" : {{ shop.url | append: variant.url | json }}
+      }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+
+<script type="text/x-np-template">
+  <div class="nxt-psn-view">
+      <span class="url">{{ shop.url }}{{ product.url }}</span>
+  </div>
+</script>
+
+<script type="text/javascript">
+  var _learnq = _learnq || [];
+  var item = {
+    Name: {{ product.title|json }},
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+</script>
+
+<script type="text/javascript">
+  {% assign pcs = '' %}
+  {% assign pvs = '' %}
+  
+  {% for pc in product.collections %}
+    {% if forloop.last %}
+      {% assign pcs = pcs | append: pc.title %}
+    {% else %}
+      {% assign pcs = pcs | append: pc.title | append: ', '%}
+    {% endif %}
+  {% endfor %}
+  
+  {% for pv in product.variants %}
+    {% if forloop.last %}
+      {% assign pvs = pvs | append: pv.title %}
+    {% else %}
+      {% assign pvs = pvs | append: pv.title | append: ', '%}
+    {% endif %}
+  {% endfor %}
+  // product product detail videw GTM event
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    'event': 'product-detail-view',
+    'ecommerce': {
+      'currencyCode': 'USD',
+      'detail': {
+        'actionField': {},
+        'products': [
+          {
+            'name': {{ product.title|json }},
+            'id': {{ product.id|json }},
+            'price': {{ current_variant.price | divided_by: 100.00 | json }},
+            'brand': {{ product.vendor|json }},
+            'category': {{ pcs|json }},
+            'variant': {{ pvs|json }} 
+          }
+        ]
+      }
+    }
+  });
+  // product add to cart GTM event
+  $(document).ready(function(){
+    $('.product-form__cart-submit').on('click', function(){
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        'event': 'add-to-cart',
+        'ecommerce': {
+          'currencyCode': 'USD',
+          'add': {
+            'actionField': {
+              'list': '', 
+              'position': ''
+            },
+            'products': [
+              {
+                'name': {{ product.title|json }},
+                'id': {{ product.id|json }},
+                'price': {{ current_variant.price | divided_by: 100.00 | json }},
+                'brand': {{ product.vendor|json }},
+                'category': {{ pcs|json }}, 
+                'variant': {{ pvs|json }},
+                'quantity': 1
+              }
+            ]
+          }
+        }
+      });
+
+    })
+  })
+</script>
+{{product.metafields.shogun.below}}
+
+

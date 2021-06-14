@@ -1,0 +1,57 @@
+
+{% if first_time_accessed %}
+<script type="text/javascript" async>
+
+    pintrk('track', 'checkout',{
+    value: '{{ checkout.total_price | money_without_currency }}', 
+    currency: '{{ shop.currency }}',
+    order_quantity: '{{ checkout.item_count }}',
+    order_id: '{{ checkout.id }}'
+
+    });
+</script> 
+<noscript>
+<img height="1" width="1" style="display:none;" alt=""
+src="https://ct.pinterest.com/v3/?tid=2612465595606&event=checkout&noscript=1"/>
+</noscript> 
+
+<!-- Event snippet for Sales conversion page -->
+<script>
+    gtag('event', 'purchase', {
+    'send_to': 'AW-1071793748',
+    'value': {{ checkout.total_price | money_without_currency | remove: ',' }},
+    'currency': '{{ shop.currency }}',
+    'transaction_id': '{{ order.order_number }}'
+    });
+</script>
+<!-- Facebook Conversion Pixel -->
+<script>
+  fbq('track', 'Purchase', {
+   value: {{ checkout.total_price | money_without_currency | remove:',' }},
+   content_ids: '[{{line_item.product.id}}_{{line_item.variant.id}}]',
+   content_type: 'product',
+   currency: '{{ shop.currency }}',
+  });
+</script>
+
+<!-- Google Ads Remarketing Tag -->
+<script type="text/javascript">
+    var id = new Array();
+    {% for line_item in order.line_items %} 
+    id.push('{{line_item.product.id}}_{{line_item.variant.id}}');
+    {% endfor %}
+    var google_tag_params = {
+        ecomm_prodid: id,
+        ecomm_pagetype: 'purchase',
+        ecomm_totalvalue: {{ checkout.total_price | money_without_currency | remove:',' }}
+    };
+</script>
+<script>
+    gtag('event', 'purchase', {'send_to': 'AW-1071793748',
+                                'ecomm_prodid':window.google_tag_params.ecomm_prodid,
+                                'ecomm_pagetype': window.google_tag_params.ecomm_pagetype,
+                                'ecomm_totalvalue':window.google_tag_params.ecomm_totalvalue
+                                });
+</script>
+{% endif %}
+

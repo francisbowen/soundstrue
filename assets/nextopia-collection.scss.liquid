@@ -1,0 +1,563 @@
+/*============================================================================
+  Variables
+==============================================================================*/
+
+$color_white: #ffffff;
+$color_grey: #c0c0c0;
+$color_grey_hover: #8d8d8d;
+$color_md_grey: #767676;
+$color_dk_grey: #333333;
+$color_focus_blue: #5e9ed6;
+$color_orange: #fb6300;
+$color_orange_hover: #e24a00;
+$color_logo_blue: #506a9f;
+$color_logo_green: #4a773c;
+$color_bt_green: #69a14b;
+$color_bt_blue: #4069bf;
+$color_bt_blue_hover: #2750a6;
+$color_lt_grey: #f0f0f0;
+$color_error: #df280a;
+
+// New colors
+$color_heading: #5b6770;
+$color_accent_2: #3e4d58;
+$color_text: #2e3b44;
+$color_ratings: #ecbd00;
+$color_shopping: #c74d10;
+$color_shopping_hover: #b74e19;
+$color_links: #0652af;
+$colorDrawerBorder: #343535;
+$colorBorder: #343535;
+$label_color: #636363;
+$gutter: 30px;
+$type_body_text_center: center;
+
+.collection-nextopia {
+    .page-width {
+        @media only screen and (max-width: 749px), (min-width: 1260px) {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+    }
+
+    .nextopia-collection-template {
+        & > .grid__item {
+            padding-left: 0;
+
+            @media only screen and (min-width: 992px) {
+                padding-left: 20px;
+            }
+
+            &:first-child {
+                padding-left: 0;
+            }
+        }
+
+        .nextopia-collection-left-sidebar {
+            .sidebar-title {
+                font-size: 17px;
+            }
+
+            .toggle-content {
+                margin-top: 15px;
+
+                .sidebar-subtitle {
+                    color: $color_heading;
+                    font-size: 15px;
+                    font-weight: 400;
+                    margin-bottom: 10px;
+                }
+
+                .selected-filters {
+                    ul {
+                        margin-bottom: 0;
+
+                        li {
+                            margin-bottom: 5px;
+                            font-size: 15px;
+                            font-weight: 300;
+                            color: $color_text;
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                    }
+
+                    .btn-remove {
+                        display: inline-block;
+                        border: 1px solid $color_md_grey;
+                        border-radius: 2px;
+                        color: $color_md_grey;
+                        background-color: #fafafa;
+                        margin-left: 6px;
+                        text-align: center;
+                        width: 22px;
+                        height: 22px;
+
+                        &:after {
+                            content: 'X';
+                            color: $color_md_grey;
+                            height: 18px;
+                            width: 18px;
+                            font-size: 12px;
+                            font-weight: 400;
+                            position: relative;
+                            top: -2px;
+                        }
+                    }
+                }
+
+                .filter-actions {
+                    padding: 10px 0;
+                    border-bottom: 1px solid $color_grey;
+                    margin-bottom: 10px;
+
+                    .remove-all {
+                        color: $color_links;
+                        font-size: 15px;
+                        font-weight: 400;
+                    }
+                }
+
+                .main-collapsible-trigger--mobile {
+                    position: relative;
+                    text-transform: uppercase;
+                    color: $color_white;
+                    background: $color_links;
+                    width: 100%;
+                    text-align: left;
+                    padding: 7px 10px 7px 24px;
+
+                    &.active {
+                        &:before {
+                            border-right: 4px solid transparent;
+                            border-left: 4px solid transparent;
+                            border-top: 4px solid $color_white;
+                            border-bottom: none;
+                        }    
+                    }
+
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        width: 0;
+                        height: 0;
+                        display: block;
+                        border-top: 4px solid transparent;
+                        border-bottom: 4px solid transparent;
+                        border-left: 4px solid $color_white;
+                        border-right: none;
+                        left: 10px;
+                        top: 50%;
+                        margin-top: -5px;
+                    }
+                }
+
+                .narrow-by-list {
+                    padding: 0 10px 10px;
+                    border: 1px solid #cccccc;
+
+                    &.no-display {
+                        display: none;
+                    }
+
+                    .collection-sidebar__group {
+                        border-bottom: 1px solid $color_grey;
+                        padding-bottom: 10px;
+
+                        .collapsible-trigger-btn {
+                            color: $color_heading;
+                            font-size: 15px;
+                            font-weight: 400;
+                            font-family: "Montserrat", Verdana, Arial, sans-serif;
+                            letter-spacing: 0;
+                            border: none;
+                            position: relative;
+                            padding: 10px 10px 10px 0;
+
+                            &.is-open {
+                                &:after {
+                                        border-right: 5px solid transparent;
+                                        border-left: 5px solid transparent;
+                                        border-top: 8px solid $color_md_grey;
+                                        border-bottom: none;
+                                }    
+                            }
+
+                            &:after {
+                                content: '';
+                                width: 0;
+                                height: 0;
+                                border-right: 5px solid transparent;
+                                border-left: 5px solid transparent;
+                                border-bottom: 8px solid #767676;
+                                border-top: none;
+                                position: static;
+                                display: inline-block;
+                                margin-left: 10px;
+                                margin-bottom: 2px;
+                            }
+                        }
+
+                        .collapsible-content__inner {
+                            ul.no-bullets.tag-list {
+                                li {
+                                    margin-bottom: 5px;
+
+                                    &.view-toggle {
+                                        a.show-more,
+                                        a.show-less {
+                                            color: $color_links;
+                                            font-size: 15px;
+                                            font-weight: 400;
+                                            text-decoration: underline;
+
+                                            &:before {
+                                                display: none;
+                                            }
+
+                                            &:focus {
+                                                outline: 2px solid $color_focus_blue !important;
+                                            }
+                                        }
+                                    }
+
+                                    a.tag {
+                                        font-size: 15px;
+                                        font-weight: 300;
+                                        color: $color_text;
+
+                                        &:before {
+                                            content: ' ';
+                                            margin-right: 5px;
+                                            display: inline-block;
+                                            top: 0;
+                                            left: 0;
+                                            border: 1px solid $color_md_grey;
+                                            width: 16px;
+                                            height: 16px;
+                                            margin-top: 3px;
+                                            border-radius: 2px;
+                                            background-color: #fafafa;
+                                        }
+
+                                        &.tag--active:before {
+                                            background-color: $color_md_grey;
+                                        }
+                                    }
+                                    input.price {
+                                        vertical-align: middle;
+                                        width: 65px;
+                                        height: 30px;
+                                        padding: 0 0 0 8px;
+                                        display: inline-block;
+                                        text-align: left;
+                                    }
+
+                                    .price-filter-btn {
+                                        background: $color_links;
+                                        transition: all 0.9s ease;
+                                        color: $color_white;
+                                        display: inline-block;
+                                        height: 30px;
+                                        padding: 0px 16px;
+                                        font-size: 13px;
+                                        text-align: center;
+                                        text-transform: uppercase;
+                                        vertical-align: middle;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            .currently li {
+                font-size: 15px;
+                margin-bottom: 5px;
+            }
+        }
+
+        .nextopia-collection-main-content {
+            .section-header {
+                margin-bottom: 10px;
+
+                @media only screen and (min-width: 992px) {
+                    margin-bottom: 20px;
+                }
+            }
+
+            .filters-toolbar.nextopia-toolbar {
+                background: $color_lt_grey;
+                border-top: 1px solid $color_grey;
+                border-bottom: 1px solid $color_grey;
+
+                .filters-toolbar__item-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    padding: 5px 10px 0;
+
+                    .filter-and-sort, 
+                    .pagination {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: baseline;
+                        justify-content: center;
+
+                        @media only screen and (max-width: 991px) {
+                            margin-bottom: 10px;
+                        }
+
+                        @media only screen and (min-width: 380px) {
+                            justify-content: space-between;
+                        }
+
+                        .filters-toolbar__item-child {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            margin-right: 0;
+
+                            .filters-toolbar__label {
+                                font-size: 14px;
+                                margin: 0 10px 0 0;
+                            }
+
+                            .select-group {
+                                select {
+                                    font-size: 14px;
+                                    height: 30px;
+                                    border-radius: 5px;
+                                    border: 1px solid silver;
+                                    color: #2e3b44;
+                                    background-color: #f8f8f8;
+                                    padding: 0px 8px;
+                                    -webkit-appearance: menulist-button;
+                                    -moz-appearance: menulist-button;
+                                    appearance: menulist-button;
+                                }
+                            }
+                        }
+                    }
+
+                    .pagination {
+                        padding: 0;
+                        flex-direction: row-reverse;
+                        
+                        @media only screen and (min-width: 992px) {
+                            flex-direction: row;
+                        }
+
+                        .product-count {
+                            display: none;
+
+                            @media only screen and (min-width: 992px) {
+                                display: block;
+                            }
+
+                            .filters-toolbar__product-count {
+                                text-transform: uppercase;
+                                font-style: normal;
+                            }
+                        }
+                    }
+
+                    .pages {
+                        ol {
+                            display: inline-block;
+                            float: left;
+                            margin: 0;
+
+                            li {
+                                float: left;
+                                margin: 0;
+                                width: 30px;
+
+                                &.current, 
+                                a {
+                                    display: inline-block;
+                                    font-size: 13px;
+                                    text-align: center;
+                                    vertical-align: middle;
+                                    line-height: 30px;
+                                    width: 30px;
+                                    height: 30px;
+                                    padding: 0;
+                                }
+
+                                &.current {
+                                    color: $label_color;
+                                    border: 1px solid #cccccc;
+                                    background-color: $color_white;
+                                    cursor: default;
+                                }
+
+                                a {
+                                    color: $color_links;
+                                    border: 1px solid transparent;
+
+                                    &.previous, 
+                                    &.next {
+                                        font: 0/0 a;
+                                        color: transparent;
+                                        background-color: transparent;
+                                        position: relative;
+
+                                        &:before {
+                                            content: '';
+                                            position: absolute;
+                                            width: 0;
+                                            height: 0;
+                                            display: block;
+                                            margin-top: -3px;
+                                            top: 40%;
+                                            left: 50%;
+                                            margin-left: -2px;
+                                            border-top: 7px solid transparent;
+                                            border-bottom: 7px solid transparent;
+                                        }
+                                    }
+
+                                    &.previous:before {
+                                        border-right: 7px solid $color_links;
+                                        border-left: none;
+                                    }
+
+                                    &.next:before {
+                                        border-left: 7px solid $color_links;
+                                        border-right: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .nextopia-collection-list-wrapper {
+                .grid--view-items {
+                    li.grid__item {
+                        padding: 20px 20px 0;
+
+                        @media only screen and (max-width: 749px) {
+                            &:nth-child(odd) {
+                                padding: 20px 10px 0 0;
+                            }
+                            &:nth-child(even) {
+                                padding: 20px 0 0 10px;
+                            }
+                        }
+
+                        @media only screen and (min-width: 750px) {
+                            width: 33.33333%;
+
+                            &:nth-child(2n+1) {
+                                clear: none;
+                            }
+
+                            &:nth-child(3n+1) {
+                                clear: both;
+                            }
+                        }
+
+                        #ProductCardImage-collection-template {
+                            max-width: 300px;
+                            max-height: 750px;
+
+                            @media only screen and (min-width: 750px) {
+                                max-width: 250px;
+                                max-height: 235px;
+                            }
+                        }
+                        #ProductCardImageWrapper-collection-template {
+                            max-width: 300px;
+
+                            @media only screen and (min-width: 750px) {
+                                max-width: 250px;
+                                max-height: 235px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .nextopia-collection-right-sidebar {
+            .nextopia-widget {
+                margin-bottom: 30px;
+
+                .widget-title {
+                    font-size: 14px;
+                    color: $color_heading;
+                    font-weight: 500;
+                    margin: 16px 0;
+                    padding: 0;
+                    text-transform: uppercase;
+                }
+
+                .item {
+                    margin-bottom: 12px;
+
+                    .product-card {
+                        display: flex;
+                        flex-direction: row;
+
+                        .product-card-image-wrapper {
+                            display: flex;
+                            max-width: 50px;
+
+                            @media only screen and (min-width: 992px) {
+                                max-width: 100px;
+                            }
+                        }
+
+                        .product-card-content-wrapper {
+                            display: flex;
+                            flex-direction: column;
+                            flex: 1 1 220px;
+                            margin-left: 10px;
+
+                            .title-author-block {
+                                .grid-view-item__title {
+                                    text-align: left;
+                                    display: inline;
+
+                                    & > a {
+                                        line-height: 22px;
+                                        display: block;
+                                    }
+
+                                    &.product-card__title {
+                                        margin: 0;
+                                        font-size: 14px;
+                                    }
+                                }
+
+                                &:hover {
+                                    .product-card__title {
+                                        text-decoration: none;
+                                    }
+                                }
+
+                                .spr-badge {
+                                    display: none;
+                                    text-align: left;
+                                }
+                            }
+
+                            .price {
+                                display: none;
+                                justify-content: flex-start;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.nextopia-more-from-this-author {
+    
+}

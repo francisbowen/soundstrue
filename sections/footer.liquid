@@ -1,0 +1,270 @@
+<footer class="site-footer">
+<div class="site-footer-wrapper">
+  <div class="footer-logo"></div>
+  <div class="footer">
+    <div class="page-width">
+    
+    <div class="grid">
+      <div class="footer-links">
+        {%- assign row_width = 0 -%}
+        {% for block in section.blocks %}
+          {%- assign row_width = row_width | plus: block.settings.container_width -%}
+          {% if row_width > 100 %}
+            <div class="footer__clear small--hide"></div>
+            {%- assign row_width = row_width | minus: 100 -%}
+          {% endif %}
+
+          <div {{ block.shopify_attributes }} class="grid__item footer__item--{{ block.id }}" data-type="{{ block.type }}">
+            {% style %}
+              @media only screen and (min-width: 768px) and (max-width: 991px) {
+                .footer__item--{{ block.id }} {
+                  width: 50%;
+                  padding-top: 40px;
+                }
+                .footer__item--{{ block.id }}:nth-child(2n + 1) {
+                  clear: left;
+                }
+              }
+              @media only screen and (min-width: 960px) {
+                .footer__item--{{ block.id }} {
+                  width: {{ block.settings.container_width }}%;
+                }
+
+              }
+            {% endstyle %}
+
+            {% case block.type %}
+            {% when 'logo_social' %}
+              {% include 'footer-logo', block: block %}
+            {% when 'custom' %}
+              {% include 'footer-custom-text', block: block %}
+            {% when 'menu' %}
+              {% include 'footer-menu', block: block %}
+            {% endcase %}
+          </div>
+        {% endfor %}
+        
+        {% for block in section.blocks %}
+          {% if block.type == 'logo' %}
+            <div class="grid__item medium-up--hide">
+              {% include 'footer-logo', block: block %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="footer-right">
+      <p class="h4 footer__title">
+        CONNECT WITH US
+      </p>
+      <ul class="social-links">
+        <li><a href="https://www.facebook.com/soundstrue" title="Facebook" class="footer-facebook links social-media" target="_blank"><span class="icon facebook"><em>Facebook</em></span></a></li>
+        <li><a href="https://twitter.com/soundstrue" title="Twitter" class="footer-twitter links social-media" target="_blank"><span class="icon twitter"><em>Twitter</em></span></a></li>
+        <li><a href="https://www.youtube.com/user/SoundsTrueVideos" title="YouTube" class="footer-youtube links social-media" target="_blank"><span class="icon youtube"><em>YouTube</em></span></a></li>
+        <li><a href="https://www.instagram.com/soundstrue" title="Instagram" class="footer-instagram links social-media" target="_blank"><span class="icon instagram"><em>Instagram</em></span></a></li>
+        <li><a href="https://www.pinterest.com/soundstrue" title="Pinterest" class="footer-pinterest links social-media" target="_blank"><span class="icon pinterest"><em>Pinterest</em></span></a></li>
+        <li><a href="https://open.spotify.com/user/sounds_true" title="Spotify" class="footer-spotify links social-media" target="_blank"><span class="icon spotify"><em>Spotify</em></span></a></li>
+        <li><a href="https://resources.soundstrue.com/" title="Blog" class="footer-blog links social-media" target="_blank"><span class="icon blog"><em>Blog</em></span></a></li>
+    </ul>
+      <p class="h4 footer__title">
+        JOIN OUR MAILING LIST
+      </p>
+      {% include 'footer-newsletter' %}
+      </div>
+      </div>
+
+      {% if section.settings.show_payment_icons %}
+        {% unless shop.enabled_payment_types == empty %}
+          <ul class="inline-list payment-icons">
+            {% for type in shop.enabled_payment_types %}
+              <li class="icon--payment">
+                {{ type | payment_type_svg_tag: class:'icon icon--full-color' }}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endunless %}
+      {% endif %}
+      {% include 'footer-bottom' %}
+    </div>
+
+  </div>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "max_blocks": 12,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_payment_icons",
+        "label": "Show payment icons",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_copyright",
+        "label": "Show copyright"
+      },
+      {
+        "type": "text",
+        "id": "copyright_text",
+        "label": "Additional copyright text"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "logo_social",
+        "name": "Logo",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo image"
+          },
+          {
+            "type": "range",
+            "id": "desktop_logo_height",
+            "label": "Logo height",
+            "default": 50,
+            "min": 20,
+            "max": 120,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "container_width",
+            "label": "Column width",
+            "default": 25,
+            "min": 15,
+            "max": 95,
+            "unit": "%"
+          }
+        ]
+      },
+      {
+        "type": "menu",
+        "name": "Navigation",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show_footer_title",
+            "label": "Show heading"
+          },
+          {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Choose a menu",
+            "default": "footer",
+            "info": "This menu won't show dropdown items"
+          },
+          {
+            "type": "range",
+            "id": "container_width",
+            "label": "Column width",
+            "default": 25,
+            "min": 15,
+            "max": 95,
+            "unit": "%"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_custom_link",
+            "label": "Show Chat Link"
+          }
+        ]
+      },
+      {
+        "type": "newsletter",
+        "name": "Newsletter and social",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show_footer_title",
+            "label": "Show heading",
+            "default": true
+          },
+          {
+            "type": "paragraph",
+            "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers)."
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Sign up and save"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "info": "Optional",
+            "default": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>"
+          },
+          {
+            "type": "range",
+            "id": "container_width",
+            "label": "Column width",
+            "default": 25,
+            "min": 15,
+            "max": 95,
+            "unit": "%"
+          }
+        ]
+      },
+      {
+        "type": "custom",
+        "name": "Custom text",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show_footer_title",
+            "label": "Show heading",
+            "default": true
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Custom text"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Add your own custom text here.</p>"
+          },
+          {
+            "type": "range",
+            "id": "container_width",
+            "label": "Column width",
+            "default": 25,
+            "min": 15,
+            "max": 95,
+            "unit": "%"
+          }
+        ]
+      }
+    ],
+    "default": {
+      "settings": {},
+      "blocks": [
+        {
+          "type": "menu",
+          "settings": {}
+        },
+        {
+          "type": "logo_social",
+          "settings": {}
+        }
+      ]
+    }
+  }
+{% endschema %}

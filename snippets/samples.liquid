@@ -1,0 +1,54 @@
+{% assign sample_metafield = product.metafields.soundstrue.sample %}
+{% assign sample_media_image = 'default-media-image.jpg' | asset_url %}
+{% if sample_metafield %} 
+<div class="pdp-content-details product-samples">
+    <h2 class="pdp-meta-title">
+        {% if template contains 'online_course' or template contains 'events' %}
+            INTRODUCTION
+        {% else %}
+            SAMPLES
+        {% endif %}
+    </h2>
+
+    <div class="product-single__description rte">
+        <div id="pdp-samples-media">
+            {% if sample_metafield != blank%}
+                {% assign sample_array = sample_metafield | split: "||" %}
+                {% for sample_object in sample_array %}
+                    {% assign individualSample = sample_object | split: ";" %}
+                    {% assign sample_name = individualSample[0] %}
+                    {% assign sample_link = individualSample[1] %}
+
+                    {% unless sample_link contains 'pdf' %}
+                        <script type="text/JavaScript">
+                            jwplayer("pdp-samples-media").setup({
+                                title: "{{ sample_name }}",
+                                file: "{{ sample_link }}",
+                                image: "{{ sample_media_image }}"
+                            });
+                        </script>
+                        {% break %}
+                    {% endunless %}
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="pdp-samples">
+            {% if sample_metafield != blank%}
+                {% assign sample_array = sample_metafield | split: "||" %}
+                {% for sample_object in sample_array %}
+                    {% assign individualSample = sample_object | split: ";" %}
+                    {% assign sample_name = individualSample[0] %}
+                    {% assign sample_link = individualSample[1] %}
+
+                    {% unless sample_link contains 'pdf' %}
+                        <a class="sample-media" onclick="jwplayer('pdp-samples-media').setup({title: '{{ sample_name }}', file: '{{ sample_link }}', image: '{{ sample_media_image }}', autostart: 'viewable'});">{{ sample_name }}</a>
+                    {% else %}
+                        <a class="sample-media" href="{{ sample_link }}" target="_blank">{{ sample_name }}</a>
+                    {% endunless %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endif %}

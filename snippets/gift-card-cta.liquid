@@ -1,0 +1,71 @@
+<style>
+
+.skt-gc-card 
+  {
+  /*
+  height:90vh !important;
+  border:3px solid #ccc;
+  margin-bottom:100px !important;
+  */
+  padding-bottom:100px !important;
+  height:calc(100% + 200px) !important;
+}
+  #skt-gc-template-content {
+    position:relative;
+    border:3px solid black;
+  }
+  .gift-card-cta {
+    padding:12px 24px;
+    color: #fff; 
+    background-color: #5b6770; 
+    border: 3px solid #5b6770;
+    font-family:"Montserrat", Verdana, Arial, sans-serif;
+    text-transform:uppercase;
+    font-size:18px;
+    border-radius:2px;
+    text-align:center;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-25%, -50%);
+    transition: all 0.5s ease;
+  }
+  .gift-card-cta:hover {
+    color:#5b6770;
+    background:#fff;
+  }
+  @media screen and (max-width:1023px) {
+    .gift-card-cta {
+      left: 40%;
+      transform: translate(-40%, -50%);
+      width:200px;
+    }   
+    .skt-gc-text {
+      position:relative;
+    }
+  }
+  @media screen and (max-width:767px) {
+    .gift-card-cta {
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width:200px;
+    }   
+    .skt-gc-text {
+      position:relative;
+    }
+  }
+
+</style>
+
+<script>
+  $(document).ready(function() {
+    $('body').on('click','.skt-gc-open-info, .skt-gc-book-next',function() {
+      console.log('clicked');
+    });
+    //setTimeout(function() {
+    //  $('.skt-gc-text').html('...');
+    //},3000);
+    //$('.skt-gc-text').append('');
+  });
+<script>
+    

@@ -1,0 +1,31 @@
+{{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' | script_tag }}
+{{ 'jquery.products.min.js' | asset_url | script_tag }}
+
+<div id="recently-viewed-products" class="collection nextopia-widget clearfix" style="display:none">
+    <div class="widget-title">Recently Viewed Products</div>
+</div>
+
+{% raw %}
+<script id="recently-viewed-product-template" type="text/x-jquery-tmpl">
+    <div id="product-${handle}" class="item">
+        <div class="product-card">
+            <div class="product-card-image-wrapper">
+                <a href="${url}" class="product-image">
+                    <img class="grid-view-item__image lazyautosizes lazyloaded" alt="${title}" src="${Shopify.Products.resizeImage(featured_image, "medium")}" sizes="68px">
+                </a>
+            </div>
+            <div class="product-card-content-wrapper">
+                <div class="title-author-block">
+                    <div class="h4 grid-view-item__title product-card__title">
+                        <a href="${url}">${title}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+{% endraw %}
+
+<script>
+    Shopify.Products.showRecentlyViewed( { howManyToShow: 5 } );
+</script>

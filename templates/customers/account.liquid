@@ -1,0 +1,108 @@
+<div class="page-width">
+
+  
+<style>
+img.account-library {float:left; padding-right:5px; width:30px;}
+a.digital-account-link  {color:#0652af}
+a.digital-account-link:hover  {text-decoration:none;}
+.section-header.text-left.digital {padding:0px;}
+  .customers-account .section-header a:hover {text-decoration:none;}
+</style>
+  
+  
+  <div class="section-header text-center">
+    <h1>{{ 'customer.account.title' | t }}</h1>
+    {{ 'layout.customer.log_out' | t | customer_logout_link }}
+  </div>
+
+  
+  
+  
+{% comment %}   
+<div class="section-content text-left" >
+<div class="grid myaccount">
+<!-- Access Digital Library -->    
+<div class="grid__item myaccount__contact-info">
+<h2>Access Your Digital Products</h2>
+<div class="section-header text-left digital">
+  
+  
+<p id="rc_link_container">
+<a href="https://digitallibrary.soundstrue.com/login">
+<img class="account-library" src="//cdn.shopify.com/s/files/1/0253/2822/2307/t/71/assets/library_small.png?v=14068478942144347878">
+My Library
+</a>
+</p>
+</div>
+</div>
+      
+      <div class="grid__item myaccount__contact-info">
+        <h2>{{ 'customer.account.contact_info' | t }}</h2>
+        <p class="customer-name">{{ customer.name }}</p>
+        <p class="customer-email">{{ customer.email }}</p>
+      </div>
+      {% if is_subscription_customer %}
+      <div class="grid__item myaccount__contact-info">
+        <h2>Payment Plan</h2>
+        <!-- Begin ReCharge code -->
+        <p id="rc_link_container">
+            <a href="/tools/recurring/login">Manage Payment Plan</a>
+        </p>
+        <!-- End ReCharge code -->
+      </div>
+    {% endif %}
+      <div class="grid__item myaccount__address-book">
+        <h2>{{ 'customer.account.address_book' | t }}</h2>
+        {{ customer.default_address | format_address }}
+        <p><a href="/account/addresses" class="btn btn--small view-addresses-btn">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+      </div>
+      
+      <div class="grid__item myaccount__order-history">
+        <h2>{{ 'customer.orders.title' | t }}</h2>
+  
+        {% paginate customer.orders by 20 %}
+          {% if customer.orders.size != 0 %}
+  
+            <table class="responsive-table">
+              <thead>
+                <tr>
+                  <th scope="col">{{ 'customer.orders.order_number' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.date' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.payment_status' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.total' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.action' | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in customer.orders %}
+                  <tr>
+                    <td data-label="{{ 'customer.orders.order_number' | t }}" scope="row">{{ order.name }}</td>
+                    <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: "%m/%d/%Y" }}</td>
+                    <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                    <td data-label="{{ 'customer.orders.action' | t }}">
+                      <a href="{{ order.customer_url }}" class="view-order-link" aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}">{{ 'customer.orders.view_order' | t }}</a>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+  
+          {% else %}
+  
+            <p>{{ 'customer.orders.none' | t }}</p>
+  
+          {% endif %}
+          {% if paginate.pages > 1 %}
+            {% include 'pagination' %}
+          {% endif %}
+        {% endpaginate %}
+      </div>
+    </div>
+  </div>
+  {% endcomment %}
+{% section 'account' %}
+  <div class="section-footer text-center"></div>
+</div>

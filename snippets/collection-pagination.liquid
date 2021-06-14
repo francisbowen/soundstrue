@@ -1,0 +1,38 @@
+<div class="pages">
+    <label class="pages-label" for="pages">Page:</label>
+
+    <ul class="list--inline page-list">
+        {% unless paginate.previous.is_link %}
+            <li aria-hidden="true">
+                <button class="btn-page-navigation btn-previous btn btn--tertiary btn--narrow" disabled>
+                <span class="icon__fallback-text">{{ 'general.pagination.previous' | t }}</span>
+                </button>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ paginate.previous.url }}" class="btn-page-navigation btn-previous btn btn--tertiary btn--narrow">
+                <span class="icon__fallback-text">{{ 'general.pagination.previous' | t }}</span>
+                </a>
+            </li>
+        {% endunless %}
+
+        <li class="pagination__text">
+            {{ paginate.current_page }}
+        </li>
+
+        {% unless paginate.next.is_link %}
+            <li aria-hidden="true">
+                <button class="btn-next btn btn--tertiary btn--narrow" disabled>
+                <span class="icon__fallback-text">{{ 'general.pagination.next' | t }}</span>
+                </button>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ paginate.next.url }}" class="btn-next btn btn--tertiary btn--narrow">
+                <span class="icon__fallback-text">{{ 'general.pagination.next' | t }}</span>
+                </a>
+            </li>
+        {% endunless %}
+    </ul>    
+</div>
+      

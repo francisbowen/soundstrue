@@ -1,0 +1,157 @@
+<script>
+
+  var freeGiftCardsEnabled = {% if section.settings.enable %}true{% else %}false{% endif %};
+  function updateCartWithGiftCardAmount() {
+    $.getJSON('/cart.js', function (cartJson) {
+      console.log(JSON.stringify(cartJson));
+      var totalPrice = (cartJson.total_price / 100);
+      console.log('totalPrice: '+totalPrice);
+      var freeGiftCardPropertyString = 'Free Gift Card Promo';
+      var giftCardDeals =  [];
+
+      {%- assign gift_card_product = all_products[section.settings.gift_card_product] -%}
+      {%- for block in section.blocks -%}
+        {%- for variant in gift_card_product.variants -%}
+          {%- assign variant_price = variant.price | divided_by: 100 -%}
+          {%- assign gift_card_amount = block.settings.gift_card_amount | times: 1 -%}
+          {%- if variant_price == gift_card_amount -%}
+      giftCardDeals.push({"threshold":{{ block.settings.cart_threshold }},"variant":{{ variant.id }}});
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endfor -%}
+
+      var i;
+      var maxFound = 0;
+      var variantToAdd = 0;
+      for (i = 0; i < giftCardDeals.length; i++) {
+        console.log('giftCardDeals[i].threshold: '+giftCardDeals[i].threshold);
+        if(
+          totalPrice >= giftCardDeals[i].threshold  
+          &&
+          totalPrice > maxFound
+        ) {
+          maxFound = giftCardDeals[i].threshold;
+          variantToAdd = giftCardDeals[i].variant;
+          console.log('maxFound1: '+maxFound+' -> add: '+variantToAdd);
+        }
+      } 
+      var properVariantInCart = false;
+      var properVariantCartKey = '';
+      var cartKeyToRemove = '';
+      var i;
+      var removeData = {};
+      variantInCart = 0;
+      for (i = 0; i < cartJson.items.length; i++) {
+        var variantSplit = cartJson.items[i].key.split(':');
+        var itemPropString = JSON.stringify(cartJson.items[i].properties);
+        console.log('variant in cart: '+variantSplit[0]);
+        console.log('itemPropString: '+itemPropString);
+        if(variantSplit[0] == variantToAdd && itemPropString.includes(freeGiftCardPropertyString)) {
+          properVariantInCart = true;
+          properVariantCartKey = cartJson.items[i].key;
+        } else if (cartJson.items[i].product_type == 'Gift Card' && itemPropString.includes(freeGiftCardPropertyString)) {
+          cartKeyToRemove = cartJson.items[i].key;
+        }
+      }
+      console.log('properVariantInCart: '+properVariantInCart);
+      if(properVariantInCart) {
+        return;
+      } else {
+        //if variant to remove
+        if(!properVariantInCart && cartKeyToRemove.length > 5) {
+          console.log('remove '+ cartKeyToRemove);
+          removeData[cartKeyToRemove] = 0;
+          $.ajax({
+               type: 'POST',
+               url: '/cart/update.js',
+               data: {
+                 updates:removeData
+               },
+               dataType: 'json',
+               async:false,  // Be warned, async:false has been deprecated in jQuery for a long time and is not recommended for use. It's generally recommended to use callbacks or promises instead
+
+             });        
+        }
+        if(!properVariantInCart && variantToAdd > 5) {
+          addItems = [];
+          var item = {
+              quantity: 1,
+              id: variantToAdd,
+              properties: {
+                '_cart_promo': freeGiftCardPropertyString
+              }
+            }
+          addItems.push(item);
+          console.log('add '+ variantToAdd + ' item: '+JSON.stringify(addItems));
+          jQuery.post('/cart/add.js', {items: addItems}, "json").always(function(data) {
+            console.log('updateCartWithGiftCardAmount: '+JSON.stringify(data));
+          }); 
+        }      
+        //if variant to add
+      }
+    });
+  } //eof
+  {% if section.settings.enable %}
+  $(document).ready(function() {
+    $('form.cart .cart__submit').one('click', function(e) {
+      console.log('updateCartWithGiftCardAmount here');
+      e.preventDefault();
+      updateCartWithGiftCardAmount();
+      setTimeout(function() {
+        window.location.href = '/checkout';
+      },1000);
+        
+    });
+  });
+  {% endif %}
+</script>
+{% schema %}
+  {
+    "name": "Gift Card With Purchase",
+    "settings": [
+	  {
+        "id":"enable",
+        "label":"Enable?",
+        "default":false,
+        "type":"checkbox"
+      },
+	  {
+        "id":"gift_card_product",
+        "label":"Gift Card Product",
+        "type":"product"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "amount",
+        "name": "Gift Card Amount",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "info": "Displayed as message in cart"
+          },
+          {
+            "type": "number",
+            "id": "cart_threshold",
+            "label": "Cart Threshold",
+            "info": "Cart Subtotal above this will get the gift card"
+          },
+          {
+            "type": "number",
+            "id": "gift_card_amount",
+            "label": "Gift Card Amount",
+            "info":"Note: This amount must have a correspondingly priced variant in the above selected Gift Card Product"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,246 @@
+<div class="custom-feature-columns {{ section.settings.class_list }}" {% if section.settings.bg_image %} style="background-image: url('{{ section.settings.bg_image | img_url: '2048x' }}'); background-position: {{ section.settings.bg_alignment }}; background-repeat: no-repeat; background-size: cover;" {% endif %}>
+    {% if section.settings.title != blank %}
+    <div class="section-header text-center">
+        <h2 style="color: {{ section.settings.heading_color }};">{{ section.settings.title | escape }}</h2>
+    </div>
+    {% endif %}
+
+    <div class="grid">
+    {%- assign grid_item_width = 'medium-up--one-third' -%}
+    {%- assign max_height = 345 -%}
+    {% case section.blocks.size %}
+        {% when 1 %}
+        {%- assign grid_item_width = 'medium-up--one-half' -%}
+        {%- assign max_height = 530 -%}
+        {% when 2 %}
+        {%- assign grid_item_width = 'medium-up--one-half' -%}
+        {%- assign max_height = 530 -%}
+        {% when 4 %}
+        {%- assign grid_item_width = 'medium-up--one-half' -%}
+        {%- assign max_height = 530 -%}
+    {% endcase %}
+      {% for block in section.blocks %}
+      {% if section.blocks.size == 5 and forloop.index < 3 %}
+        {%- assign column_width = 'medium-up--one-half' -%}
+        {%- assign max_height = 530 -%}
+      {% else %}
+        {%- assign column_width = grid_item_width -%}
+      {% endif %}
+        <div class="grid__item {{ column_width }} text-{{ block.settings.align_text }} {% if section.settings.show_margin %} show-margin {% endif %} {% if block.settings.block_bg_image %} block-bg-image {% endif %}" {% if block.settings.block_bg_image %} 
+             style="background-image: url('{{ block.settings.block_bg_image | img_url: '2048x' }}'); background-position: {{ section.settings.bg_alignment }}; background-repeat: no-repeat; background-size: cover;" {% endif %} {{ block.shopify_attributes }}>
+          {% if block.settings.enable_icon_image %}
+            {% if block.settings.icon_image != blank %}
+              <div class="feature-row__image-wrapper">
+                <img class="lazyload"
+                     src="{{ block.settings.icon_image | img_url: '100x100' }}"
+                     alt="{{ block.settings.icon_image.alt | escape }}">
+          	  </div>
+            {% endif %}
+          {% endif %}
+          {% if block.settings.title != blank %}
+            <h3 class="h4 heading" style="color: {{ block.settings.title_color }};">{{ block.settings.title }}</h3>
+          {% endif %}
+          {% if block.settings.subtitle != blank %}
+            <div class="rte-setting" style="color: {{ block.settings.subtitle_color }};">{{ block.settings.subtitle }}</div>
+          {% endif %}
+          {% if block.settings.button_label != blank %}
+            <a href="{% if block.settings.button_link %}{{ block.settings.button_link }}{% else %}#{% endif %}" 
+               class="btn btn--primary" 
+               style="color: {{ block.settings.button_color }};">
+                {{ block.settings.button_label | escape }}
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  
+    {% if section.blocks.size == 0 %}
+      {% include 'no-blocks' %}
+    {% endif %}
+</div>
+
+{% schema %}
+{
+    "name": "Custom feature columns",
+    "class": "index-section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "bg_image",
+            "label": "Background Image for the Section"
+        },
+        {
+            "type": "select",
+            "id": "bg_alignment",
+            "label": "Background image position",
+            "default": "center center",
+            "options": [
+                {
+                    "label": "Top left",
+                    "value": "left top"
+                },
+                {
+                    "label": "Top center",
+                    "value": "center top"
+                },
+                {
+                    "label": "Top right",
+                    "value": "right top"
+                },
+                {
+                    "label": "Middle left",
+                    "value": "left center"
+                },
+                {
+                    "label": "Middle center",
+                    "value": "center center"
+                },
+                {
+                    "label": "Middle right",
+                    "value": "right center"
+                },
+                {
+                    "label": "Bottom left",
+                    "value": "left bottom"
+                },
+                {
+                    "label": "Bottom center",
+                    "value": "center bottom"
+                },
+                {
+                    "label": "Bottom right",
+                    "value": "right bottom"
+                }
+            ]
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Custom feature columns"
+        },
+        {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading Color",
+            "default": "#fff"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_margin",
+            "label": "Show margin between the blocks",
+            "default": false
+        },
+        {
+            "type": "text",
+            "id": "class_list",
+            "label": "Space separated classes"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "feature_column",
+            "name": "Column",
+            "settings": [
+            {
+                "type": "checkbox",
+                "id": "enable_icon_image",
+                "label": "Show image",
+                "default": true
+            },
+            {
+                "type": "image_picker",
+                "id": "block_bg_image",
+                "label": "Background Image of a block"
+            },
+            {
+                "type": "image_picker",
+                "id": "icon_image",
+                "label": "Icon Image of a block"
+            },
+            {
+                "type": "select",
+                "id": "align_text",
+                "label": "Text alignment",
+                "default": "center",
+                "options": [
+                    {
+                        "label": "Left",
+                        "value": "left"
+                    },
+                    {
+                        "label": "Center",
+                        "value": "center"
+                    },
+                    {
+                        "label": "Right",
+                        "value": "right"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Heading"
+            },
+            {
+                "type": "color",
+                "id": "title_color",
+                "label": "Title Color",
+                "default": "#fff"
+            },
+            {
+                "type": "text",
+                "id": "subtitle",
+                "label": "Subtitle"
+            },
+            {
+                "type": "color",
+                "id": "text_color",
+                "label": "Text Color",
+                "default": "#fff"
+            },
+            {
+                "type": "text",
+                "id": "button_label",
+                "label": "Button label"
+            },
+            {
+                "type": "color",
+                "id": "button_color",
+                "label": "Button Color",
+                "default": "#fff"
+            },
+            {
+                "type": "url",
+                "id": "button_link",
+                "label": "Button link"
+            }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Custom feature columns",
+            "category": "Text",
+            "blocks": [
+                {
+                    "type": "feature_column"
+                },
+                {
+                    "type": "feature_column"
+                },
+                {
+                    "type": "feature_column"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

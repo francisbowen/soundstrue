@@ -1,0 +1,247 @@
+.cart-template {
+    .empty-page-content {
+        .cart__continue-btn {
+            background-color: #0652af;
+        }
+    }
+
+    .cart-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+
+        .cart-header__title {
+            margin: 0;
+            font-size: 20px;
+
+            @media only screen and (min-width: 480px) {
+                font-size: 24px;
+            }
+        }
+        #siteseal {
+            display: block;
+        }
+    }
+
+    form.cart {
+        .cart__submit-controls {
+            .cart__submit {
+                background-color: #c74d10;
+                width: 100%;
+
+                @media only screen and (min-width: 640px) {
+                    width: 60%;
+                }
+                @media only screen and (min-width: 992px) {
+                    width: auto;
+                }
+            }
+        }
+
+        .cart__table {
+            margin: 0;
+
+            th {
+                text-transform: uppercase;
+            }
+
+            th:last-child {
+                padding-right: 40px;
+            }
+            td:last-child {
+                .total-price {
+                    float: left;
+                    width: 70%;
+                }
+                .cart__remove {
+                    float: left;
+                    width: 20%;
+                    margin-left: 10px;
+                    background-image :url({{ 'sprites.png' | asset_url }});
+                    background-position: -270px -7px;
+                    background-size: auto;
+                    border: none;
+                    vertical-align: top;
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    text-align: center;
+                    font: 0/0 a;
+                    text-shadow: none;
+                    color: transparent;
+                    position: relative;
+                    background-repeat: no-repeat;
+                    text-indent: -9999px;
+                    transition: none;
+                }
+            }
+
+            .list-view-item__title .cart__product-title,
+            .product-author a.author-link {
+                color: #0652af;
+                margin-bottom: 10px;
+                border: none;
+                font-size: 16px;
+                font-weight: 400;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            .product-author {
+                a.author-link {
+                    &:last-child {
+                        .comma {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            .cart__remove, 
+            .cart__update-control--remove {
+                margin: 0;
+                text-decoration: none;
+                border: 0;
+            }
+
+            .btn--small, 
+            .cart__update-controls .cart__qty-input {
+                height: 30px;
+            }
+            .cart__update-controls {
+                .qty-label--small {
+                    display: block;
+
+                    @media only screen and (min-width: 480px) {
+                        display: none;
+                    }
+                }
+                .qty-label--large {
+                    display: none;
+
+                    @media only screen and (min-width: 480px) {
+                        display: block;
+                    }
+                }
+                .cart__update-btn {
+                    background-color: #0652af;
+                }
+            }
+        }
+
+        .cart-footer-actions {
+            padding: 10px;
+            border-bottom: 1px solid #e8e9eb;
+            display: flex;
+            justify-content: space-between;
+
+            .text-link {
+                color: #0652af;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-size: 14px;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .cart__footer {
+        .grid__item {
+            padding: 10px;
+            background-color: #F4F4F4;
+            border: 1px solid #CCCCCC;
+
+            .cart__shipping {
+                color: #676F79;
+                text-align: center;
+
+                @media only screen and (min-width: 992px) {
+                    text-align: right;
+                }
+
+                a {
+                    color: #0652af;
+                    text-decoration: none;
+                    border-bottom: 1px solid #0652af;
+                }
+            }
+
+            .cart__submit-controls {
+                .cart__update-btn {
+                    color: #fff;
+                    background-color: #0652af;
+                }
+            }
+        }
+    }
+
+    #shipping-calculator {
+        padding: 10px;
+        background-color: #f4f4f4;
+        border: 1px solid #cccccc;
+
+        .shipping-calculator-heading {
+            font-size: 14px;
+            color: #2e3b44;
+        }
+
+        .shipping-form-wrapper {
+            margin-bottom: 20px;
+
+            @media only screen and (min-width: 992px) {
+                margin-bottom: 0;
+                flex-wrap: nowrap;
+            }
+
+            .field {
+                @media only screen and (min-width: 992px) {
+                    min-width: 150px;
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1;
+                }
+
+                label {
+                    font-size: 13px;
+                    color: #2e3b44;
+                    text-transform: uppercase;
+                }
+            }
+
+            .get-rates {
+                background-color: #0652af;
+                height: 41px;
+            }
+        }
+
+        #shipping-rates-feedback {
+            color: #2e3b44;
+            text-align: center;
+
+            @media only screen and (min-width: 992px) {
+                text-align: left;
+            }
+        }
+    }    
+
+    .flx-rev {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .agree-terms {
+        margin-bottom: 15px;
+        font-size: .9rem;
+
+        a.terms-and-conditions {
+            color: #0652af;
+            text-decoration: none;
+            border-bottom: 1px solid #0652af;
+        }
+    }
+}

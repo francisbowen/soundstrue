@@ -1,0 +1,54 @@
+<div class="pdp-content-details product-details">
+    <h2 class="pdp-meta-title">DETAILS</h2>
+    
+    <div class="product-single__description rte">
+        {% for variant in product.variants %}
+            <h3 class="product-variant-title">{{ variant.title }}</h3>
+            <table class="grouped-minutia">
+                <tbody>
+                    {% if variant.metafields.soundstrue.component-description != blank %}
+                        <tr>
+                            <th>Contents</th>
+                            <td>{{ variant.metafields.soundstrue.component-description }}</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if variant.metafields.soundstrue.downloadable-file-extensions != blank %}
+                        <tr>
+                            <th>Filetypes</th>
+                            <td>{{ variant.metafields.soundstrue.downloadable-file-extensions }}</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if product.metafields.soundstrue.publication-date != blank %}
+                        <tr>
+                            <th>Date Published</th>
+                            <td>{{ product.metafields.soundstrue.publication-date | date: format: 'date' }}</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if variant.metafields.soundstrue.dimensions != blank %}
+                        <tr>
+                            <th>Dimensions</th>
+                            <td>{{ variant.metafields.soundstrue.dimensions }}</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if variant.sku != blank %}
+                        <tr>
+                            <th>Product Code</th>
+                            <td>{{ variant.sku }}</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if variant.barcode != blank %}
+                        <tr>
+                            <th>ISBN Number</th>
+                            <td>{{ variant.barcode }}</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="gaurantee-popup-inner">
+    <button type="button" class="close-btn">Close</button>
+    
+    <div class="gaurantee-popup-main">
+        {% if section.settings.gaurantee_popup_title != blank %}
+            <h2 class="gaurantee-popup-title">{{ section.settings.gaurantee_popup_title }}</h2>
+        {% endif %}
+
+        {% if section.settings.gaurantee_popup_content != blank %}
+            <div class="gaurantee-popup-content">
+                {{ section.settings.gaurantee_popup_content }}
+            </div>
+        {% endif %}
+    </div>
+</div>

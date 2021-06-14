@@ -1,0 +1,28 @@
+{% if linklists[block.settings.menu].links.size > 0 %}
+  {% if block.settings.show_footer_title %}
+    <p class="h4 footer__title">
+      {{ linklists[block.settings.menu].title }}
+    </p>
+  {% endif %}
+    <ul class="no-bullets site-footer__linklist">
+      {% if block.settings.show_custom_link %}
+        <li><a onclick="Smooch.open();">Chat With Us!</a></li>
+      {% endif %}
+      {% for link in linklists[block.settings.menu].links %}
+
+        {% if customer %}
+          {% assign link_title = link.title | downcase %}
+          {% if link_title == 'login' %}
+            <li><a href="/account">Account Info</a></li>
+          {% elsif link_title == 'register' %}
+            <li><a href="/account/logout">Log Out</a></li>
+          {% else %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endif %}
+        {% else %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endif %}
+
+      {% endfor %}
+    </ul>
+{% endif %}

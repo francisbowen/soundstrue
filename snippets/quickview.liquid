@@ -1,0 +1,96 @@
+<div class="quickview-wrapper">
+    {% capture img_id %}ProductCardImage-{{ section.id }}-{{ product.id }}{% endcapture %}
+    {% capture wrapper_id %}ProductCardImageWrapper-{{ section.id }}-{{ product.id }}{% endcapture %}
+    {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+    
+    {% unless product.featured_image == blank %}
+        {% include 'image-style' with image: product.featured_image, width: max_height, height: max_height, small_style: true, wrapper_id: wrapper_id, img_id: img_id %}
+    {% endunless %}
+
+    <div class="quickview-header">
+        <button class="quickview-close-btn" aria-label="Close">x</button>
+    </div>
+
+    <div class="quickview-content">
+        <div class="quickview-top">
+            <a class="product-image-link" href="{{ product.url | within: collection }}">
+                {% include 'product-badge' %}
+                <div class="product-card__image-with-placeholder-wrapper" data-image-with-placeholder-wrapper>
+                    <div id="{{ wrapper_id }}" class="grid-view-item__image-wrapper product-card__image-wrapper js">
+                        <div class="product-card__image-inner">
+                            <img id="{{ img_id }}"
+                                class="grid-view-item__image lazyload"
+                                alt="{{ product.featured_image.alt }}"
+                                data-src="{{ img_url }}"
+                                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                                data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                                data-sizes="auto"
+                                data-image>
+                        </div>
+                    </div>
+                    <div class="placeholder-background placeholder-background--animation" data-image-placeholder></div>
+                </div>
+            </a>
+            <noscript>
+                {% capture image_size %}{{ max_height }}x{{ max_height }}{% endcapture %}
+                <img class="grid-view-item__image" src="{{ product.featured_image.src | img_url: image_size }}" alt="{{ product.featured_image.alt }}" style="max-width: {{ max_height | times: product.featured_image.aspect_ratio }}px;">
+            </noscript>
+
+            <div class="h4 grid-view-item__title product-card__title" aria-hidden="true">
+                <a class="product-link" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+            </div>
+            {% assign author_name_metafield = product.metafields.soundstrue.author %}
+            {% assign author_link_metafield = product.metafields.soundstrue.author-link %}
+            {% assign author_array = author_name_metafield | split: "," %}
+
+            <div class="h6 grid-view-item__title product-author">
+                {% for a_name in author_array %}
+                    {% assign author_name = a_name | strip %}
+                    {% if author_name contains 'Various' %}
+                        <a class="product-author-link no-link">{{ author_name }}<span class="comma">, </span></a>
+                    {% else %}
+                        <a class="product-author-link" href="/blogs/authors/{{ author_name | handleize }}">{{ author_name }}<span class="comma">, </span></a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% if product.description != blank %}
+                <div class="h4 product-description">
+                    <p class="product-short-description">{{ product.description | strip_html | truncatewords: 10 }}</p>
+                    <a class="read-more-link" href="{{ product.url | within: collection }}">read more</a>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="quickview-bottom">
+        {% if product.metafields.global.hasQuickview != 'false' %}
+            {% for option in product.options_with_values %}
+                {% for variant in product.variants %}
+                    {% assign variant_visibility_metafild = variant.metafields.soundstrue.variant-visibility | downcase %}
+                    {%if variant_visibility_metafild != 'false' %}
+                        <div class="quickview-bottom-inner">
+                            <div class="quickview-product-option">
+                                <div class="format">{{ variant.title }}</div>
+                                <div class="format-price">{% include 'product-price', variant: variant %}</div>
+                            </div>
+                            <div class="quickview-addtocart-btn-wrapper">
+                                <form method="post" action="/cart/add" data-requires-shipping="{{ variant.requires_shipping }}">
+                                    <input type="hidden" name="id" value="{{ variant.id }}" />
+                                    <input type="submit" 
+                                        data-requires-shipping="{{ variant.requires_shipping }}" 
+                                        {% if variant.requires_shipping == false and digital_items_in_cart contains variant.id %} disabled="disabled" {% endif %}
+                                        value="{% unless variant.available %}{{ 'products.product.sold_out' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endunless %}"
+                                        class="btn  product-form__cart-submit" />
+                                </form> 
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        {% else %}
+            <div class="quickview-bottom-inner more-info">
+                <a class="btn" href="{{ product.url | within: collection }}" aria-label="More Info">More Info</a>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+</div>

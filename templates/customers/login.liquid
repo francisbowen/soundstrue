@@ -1,0 +1,205 @@
+<div class="page-width">
+  <div class="grid">
+
+    <div class="grid__item medium-up--one-half medium-up--push-one-quarter">
+      <div class="form-message form-message--success hide" id="ResetSuccess" tabindex="-1">
+        {{ 'customer.recover_password.success' | t }}
+      </div>
+
+      <div class="login-to-checkout">{{ 'customer.login.checkout_guest_user_copy_above_login' | t }}</div>
+
+      <h1 id="LoginHeading" class="text-center">{{ 'customer.login.title' | t }}</h1>
+
+      <div id="reset-success" class="text-center hide">
+        <h2 id="RecoverHeading">Your password has been reset</h2>
+        <p>Please login to continue.</p>
+      </div>
+
+      <div class="form-message form-message--error hide" tabindex="0">
+        <h2 class="h3 form-message__title hide">Please adjust the following:</h2>
+        <ul aria-live="polite"></ul>
+      </div>
+
+      <div id="CustomerLoginForm" class="form-vertical">
+        <form method="post" action="/account/login" id="customer_login" accept-charset="UTF-8" novalidate="novalidate">
+          <input type="hidden" name="form_type" value="customer_login" />
+          <input type="hidden" name="utf8" value="✓" />
+
+          <div class="indicate"><span class="mark">*</span> Indicates required field</div>
+          
+          <div class="field required">
+            <label for="CustomerEmail">Email<span aria-label="required field"></span></label>
+            <input
+              type="email"
+              name="customer[email]"
+              id="CustomerEmail"
+              autocomplete="email"
+              autocorrect="off"
+              autocapitalize="off">
+            </div>
+
+            <div class="field required">
+              <label for="CustomerPassword">Password<span aria-label="required field"></span></label>
+              <div class="faux-input">
+              <input
+                type="password"
+                value=""
+                name="customer[password]"
+                id="CustomerPassword">
+              <div class="mask-toggle">show</div>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <p>
+                <a href="#recover" id="RecoverPassword">Forgot your password?</a>
+              </p>
+              
+              <input type="submit" class="login_btn btn" value="Login">
+
+              <p>
+                <a href="/account/register" id="customer_register_link">Create account</a>
+              </p>
+            </div>
+
+            <input type="hidden" name="return_url" value="/account" />
+          </form>
+        </div>
+
+        <div id="RecoverPasswordForm" class="hide">
+          <div class="text-center">
+            <div class="reset-instructions">
+              <p>We will send you an email to reset your password.</p>
+              <p>Depending on your email provider, it could take a few hours to receive your verification code.</p>
+            </div>
+          </div>
+
+          <div class="form-vertical">
+            <form method="post" action="/account/recover" id="reset_password" accept-charset="UTF-8">
+              <input type="hidden" name="form_type" value="recover_customer_password" />
+              <input type="hidden" name="utf8" value="✓" />
+
+              <div class="indicate"><span class="mark">*</span> Indicates required field</div>
+
+              <div class="field required">
+                <label for="RecoverEmail">Email<span aria-label="required field"></span></label>
+                <input
+                  type="email"
+                  value=""
+                  name="email"
+                  id="RecoverEmail"
+                  class="input-full"
+                  autocorrect="off"
+                  autocapitalize="off">
+              </div>
+
+              <div class="text-center">
+                <p>
+                  <input type="submit" class="login_btn btn" value="Submit">
+                </p>
+
+                <a href="#LoginHeading" id="HideRecoverPasswordLink">Cancel</a>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div id="new-password-form" class="hide">
+          <div class="text-center">
+            <div class="reset-instructions">
+              <p>Check your email for a verification code.</p>
+            </div>
+          </div>
+
+          <div class="form-vertical">
+            <form method="post" action="/account/recover" id="new_password" accept-charset="UTF-8">
+
+              <div class="indicate"><span class="mark">*</span> Indicates required field</div>
+
+              <div class="field required">
+                <label for="new-password-code">Verification Code<span aria-label="required field"></span></label>
+                <input
+                  type="text"
+                  name="code"
+                  id="new-password-code"
+                  class="input-full"
+                  autocorrect="off"
+                  autocapitalize="off">
+              </div>
+
+              <div class="field required">
+                <label for="new-password-email">Email<span aria-label="required field"></span></label>
+                <input
+                  type="email"
+                  value=""
+                  name="new-password-email"
+                  id="new-password-email"
+                  class="input-full"
+                  autocorrect="off"
+                  autocapitalize="off">
+              </div>
+
+              <div class="field required">
+                <label for="new-password">Password<span aria-label="required field"></span></label>
+                <div class="faux-input">
+                  <input
+                    type="password"
+                    name="new-password"
+                    id="new-password"
+                    aria-required="true">
+                  <div class="mask-toggle">show</div>
+                </div>
+              </div>
+              <div class="password-details">
+                Password Requirements:
+                <ul>
+                  <li id="min-length">Eight or more characters</li>
+                  <li id="contains-upper">At least one uppercase letter</li>
+                  <li id="contains-lower">At least one lowercase letter</li>
+                  <li id="contains-number">At least one number</li>
+                  <li id="contains-special">
+                    At least one special character:
+                    <p>^ $ * . [ ] { } ( ) ? " ! @ # % & / \ , > < ' : ; | _ ~ ` </p>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="field required">
+                <label for="new-repassword">Re-enter Password<span aria-label="required field"></span></label>
+                <div class="faux-input">
+                  <input
+                    type="password"
+                    name="new-repassword"
+                    id="new-repassword"
+                    aria-required="true">
+                  <div class="mask-toggle">show</div>
+                </div>
+              </div>
+
+              <div class="text-center">
+                <p>
+                  <input type="submit" class="login_btn btn" value="Submit">
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      {% comment %}
+        If accounts are set as optional, the following will be shown as an option
+        during checkout, not on the default /login page.
+      {% endcomment %}
+      {% if shop.checkout.guest_login %}
+        <div class="text-center">
+          <hr class="hr--invisible">
+          <h2>{{ 'customer.login.guest_title' | t }}</h2>
+
+          {% form 'guest_login' %}
+            <input type="submit" class="btn" value="{{ 'customer.login.guest_continue' | t }}">
+          {% endform %}
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+</div>

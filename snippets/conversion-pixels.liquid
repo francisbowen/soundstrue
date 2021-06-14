@@ -1,0 +1,89 @@
+<script type="text/javascript" defer>
+  function CookiebotCallback_OnAccept()
+  {
+    if(Cookiebot.consent.statistics)
+    {
+      loadAW();
+      enableGoogleFBPixel();
+      enablePinTrk();
+      enableLinkedIn();
+    }
+  }
+</script>
+
+<!-- Facebook Pixel Code -->
+<script>
+  function enableGoogleFBPixel() {
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)}
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+     n.queue=[];t=b.createElement(e);t.async=!0;
+     t.src=v;s=b.getElementsByTagName(e)[0];
+     s.parentNode.insertBefore(t,s)}(window, document,'script',
+                                     'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('revoke', '435247933312684');
+    fbq('track', 'PageView');
+  }
+</script>
+<!-- End Facebook Pixel Code -->
+
+<!-- Google  Dynamic restatistics tag -->
+
+<script>
+  function loadAW(){
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://www.googletagmanager.com/gtag/js?id=AW-1071793748";
+    document.head.appendChild(script);
+  }
+</script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-1071793748', {'send_page_view': false});
+</script> 
+
+<!-- End Google Dynamic restatistics tag -->
+
+<!-- Pinterest Tag -->
+<script>
+  function enablePinTrk() {
+    !function(e){if(!window.pintrk){window.pintrk = function () {
+      window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+      n=window.pintrk;n.queue=[],n.version="3.0";var
+      t=document.createElement("script");t.async=!0,t.src=e;var
+      r=document.getElementsByTagName("script")[0];
+                                    r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+    pintrk('load', '2612465595606');
+    pintrk('page');
+  }     
+</script>
+<script>
+  function enableLinkedIn(){
+    _linkedin_partner_id = "1743812";
+    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+    window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    (function(){var s = document.getElementsByTagName("script")[0];
+                var b = document.createElement("script");
+                b.type = "text/javascript";b.async = true;
+                b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+                s.parentNode.insertBefore(b, s);})();
+  }
+</script>
+
+<!-- End Pinterest Tag --> 
+
+<!-- Pinterest ATC value tracking -->
+<script type="text/javascript">
+  function atcPin(){
+    pintrk('track', 'addtocart', {
+      value: '{{ current_variant.price | money_without_currency }}',
+      currency: '{{ shop.currency }}'
+    });
+    _tfa.push({notify: 'event', name: 'Add_To_Cart', revenue: '{{ current_variant.price | money_without_currency }}', currency: 'USD' });
+              }
+</script>
+

@@ -1,0 +1,27 @@
+<div class="pdp-content-details product-description">
+    <h2 class="pdp-meta-title">DESCRIPTION</h2>
+
+    <div class="product-single__description rte {% if product.type == 'Gift Card' %}giftcard-desc-block{% endif %}">
+        {% if product.type == 'Gift Card' %}
+            <div id="gc-desc">
+                {{ product.description }}
+            </div>
+            <div id="gc-preview-trigger">
+                <p>What does an eGift Card look like?</p>
+                <a href="#">Preview</a>
+            </div>
+        {% else %}
+            {{ product.description }}
+        {% endif %}
+    </div>
+</div>
+
+{% comment %} GC Preview Modal {% endcomment %}
+<div id="modal-container">
+    <div id="gc-modal">
+        <a href="#" class="close">&times;</a>
+        <div id="gc-modal__body">
+            <img src="https://cdn.shopify.com/s/files/1/0253/2822/2307/files/gift_card_preview.jpg?v=1582742940" alt="eGift Card Preview">
+        </div>
+    </div>
+</div>

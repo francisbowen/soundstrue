@@ -1,0 +1,200 @@
+{% case section.settings.grid %}
+{% when 2 %}
+{%- assign max_height = 530 -%}
+{% when 3 %}
+{%- assign max_height = 345 -%}
+{% when 4 %}
+{%- assign max_height = 250 -%}
+{% when 5 %}
+{%- assign max_height = 195 -%}
+{% endcase %}
+
+{% if section.settings.layout == 'grid' %}
+    {%- assign limit = section.settings.grid | times: section.settings.rows -%}
+{% else %}
+    {%- assign limit = 16 -%}
+{% endif %}
+
+<div class="rte">
+    <div class="section-header">
+    <h1 class="article__title">{{ article.title }}</h1>
+    {% if section.settings.blog_show_author %}
+      <span class="article__author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+    {% endif %}
+
+    {% if section.settings.blog_show_date %}
+      <span class="article__date">
+        {{ article.published_at | time_tag: format: 'date' }}
+      </span>
+    {% endif %}
+  </div>
+
+  {{ article.content }}
+</div>
+
+{% if section.settings.show_share_buttons %}
+  {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+{% endif %}
+
+{% assign collection_handle = article.handle | handleize %}
+{% assign collection = collections[collection_handle] %}
+{% include 'collection-grid' with collection: collection, max_height: max_height, limit: limit %}
+
+{% schema %}
+{
+  "name": {
+    "de": "Posts",
+    "en": "Posts",
+    "es": "Publicaciones",
+    "fr": "Articles",
+    "it": "Articoli",
+    "ja": "投稿",
+    "nl": "Berichten",
+    "pt-BR": "Posts",
+    "zh-CN": "文章",
+    "zh-TW": "貼文"
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "blog_show_author",
+      "label": {
+        "de": "Autor anzeigen",
+        "en": "Show author",
+        "es": "Mostrar autor",
+        "fr": "Afficher l'auteur",
+        "it": "Mostra autore",
+        "ja": "執筆者を表示する",
+        "nl": "Auteur weergeven",
+        "pt-BR": "Exibir autor(a)",
+        "zh-CN": "显示作者",
+        "zh-TW": "顯示作者"
+      },
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_date",
+      "label": {
+        "de": "Datum anzeigen",
+        "en": "Show date",
+        "es": "Mostrar fecha",
+        "fr": "Afficher la date",
+        "it": "Mostra data",
+        "ja": "日付を表示する",
+        "nl": "Datum weergeven",
+        "pt-BR": "Exibir data",
+        "zh-CN": "显示日期",
+        "zh-TW": "顯示日期"
+      },
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_share_buttons",
+      "label": {
+        "de": "Buttons für Social Media anzeigen",
+        "en": "Show social sharing buttons",
+        "es": "Mostrar botones para compartir en redes sociales",
+        "fr": "Afficher les boutons de partage sur les médias sociaux",
+        "it": "Mostra i pulsanti per la condivisione sui social",
+        "ja": "ソーシャル共有ボタンを表示する",
+        "nl": "Knoppen voor sociaal delen weergeven",
+        "pt-BR": "Exibir botões de compartilhamento em redes sociais",
+        "zh-CN": "显示社交分享按钮",
+        "zh-TW": "顯示社群分享按鈕"
+      },
+      "default": true
+    },
+  {
+      "type": "select",
+      "id": "layout",
+      "label": {
+        "de": "Layout",
+        "en": "Layout",
+        "es": "Diseño",
+        "fr": "Mise en page",
+        "it": "Layout",
+        "ja": "レイアウト",
+        "nl": "Indeling",
+        "pt-BR": "Layout",
+        "zh-CN": "布局",
+        "zh-TW": "版面配置"
+      },
+      "default": "grid",
+      "options": [
+        {
+          "value": "grid",
+          "label": {
+            "de": "Raster",
+            "en": "Grid",
+            "es": "Cuadrícula",
+            "fr": "Grille",
+            "it": "Griglia",
+            "ja": "グリッド",
+            "nl": "Raster",
+            "pt-BR": "Grade",
+            "zh-CN": "网格",
+            "zh-TW": "網格"
+          }
+        },
+        {
+          "value": "list",
+          "label": {
+            "de": "Liste",
+            "en": "List",
+            "es": "Lista",
+            "fr": "Liste",
+            "it": "Elenco",
+            "ja": "リスト",
+            "nl": "Lijst",
+            "pt-BR": "Lista",
+            "zh-CN": "列表",
+            "zh-TW": "清單"
+          }
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "grid",
+      "label": {
+        "de": "Produkte per Reihe (nur Raster)",
+        "en": "Products per row (grid only)",
+        "es": "Productos por fila (solo cuadrícula)",
+        "fr": "Produits par rangée (grille uniquement)",
+        "it": "Prodotti per riga (solo griglia)",
+        "ja": "行あたりの商品数（グリッドのみ）",
+        "nl": "Producten per rij (alleen raster)",
+        "pt-BR": "Produtos por linha (somente grade)",
+        "zh-CN": "每行产品数（仅限网格）",
+        "zh-TW": "每列產品數 (僅限網格)"
+      },
+      "default": 4,
+      "min": 2,
+      "max": 5,
+      "step": 1
+    },
+    {
+      "type": "range",
+      "id": "rows",
+      "label": {
+        "de": "Reihen per Seite (nur Raster)",
+        "en": "Rows per page (grid only)",
+        "es": "Filas por página (solo cuadrícula)",
+        "fr": "Rangées par page (grille uniquement)",
+        "it": "Righe per pagina (solo griglia)",
+        "ja": "ページあたりの行数（グリッドのみ）",
+        "nl": "Rijen per pagina (alleen raster)",
+        "pt-BR": "Linhas por página (somente grade)",
+        "zh-CN": "每行产品数（仅限网格）",
+        "zh-TW": "每頁列數 (僅限網格)"
+      },
+      "default": 2,
+      "min": 2,
+      "max": 8,
+      "step": 1
+    }
+  ]
+}
+{% endschema %}
