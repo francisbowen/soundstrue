@@ -441,7 +441,7 @@ var defaults={url:false,callback:false,target:false,duration:120,on:"mouseover",
 
         {% if settings.display_savings %}
           $.ajax({
-            dataType: "jsonp",
+            dataType: "json",
             async: false,
             cache: false,
             url: "/products/" + item.handle + ".js",
@@ -1099,118 +1099,150 @@ function parentFunc(message) {
 
 function refreshCartFromIframe(cart) {
   console.log('refreshCartFromIframe');
-  $(".cart_count").empty();
-  $cartBtn = $(".cart_count");
-  var value = $cartBtn.text() || '0';
-  var cart_items_html = "";
-  var cart_discounts_html = "";
-  var cart_action_html = "";
-  var cart_savings_html = "";
-  var $cart = $(".cart_content form");
-  var discounted_price_total = 0;
-  var total_savings = 0;
-  var total_items = 0;
-  var subtotal = 0;
+  //rewrite cart obj since it's not being fully passed from iframe
+  jQuery.getJSON('/cart.js', function(cart) {
+    $(".cart_count").empty();
+    $cartBtn = $(".cart_count");
+    var value = $cartBtn.text() || '0';
+    var cart_items_html = "";
+    var cart_discounts_html = "";
+    var cart_action_html = "";
+    var cart_savings_html = "";
+    var $cart = $(".cart_content form");
+    var discounted_price_total = 0;
+    var total_savings = 0;
+    var total_items = 0;
+    var subtotal = 0;
 
-  if (cart.items.length == 0) {
-    //console.log('empty cart');
-    $cartBtn.text('');
-    $('.js-empty-cart__message').removeClass('hidden');
-    $('.js-cart_content__form').addClass('hidden');
-  } else {
-    //console.log('not empty cart');
-    //console.log(JSON.stringify(cart.items));
-    //console.log(typeof cart.items);
-    for (lineItem in cart.items) {
-      //console.log(JSON.stringify(cart.items[lineItem].quantity));
-      total_items = total_items + parseInt(cart.items[lineItem].quantity);
-      subtotal = subtotal + cart.items[lineItem].final_line_price;
+
+
+
+    if (cart.items.length == 0) {
+      //console.log('empty cart');
+      $cartBtn.text('');
+      $('.js-empty-cart__message').removeClass('hidden');
+      $('.js-cart_content__form').addClass('hidden');
+    } else {
+      //console.log('not empty cart');
+      //console.log(JSON.stringify(cart.items));
+      //console.log(typeof cart.items);
+      for (lineItem in cart.items) {
+        //console.log(JSON.stringify(cart.items[lineItem].quantity));
+        total_items = total_items + parseInt(cart.items[lineItem].quantity);
+        subtotal = subtotal + cart.items[lineItem].final_line_price;
+      }
+      //console.log('subtotal: '+subtotal);
+
+      $cartBtn.text('(' + total_items + ')');
+      //mobile cart
+      $('.minicart-mobile .cart_count').remove();
+      $('.minicart-mobile').append('<span class="cart_count">'+total_items+'</span>');
+      
+      $('.js-empty-cart__message').addClass('hidden');
+      $('.js-cart_content__form').removeClass('hidden');
+
+      $.each(cart.items, function(index, item) {
+        var itemDiscounts = item.discounts;
+        var discountMessage = "";
+
+        for (i=0; i < itemDiscounts.length; i++) {
+          var amount = Shopify.formatMoney(itemDiscounts[i].amount, $('body').data('money-format'));
+          var title = itemDiscounts[i].title;
+          discountMessage = '<p class="notification-discount meta"><strong>{{ 'cart.general.discount' | t }}:</strong> ' + title + ' (-<span class="money"> ' + amount + '</span>)</p>';
+        }
+        var line_id = index + 1;
+        cart_items_html += '<li class="cart_item clearfix">' +
+          '<a href="' + item.url +'">';
+        if (item.image) {
+          cart_items_html += '<div class="cart_image">' +
+              '<img src="' + item.image.replace(/(\.[^.]*)$/, "_compact$1").replace('http:', '') + '" alt="' + htmlEncode(item.title) + '" />' +
+            '</div>';
+        }
+
+        cart_items_html += '<div class="cart_item__title"><div class="item_title">' + item.title;
+
+        if(item.properties) {
+          $.each(item.properties, function(title, value) {
+            if (value) {
+              cart_items_html += '<div class="line-item">' + title +': ' + value + '</div>';
+            }
+          });
+        }
+
+        if (item.price > item.final_price) {
+          cart_items_html += '</div>' + discountMessage + '</a>';
+        } else {
+          cart_items_html += '</div></a>'
+        }
+
+        cart_items_html += '<div class="left product-quantity-box">';
+        cart_items_html += '<span aria-label="Decrease quantity button" class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>';
+        cart_items_html += '<input type="number" aria-label="Quantity input text field" min="0" class="quantity" name="updates[]" id="updates_' + item.id + '" value="' + item.quantity +'" data-line-id="' + line_id +'"';
+        if(item.requires_shipping == false) {
+          cart_items_html += ' disabled="disabled" ';
+        } 
+        cart_items_html += ' />';
+        if(item.requires_shipping == true) {
+          cart_items_html += '<span aria-label="Increase quantity button" class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>';
+        }
+        cart_items_html += '</div>';
+        cart_items_html += '</div>';
+
+        cart_items_html += '<strong class="right price">';
+
+        if (item.price > item.final_price) {
+          //puts the slash through the old item price
+          var itemPrice = Shopify.formatMoney(item.final_price, $('body').data('money-format')) + '</span><span class="money was_price">' + Shopify.formatMoney(item.price, $('body').data('money-format')) + '</span>';
+          cart_items_html += '<span class="money">' + itemPrice + '</strong></div></a></li>';
+        } else {
+          var itemPrice = Shopify.formatMoney(item.price, $('body').data('money-format'));
+          cart_items_html += '<span class="money">' + itemPrice + '</span></strong></div></a></li>';
+        }
+
+      });
+
+      cart_action_html += '<span>{{ 'layout.general.subtotal' | t }}: </span>' + '<span class="money">' + Shopify.formatMoney(cart.total_price, $('body').data('money-format')) + '</span>';
+
+      if(total_savings > 0 ) {
+        cart_savings_html = '<span class="right"><span class="money">' + Shopify.formatMoney(total_savings - discounted_price_total, $('body').data('money-format')) + '</span></span>' +
+            '<span>{{ 'layout.general.savings' | t }}</span>';
+      } else {
+        cart_savings_html = "";
+      }
     }
-    //console.log('subtotal: '+subtotal);
- 
-    $cartBtn.text('(' + total_items + ')');
-    $('.js-empty-cart__message').addClass('hidden');
-    $('.js-cart_content__form').removeClass('hidden');
 
-    $.each(cart.items, function(index, item) {
-      var itemDiscounts = item.discounts;
-      var discountMessage = "";
-
-      for (i=0; i < itemDiscounts.length; i++) {
-        var amount = Shopify.formatMoney(itemDiscounts[i].amount, $('body').data('money-format'));
-        var title = itemDiscounts[i].title;
-        discountMessage = '<p class="notification-discount meta"><strong>{{ 'cart.general.discount' | t }}:</strong> ' + title + ' (-<span class="money"> ' + amount + '</span>)</p>';
-      }
-      var line_id = index + 1;
-      cart_items_html += '<li class="cart_item clearfix">' +
-        '<a href="' + item.url +'">';
-      if (item.image) {
-        cart_items_html += '<div class="cart_image">' +
-            '<img src="' + item.image.replace(/(\.[^.]*)$/, "_compact$1").replace('http:', '') + '" alt="' + htmlEncode(item.title) + '" />' +
-          '</div>';
-      }
-
-      cart_items_html += '<div class="cart_item__title"><div class="item_title">' + item.title;
-
-      if(item.properties) {
-        $.each(item.properties, function(title, value) {
-          if (value) {
-            cart_items_html += '<div class="line-item">' + title +': ' + value + '</div>';
-          }
-        });
-      }
-
-      if (item.price > item.final_price) {
-        cart_items_html += '</div>' + discountMessage + '</a>';
-      } else {
-        cart_items_html += '</div></a>'
-      }
-
-      cart_items_html += '<div class="left product-quantity-box">';
-      cart_items_html += '<span aria-label="Decrease quantity button" class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>';
-      cart_items_html += '<input type="number" aria-label="Quantity input text field" min="0" class="quantity" name="updates[]" id="updates_' + item.id + '" value="' + item.quantity +'" data-line-id="' + line_id +'"';
-      if(item.requires_shipping == false) {
-        cart_items_html += ' disabled="disabled" ';
-      } 
-      cart_items_html += ' />';
-      if(item.requires_shipping == true) {
-        cart_items_html += '<span aria-label="Increase quantity button" class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>';
-      }
-      cart_items_html += '</div>';
-      cart_items_html += '</div>';
-
-      cart_items_html += '<strong class="right price">';
-
-      if (item.price > item.final_price) {
-        //puts the slash through the old item price
-        var itemPrice = Shopify.formatMoney(item.final_price, $('body').data('money-format')) + '</span><span class="money was_price">' + Shopify.formatMoney(item.price, $('body').data('money-format')) + '</span>';
-        cart_items_html += '<span class="money">' + itemPrice + '</strong></div></a></li>';
-      } else {
-        var itemPrice = Shopify.formatMoney(item.price, $('body').data('money-format'));
-        cart_items_html += '<span class="money">' + itemPrice + '</span></strong></div></a></li>';
-      }
-
+    $('.js-cart_items').html(cart_items_html);
+    $('.js-cart_discounts').html(cart_discounts_html);
+    $('.js-cart_subtotal').html(Shopify.formatMoney(subtotal, $('body').data('money-format')));
+    $('.js-cart_savings').html(cart_savings_html);
+    
+    //open mini cart to show items
+    $('#cart #mini-cart').addClass('active_link');
+    
+    //slide in atc snack bar notice
+    $('#atc-snack-bar').animate({
+      bottom:0
+    },600,function() {
+      setTimeout(function() {
+        $('#atc-snack-bar').animate({
+          bottom:'-100px'
+        },300);
+      },4000);
+    });
+    $('#atc-snack-bar .close').on('click',function() {
+        $('#atc-snack-bar').animate({
+          bottom:'-100px'
+        },600);      
     });
 
-    cart_action_html += '<span>{{ 'layout.general.subtotal' | t }}: </span>' + '<span class="money">' + Shopify.formatMoney(cart.total_price, $('body').data('money-format')) + '</span>';
-
-    if(total_savings > 0 ) {
-      cart_savings_html = '<span class="right"><span class="money">' + Shopify.formatMoney(total_savings - discounted_price_total, $('body').data('money-format')) + '</span></span>' +
-          '<span>{{ 'layout.general.savings' | t }}</span>';
-    } else {
-      cart_savings_html = "";
-    }
-  }
-
-  $('.js-cart_items').html(cart_items_html);
-  $('.js-cart_discounts').html(cart_discounts_html);
-  $('.js-cart_subtotal').html(Shopify.formatMoney(subtotal, $('body').data('money-format')));
-  $('.js-cart_savings').html(cart_savings_html);
-
-  {% if settings.show_multiple_currencies %}
-    convertCurrencies();
-  {% endif %}
+    {% if settings.show_multiple_currencies %}
+      convertCurrencies();
+    {% endif %}
+    
+  } );
 }
+
+
 
 
 

@@ -76,7 +76,8 @@
                                 <form method="post" action="/cart/add" data-requires-shipping="{{ variant.requires_shipping }}">
                                     <input type="hidden" name="id" value="{{ variant.id }}" />
                                     <input type="submit" 
-                                        data-requires-shipping="{{ variant.requires_shipping }}" 
+                                        data-requires-shipping="{{ variant.requires_shipping }}"
+                                        data-matchbox-addtocart="{% assign variants = product.variants | map: "id" | join: ' ' %}{{variants}}"
                                         {% if variant.requires_shipping == false and digital_items_in_cart contains variant.id %} disabled="disabled" {% endif %}
                                         value="{% unless variant.available %}{{ 'products.product.sold_out' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endunless %}"
                                         class="btn  product-form__cart-submit" />

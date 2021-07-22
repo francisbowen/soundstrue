@@ -40,10 +40,21 @@ $label_color: #636363;
 
 
 /*================ Login Page Styles ================*/
-
-.customers-login, .customers-register {
+.account-invitation {
+    .login_btn {
+        background-color: $color_links;
+        font-size: 13px;
+        min-width: 50%;
+    }
+}
+.customers-login, 
+.customers-register,
+.account-invitation {
     .form-vertical {
-        #customer_login, #reset_password, #new_password, #RegisterForm {
+      #customer_login, 
+      #reset_password, 
+      #new_password, 
+      #RegisterForm {
             #RecoverPassword,
             #customer_register_link {
                 color: $color_links;
@@ -455,4 +466,7 @@ $label_color: #636363;
             background: #fff;
         }
     }
+}
+.btn.activate-account-button[disabled] {
+  opacity:1;
 }

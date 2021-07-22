@@ -2895,7 +2895,6 @@ theme.Filters = (function() {
 
     _onSortChange: function() {
       // var sort = this._sortValue();
-      console.log('onsortchange function -----------------------  ');
       var sort = this._getSortValue();
       var url = window.location.href.replace(window.location.search, '');
       var queryStringValue = slate.utils.getParameterByName('q');
@@ -5185,9 +5184,14 @@ var isMatch = function(a, b){
   return a === b;
 }
 
+console.log( location.hostname);
 // Handle Fetch Calls
 function getAccountAccess(url, data) {
-  var baseURL = 'https://api.digitallibrary.soundstrue.com';
+  if(location.hostname == 'stage1-soundstrue.myshopify.com'){
+    var baseURL = 'https://staging-ch-js-service-prototype.digitallibrary.staging-soundstrue.com';
+  } else {
+    var baseURL = 'https://api.digitallibrary.soundstrue.com';
+  }
   if(data){
     // Set Header
     var myHeaders = new Headers();
@@ -5553,7 +5557,8 @@ $('#new_password').submit(function(e) {
 });
 
 // Validate Password on keyup
-$('#RegisterForm-password, #new-password').keyup(function(e) {
+$('#RegisterForm-password, #new-password, .account-invitation #CustomerPassword, #CustomerPasswordConfirmation').keyup(function(e) {
+  console.log('password validation');
   var pass = e.target.value;
 
   minLength(pass) ? validateReq('min-length', true) : validateReq('min-length', false);
@@ -5561,6 +5566,9 @@ $('#RegisterForm-password, #new-password').keyup(function(e) {
   hasLowercase(pass) ? validateReq('contains-lower', true) : validateReq('contains-lower', false);
   hasUppercase(pass) ? validateReq('contains-upper', true) : validateReq('contains-upper', false);
   hasSpecial(pass) ? validateReq('contains-special', true) : validateReq('contains-special', false);
+  
+  //validate account activation passwords match
+  
 });
 
 function validateReq(id, isValid) {
@@ -5730,130 +5738,4 @@ if(Shopify.Cart != undefined) {
     customerIsLoggedIn: theme.strings.shippingCalcCustomerIsLoggedIn,
     moneyFormat: theme.strings.shippingCalcMoneyFormat
   });
-}
-
-$(document).ready(function(){
-  $('.slick-dots').attr('role','tablist');
-})
-
-
-$( document ).ready(function() {
-  $(".nav .menu a").click(function(e){
-    e.preventDefault();
-    $(".dropdown_container.mega-menu").css("display", "block");
-  });
-});
-$('body').keydown(function(e){
-  if(e.keyCode==9) {
-    setTimeout(function(){
-      if($(':focus').hasClass('mega-menu-parent')) {
-        $('.mega-menu').hide();
-      }
-      if($(':focus').hasClass('btn--primary')) {
-        $('.mega-menu').hide();
-      }
-    },100)
-  }
-})
-$('.nav .menu a')
-  .keydown(function(e){
-      // Listen for the up, down, left and right arrow keys, otherwise, end here
-      if ([37,38,39,40,13,9].indexOf(e.keyCode) == -1) {
-          return;
-      }
-      // Store the reference to our top level link
-      var link = $(this);
-      switch(e.keyCode) {
-          case 37: // left arrow
-              // Make sure to stop event bubbling
-              e.preventDefault();
-              e.stopPropagation();
-              // This is the first item in the top level mega menu list
-              if(link.parent('li').prevAll('li').filter(':visible').first().length == 0) {
-                  // Focus on the last item in the top level
-                  link.parent('li').nextAll('li').filter(':visible').last().find('a').first().focus();
-              } else {
-                  // Focus on the previous item in the top level
-                  link.parent('li').prevAll('li').filter(':visible').first().find('a').first().focus();
-              }
-              if(link.hasClass('mega-menu-parent')) {
-                $('.mega-menu:visible').hide();
-              }
-              break;
-          case 38: /// up arrow
-              // Find the nested element that acts as the menu
-              var dropdown = link.parent('li').find('.mega-menu');
-              // If there is a UL available, place focus on the first focusable element within
-              if(dropdown.length > 0){
-                  e.preventDefault();
-                  e.stopPropagation();
-                  dropdown.hide();
-                  dropdown.find('a').filter(':visible').first().focus();
-              }
-              break;
-          case 39: // right arrow
-              // Make sure to stop event bubbling
-              e.preventDefault();
-              e.stopPropagation();
-              // This is the last item
-              if(link.parent('li').nextAll('li').filter(':visible').first().length == 0) {
-                  // Focus on the first item in the top level
-                  link.parent('li').prevAll('li').filter(':visible').last().find('a').first().focus();
-              } else {
-                  // Focus on the next item in the top level
-                  link.parent('li').nextAll('li').filter(':visible').first().find('a').first().focus();
-              }
-              if(link.hasClass('mega-menu-parent')) {
-                $('.mega-menu:visible').hide();
-              }
-              break;
-          case 40: // down arrow
-              // Find the nested element that acts as the menu
-              var dropdown = link.parent('li').find('.mega-menu');
-          		if(dropdown.is(':visible')) {
-              if(link.hasClass('mega-menu-parent')) {
-              	dropdown.find('a').filter(':visible').first().focus();
-              }
-              }
-              // If there is a UL available, place focus on the first focusable element within
-              if(dropdown.length > 0){
-                  // Make sure to stop event bubbling
-                  e.preventDefault();
-                  e.stopPropagation();
-                  dropdown.show();
-                  //dropdown.find('a').filter(':visible').first().focus();
-              }
-              break;
-          case 13: // down arrow
-              // Find the nested element that acts as the menu
-              var dropdown = link.parent('li').find('.mega-menu');
-              // If there is a UL available, place focus on the first focusable element within
-              if(dropdown.length > 0){
-                  // Make sure to stop event bubbling
-                  e.preventDefault();
-                  e.stopPropagation();
-                if(dropdown.is(':visible')) {
-                  dropdown.hide();
-                } else {
-                  dropdown.show();
-                }
-                  //dropdown.find('a').filter(':visible').first().focus();
-              }
-              break;
-          case 9: // down arrow
-              console.log(link)
-          break;
-      }
-  });
-function isFirstDropItem(item) {
-  var drop = $(item).closest('.mega-menu')[0];
-  var firstInDrop = $('li a', drop)[0];
-  return firstInDrop === item;
-}
-function closeDropdownA(item) {
-  var droplet = $(item).closest('.mega-menu')[0];
-  var topLevelItem = $(droplet).prev()[0];
-  $(topLevelItem.parentNode).removeClass('focus-visible');
-  $(droplet).fadeOut();
-  return topLevelItem;
 }

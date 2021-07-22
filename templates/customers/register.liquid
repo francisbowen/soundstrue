@@ -1,3 +1,23 @@
+{% comment %}
+<script>
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  $(document).ready(function() {
+    if(urlParams.get('email')) {
+      console.log(urlParams.get('email'));
+      $('#RegisterForm-email').val(urlParams.get('email')).attr('disabled','disabled');
+    }
+    if(urlParams.get('first_name')) {
+      console.log(urlParams.get('first_name'));
+      $('#RegisterForm-FirstName').val(urlParams.get('first_name'));
+    }
+    if(urlParams.get('last_name')) {
+      console.log(urlParams.get('last_name'));
+      $('#RegisterForm-LastName').val(urlParams.get('last_name'));
+    }
+  });
+</script>
+{% endcomment %}
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <div class="page-width">

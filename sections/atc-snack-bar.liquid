@@ -1,0 +1,64 @@
+{% if section.settings.enable %}
+<div id="atc-snack-bar">
+  <div>
+    <span class="text">
+      {{ section.settings.snack_bar_notice_text }}
+    </span>
+    <span class="close">Close</span>
+  </div>
+</div>
+<style>
+  #atc-snack-bar {
+    background:{{ section.settings.background }};
+  }
+  #atc-snack-bar .text {
+    color:{{ section.settings.text_color }};
+  }
+  #atc-snack-bar .close {
+    color:{{ section.settings.close_color }};
+  }
+</style>
+{% endif %}
+{% schema %}
+  {
+    "name": "Add To Cart Snack Bar",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable",
+        "label": "Enable?",
+        "default":true
+      },
+      {
+        "type": "text",
+        "id": "snack_bar_notice_text",
+        "label": "Add to cart notice text",
+        "default":"Added To Cart!"
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Background color",
+        "default":"#5b6770"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Notice text color",
+        "default":"#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "close_color",
+        "label": "Close text color",
+        "default":"#e0e8ed"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

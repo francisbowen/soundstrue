@@ -172,7 +172,7 @@
     },
     "activate_account": {
       "title": "Activate Account",
-      "subtext": "Create your password to activate your account.",
+      "subtext": "Create a password to activate your account.",
       "password": "Password",
       "password_confirm": "Confirm Password",
       "submit": "Activate Account",
@@ -430,6 +430,14 @@
       "pause": "Pause video",
       "resume": "Resume video",
       "close": "Close video"
+    }
+  },
+  "shopify": {
+    "checkout": {
+      "thank_you": {
+        "thank_you_title": "Your Order Is Confirmed",
+        "order_status_confirmed_order_with_email": "You’ll receive a confirmation email with your order number shortly."
+      }
     }
   }
 }

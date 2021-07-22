@@ -8,36 +8,6 @@
     "theme_support_url": "https:\/\/support.shopify.com\/"
   },
   {
-    "name": "WAM! Settings",
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "WAM! (Website Accessibility Mode) is not only your guard to a wafe, WCAG compliant experience, but it helps your customers of all needs have a great experience on your site."
-      },
-      {
-        "type": "checkbox",
-        "id": "wamon",
-        "label": "Enable WAM?",
-        "default": false,
-        "info": "This will not allow bulk testing tools to work in evaluating your site."
-      },
-      {
-        "type": "checkbox",
-        "id": "trollblock",
-        "label": "Enable blocking for iframe bulk testers?",
-        "default": false,
-        "info": "This will not allow bulk testing tools to work in evaluating your site."
-      },
-      {
-        "type": "checkbox",
-        "id": "debug",
-        "label": "Turn on console debugger?",
-        "default": false,
-        "info": "This will make it so you can view all the errors in the browser console that WAM has fixed for you, allowing you to focus on correcting these issues outside of WAM."
-      }
-    ]
-  },
-  {
     "name": "Colors",
     "settings": [
       {

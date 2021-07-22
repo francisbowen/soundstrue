@@ -33,25 +33,7 @@
   </noscript>
     
   <div class="h4 grid-view-item__title product-card__title" aria-hidden="true"><a href="{{ product.url}}">{{ product.title }}</a></div>
-  
-  {% assign author_name_metafield = product.metafields.soundstrue.author %}
-  {% assign author_link_metafield = product.metafields.soundstrue.author-link %}
-  {% assign author_array = author_name_metafield | split: "," %}
-
-  <span class="product-author">
-  {% for a_name in author_array %}
-    {% assign author_name = a_name | strip %}
-    {% if author_name contains 'Various' %}
-      <a class="author-link no-link">{{ author_name }}<span class="comma">, </span></a>
-    {% else %}
-      <a class="author-link" href="/blogs/authors/{{ author_name | handleize }}">{{ author_name }}<span class="comma">, </span></a>
-    {% endif %}
-  {% endfor %}
-  </span>
-  
-  {% comment %}
   <a class="author-link" href="{{ author.url }}">{{ product.metafields.soundstrue.author}}</a>
-  {% endcomment %}
 
   {% include 'product-price', variant: product %}
    {% if product.reviews_count > 0 %}

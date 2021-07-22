@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
     <meta name="referrer" content="origin">
     {%- if settings.favicon -%}
-    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
     {%- endif -%}
     {% include 'seo-title' %}
     <title>{{ seo_title }}</title>
     {%- if page_description -%}
-    <meta name="description" content="{{ page_description | escape }}">
+      <meta name="description" content="{{ page_description | escape }}">
     {%- endif -%}
     <!-- {{ 'theme.scss.css' | asset_url | stylesheet_tag }} -->
     {{ 'checkout.scss.css' | asset_url | stylesheet_tag }}
@@ -22,8 +22,8 @@
 
     {{ "//code.jquery.com/jquery-3.4.1.min.js" | script_tag }}
     <script>
-      (function(n,t,i,r){var u,f;n[i]=n[i]||{},n[i].initial={accountCode:"SOUND11135",host:"SOUND11135.pcapredict.com"},n[i].on=n[i].on||function(){(n[i].onq=n[i].onq||[]).push(arguments)},u=t.createElement("script"),u.async=!0,u.src=r,f=t.getElementsByTagName("script")[0],f.parentNode.insertBefore(u,f)})(window,document,"pca","//SOUND11135.pcapredict.com/js/sensor.js")
-      pca.on("options", function(type, key, options) { options.suppressAutocomplete = false; });
+    (function(n,t,i,r){var u,f;n[i]=n[i]||{},n[i].initial={accountCode:"SOUND11135",host:"SOUND11135.pcapredict.com"},n[i].on=n[i].on||function(){(n[i].onq=n[i].onq||[]).push(arguments)},u=t.createElement("script"),u.async=!0,u.src=r,f=t.getElementsByTagName("script")[0],f.parentNode.insertBefore(u,f)})(window,document,"pca","//SOUND11135.pcapredict.com/js/sensor.js")
+    pca.on("options", function(type, key, options) { options.suppressAutocomplete = false; });
     </script>
     <!-- Global site tag (gtag.js) - Google Ads: 1071793748 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1071793748"></script>
@@ -35,50 +35,49 @@
       gtag('config', 'AW-1071793748');
     </script>
     <script>
-
-      !function(e){if(!window.pintrk){window.pintrk = function () {
+   
+        !function(e){if(!window.pintrk){window.pintrk = function () {
         window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
         n=window.pintrk;n.queue=[],n.version="3.0";var
         t=document.createElement("script");t.async=!0,t.src=e;var
         r=document.getElementsByTagName("script")[0];
-                                      r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
-      pintrk('load', '2612465595606');
-      pintrk('page');
-
-    </script>
-
+        r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+        pintrk('load', '2612465595606');
+        pintrk('page');
+         
+        </script>
+    
     <script>
 
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                                                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                          })(window,document,'script','dataLayer','GTM-WM9D6LC');
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WM9D6LC');
 
-    </script>
-    <script type="text/javascript">
-      _linkedin_partner_id = "1743812";
-      window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-      window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-    </script><script type="text/javascript">
-    (function(){var s = document.getElementsByTagName("script")[0];
-                var b = document.createElement("script");
-                b.type = "text/javascript";b.async = true;
-                b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-                s.parentNode.insertBefore(b, s);})();
-    </script>
+</script>
+<script type="text/javascript">
+_linkedin_partner_id = "1743812";
+window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+</script><script type="text/javascript">
+(function(){var s = document.getElementsByTagName("script")[0];
+var b = document.createElement("script");
+b.type = "text/javascript";b.async = true;
+b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})();
+</script>
+  
+  
 
-
-
-    {% render 'shogun-head' %}
-    
-  </head>
+  {% render 'shogun-head' %}
+</head>
   <body class="checkout-template">
     {{ skip_to_content_link }}
 
     <div class="banner" data-header>
       <div class="wrap">
-
+        
       </div>
     </div>
 
@@ -94,7 +93,9 @@
             <div class="checkout-progress-wrapper">
               {{ breadcrumb }}
             </div>
+            {% comment %}
             {{ alternative_payment_methods }}
+            {% endcomment %}
           </div>
           <div class="main__content">
             <div class="go-daddy-badge">
@@ -102,6 +103,8 @@
               {% comment %} <img src="https://seal.godaddy.com/images/3/en/siteseal_gd_3_h_l_m.gif" alt="SSL site seal - click to verify"> {% endcomment %}
             </div>
             {{ content_for_layout }}
+            <!-- should include password-after-checkout -->
+  {% include 'password-after-checkout' %}
           </div>
           <div class="main__footer">
             {{ content_for_footer }}
@@ -119,28 +122,30 @@
     </div>
     <!-- End Google Tag Manager (noscript) -->
     {{ tracking_code }}
-
-
+    
+    
     <style>
       .section--shipping-method del,
       .radio__label__accessory br {
         display:none;
       }
       .checkout-template .content .field__input-btn svg {
-        display:none !important;
+      	display:none !important;
       }
       .checkout-template .content .field__input-btn span.btn__content {
-        position:static !important;
+      	position:static !important;
       }      
       @media only screen and (max-width: 999px){
-        .sidebar{	
-          order: 1;
-        }
+          .sidebar{	
+              order: 1;
+          }
       }
     </style>
-
+    
   </body>
   <script>
+    $('.edit_checkout').append('<input class="no-ready" type="hidden" name="checkout[attributes][guest_checkout]" value="{% if customer.id > 0 %}false{% else %}true{%endif%}" />');
+
     $(document).on(`page:load`, function() {
       if (Shopify.Checkout.step == 'contact_information'){
         document.getElementById('checkout_shipping_address_address1').setAttribute("autocomplete", "none");
@@ -149,61 +154,77 @@
         document.getElementById('checkout_shipping_address_zip').setAttribute("autocomplete", "none");
       }
       //customer id: {{ customer.id  }}
-      $('.edit_checkout').append('<input type="hidden" name="checkout[attributes][guest_checkout]" value="{% if customer.id > 0 %}false{% else %}true{%endif%}" />');
-                                 });
-      $(document).ready(function() {
-        var removeButtonInterval = setInterval(function() {
-          if(jQuery('.remove-free-gift-card').length < 1) {
-            jQuery('.reduction-code__text').each(function() {
-              if(jQuery(this).text().includes('FREE GIFT CARD!')) {
-                console.log('show remove link here'); 
-                jQuery(this).parent().after('<li><a href="#" class="remove-free-gift-card">remove</a></li>');
-              } 
-            }); 
+      //$('.edit_checkout').append('<input type="hidden" name="checkout[attributes][guest_checkout]" value="{% if customer.id > 0 %}false{% else %}true{%endif%}" />');
+    });
+    $(document).ready(function() {
+      var removeButtonInterval = setInterval(function() {
+        if(jQuery('.remove-free-gift-card').length < 1) {
+          jQuery('.reduction-code__text').each(function() {
+            if(jQuery(this).text().includes('FREE GIFT CARD!')) {
+              console.log('show remove link here'); 
+              jQuery(this).parent().after('<li><a href="#" class="remove-free-gift-card">remove</a></li>');
+            } 
+          }); 
+        }
+      },100);
+      jQuery('.product-table').on('click','.remove-free-gift-card',function(e) {
+        console.log('clicked');
+        e.preventDefault();
+        var variant = parseInt(jQuery(this).closest('tr').data('variant-id'));
+        console.log('variant id: '+variant);
+        jQuery.ajax({
+          url: '/cart/change.js',
+          dataType: 'json',
+          cache: false,
+          type: 'post',
+          data: {
+            id: variant,
+            quantity: 0
+          },
+          success: function (data) {
+            console.log(JSON.stringify(data));
+            //refreshCart(data);
+            location.reload();
           }
-        },100);
-        jQuery('.product-table').on('click','.remove-free-gift-card',function(e) {
-          console.log('clicked');
-          e.preventDefault();
-          var variant = parseInt(jQuery(this).closest('tr').data('variant-id'));
-          console.log('variant id: '+variant);
-          jQuery.ajax({
-            url: '/cart/change.js',
-            dataType: 'json',
-            cache: false,
-            type: 'post',
-            data: {
-              id: variant,
-              quantity: 0
-            },
-            success: function (data) {
-              console.log(JSON.stringify(data));
-              //refreshCart(data);
-              location.reload();
-            }
-          }).always(function(data) {
+        }).always(function(data) {
             console.log(JSON.stringify(data));
             location.reload();
-          });
         });
-        if($(window).width() < 999){
-          jQuery('.sidebar').insertBefore('.main');
-        }
       });
+      if($(window).width() < 999){
+        jQuery('.sidebar').insertBefore('.main');
+      }
+    });
       $(document).ready(function(){
-        $('.product__description__name').wrap('<a href="#"></a>');
+      	$('.product__description__name').wrap('<a href="#"></a>');
+        //add floating label to discount code box
+        $('body').on('focus','#checkout_reduction_code',function() {
+          console.log('checkout_reduction_code focus');
+          $(this).closest('.field__input-wrapper').addClass('field--show-floating-label').addClass('wick-discount-field');
+        });
+        $('body').on('blur','#checkout_reduction_code',function() {
+          console.log('checkout_reduction_code blur');
+          if($(this).val() == '') {
+            $(this).closest('.field__input-wrapper').removeClass('field--show-floating-label').removeClass('wick-discount-field');
+          }
+        });
       })
   </script>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WM9D6LC"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <noscript>
-    <img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/v3/?tid=2612465595606&event=init&noscript=1" />
-  </noscript>
-  <noscript>
-    <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=1743812&fmt=gif" />
-  </noscript>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WM9D6LC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript>
+   <img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/v3/?tid=2612465595606&event=init&noscript=1" />
+ </noscript>
+ <noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=1743812&fmt=gif" />
+</noscript>
   <style>
+    .wick-discount-field.field--show-floating-label label {
+      color:#5e5e5e !important;
+      font-size:12px !important;
+      font-weight:400 !important;
+    }
     .remove-free-gift-card {
       background:url(https://cdn.shopify.com/s/files/1/0253/2822/2307/files/iconfinder_trash_115789.png?v=1606162561) left center no-repeat;
       background-size:auto 12px;
@@ -211,40 +232,17 @@
       padding-left:16px;
     }
     .product__description a:focus{
-      display: block;
-      position: relative;
+      	display: block;
+    	position: relative;
+ 	}
+    button[data-aria-controls="customer_notification_form--arrive"] {
+      display:none !important;
+    }
+    .section--contact-information .section__header p.layout-flex__item {
+      font-weight:500;
+      font-size:16px;
     }
   </style>
-  <!-- End Google Tag Manager (noscript) -->
-  
-  <!--  checkout step GTM event  -->
-  <script type="text/javascript">
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      'event': 'checkout-step',
-      'ecommerce':{
-        'currencyCode': 'USD',
-        'checkout': {
-          'actionField': {
-            'step': ''
-          },
-          'products': [
-            {% for item in checkout.line_items %}
-            {
-              'name': '{{ item.product.title | escape }}',
-              'id': '{{ item.product.id }}',
-              'price': '{{ item.price | money_without_currency }}',
-              'brand': '{{ item.product.vendor | escape }}',
-              'category': '{{ item.product.collections.first.title | escape }}',
-              'variant': '{{ item.variant.title | escape  }}',
-              'quantity': '{{ item.quantity }}',
-              'coupon': ''
-            }
-            {% endfor %}
-          ]
-        }
-      }
-    });
-  </script>
+<!-- End Google Tag Manager (noscript) -->
 </html>
 

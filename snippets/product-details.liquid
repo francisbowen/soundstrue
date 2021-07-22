@@ -40,13 +40,6 @@
                             <td>{{ variant.sku }}</td>
                         </tr>
                     {% endif %}
-
-                    {% if variant.barcode != blank %}
-                        <tr>
-                            <th>ISBN Number</th>
-                            <td>{{ variant.barcode }}</td>
-                        </tr>
-                    {% endif %}
                 </tbody>
             </table>
         {% endfor %}

@@ -1,5 +1,5 @@
 <div class="sort-by-dropdown">
-    {% if section.settings.sort_enable or template contains 'article' %}
+    {% if section.settings.sort_enable %}
         <div class="sort-by-wrapper">
             {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
             <label for="SortBy">{{ 'collections.sorting.title' | t }}</label>

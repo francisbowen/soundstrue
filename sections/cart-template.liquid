@@ -190,7 +190,7 @@ present
               <td class="text-right small--hide">
                 <div class="cart__qty">
                   <label for="updates_large_{{ item.key }}" class="cart__qty-label">{{ 'cart.label.quantity' | t }}</label>
-                  <input data-key="{{ item.key }}" class="cart__qty-input" type="number" name="updates[]" id="updates_large_{{ item.key }}" value="{{ item.quantity }}" min="0" pattern="[0-9]*" data-quantity-item="{{ forloop.index }}" {% if item.requires_shipping == false %} disabled="disabled" {% endif %}>
+                  <input data-key="{{ item.key }}" class="cart__qty-input" type="number" name="updates[]" id="updates_large_{{ item.key }}" value="{{ item.quantity }}" min="0" pattern="[0-9]*" data-quantity-item="{{ forloop.index }}" {% if item.requires_shipping == false and item.quantity == 1 %} disabled="disabled" {% endif %}>
                 </div>
               </td>
               <td class="text-right small--hide">
@@ -325,10 +325,11 @@ present
                 class="btn btn--small-wide cart__submit cart__submit-control"
                 value="{{ 'cart.general.checkout' | t }}"> -->
             </div>
-
+			{% comment %}
             {% if additional_checkout_buttons %}
               <div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>
             {% endif %}
+            {% endcomment %}
           </div>
         </div>
       </div>

@@ -30,12 +30,12 @@
                 <input type="text" id="AddressLastNameNew" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name">
               </div>
 
-              <div class="field">
+              <div class="field required">
                 <label for="AddressPhoneNew">{{ 'customer.addresses.phone' | t }}</label>
                 <input type="tel" id="AddressPhoneNew" name="address[phone]" value="{{ form.phone }}" autocomplete="phone">
               </div>
 
-              <div class="field">
+              <div class="field required">
                 <label for="AddressCompanyNew">{{ 'customer.addresses.company' | t }}</label>
                 <input type="text" id="AddressCompanyNew" name="address[company]" value="{{ form.company }}" autocomplete="organization">
               </div>
@@ -145,12 +145,12 @@
                       <input type="text" id="AddressLastName_{{ form.id }}" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name">
                     </div>
 
-                    <div class="field">
+                    <div class="field required">
                       <label for="AddressPhone_{{ form.id }}">{{ 'customer.addresses.phone' | t }}</label>
                       <input type="tel" id="AddressPhone_{{ form.id }}" name="address[phone]" value="{{ form.phone }}" autocomplete="phone">
                     </div>
 
-                    <div class="field">
+                    <div class="field required">
                       <label for="AddressCompany_{{ form.id }}">{{ 'customer.addresses.company' | t }}</label>
                       <input type="text" id="AddressCompany_{{ form.id }}" name="address[company]" value="{{ form.company }}" autocomplete="organization">
                     </div>

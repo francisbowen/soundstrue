@@ -1,0 +1,138 @@
+{% comment %} if account just created, add to digital library {% endcomment %}
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  var raw = {};
+  var user2 = {};
+  
+  
+  //get shopify customer object from integromat scenario since shopify doesn't offer the variables
+  $(document).ready(function() {
+    if(urlParams.get('id')) {
+      //console.log(urlParams.get('id'));
+      //get customer object
+{% if shop.url == 'https://stage1-soundstrue.myshopify.com' %}
+      var integroURL = 'https://hook.integromat.com/vxvtdnrbbrawlwg9x9j5qn4qc4963kfy'; //staging
+{% else %}
+      var integroURL = 'https://hook.integromat.com/bjtw52x29p8keqr5i98led7286js5xuh'; //production
+{% endif %}
+      var params = {
+        url: integroURL,
+        data: {"customer":urlParams.get('id')},
+        dataType: 'json'
+      };
+      jQuery
+        .post(params)
+        .always(function(response) {
+          console.log(JSON.stringify(response));
+          user2 = response.customer;
+          $('.activate-account-button').show();
+          console.log('user2: '+JSON.stringify(user2));
+        
+        })
+        .fail(function(response) {
+          console.log('error getting customer object');
+          console.log(JSON.stringify(response));
+        });
+    }
+  });
+  
+  //call validation for recaptcha with callback function
+  function imNotARobot() {
+    //console.log('validate 2');
+    validateActivateForm();
+  }
+  //validate form on keyup and recaptcha completion
+  function validateActivateForm() {
+      var pass = $('#CustomerPassword').val();
+      minLength(pass) ? validateReq('min-length', true) : validateReq('min-length', false);
+      hasNumber(pass) ? validateReq('contains-number', true) : validateReq('contains-number', false);
+      hasLowercase(pass) ? validateReq('contains-lower', true) : validateReq('contains-lower', false);
+      hasUppercase(pass) ? validateReq('contains-upper', true) : validateReq('contains-upper', false);
+      hasSpecial(pass) ? validateReq('contains-special', true) : validateReq('contains-special', false);
+
+      //check disabled status if all pass or some fail on acount activation form
+      //console.log(grecaptcha.getResponse());
+      if(
+        $('.password-details ul li.fail').length
+        ||
+        grecaptcha.getResponse().length < 10
+        ||
+        $('#CustomerPassword').val() != $('#CustomerPasswordConfirmation').val()
+      ) {
+        $('.activate-account-button').attr('disabled','disabled');
+      } else {
+        $('.activate-account-button').removeAttr('disabled');
+      }    
+  }
+
+  $(document).ready(function() {
+    //show passwords don't match error if button submit clicked
+    $('#CustomerPasswordConfirmation').on('blur',function() {
+      console.log('activate-account-button click');
+      if($('#CustomerPassword').val() != $('#CustomerPasswordConfirmation').val()) {
+        $('#CustomerPasswordConfirmationMessage').html('<span>Password and re-entered password do not match.');
+      }
+    });
+    //remove passwords don't match error on keyup
+    $('#CustomerPasswordConfirmation').on('keyup',function() {
+      $('#CustomerPasswordConfirmationMessage').html('');
+    });
+    $('.account-invitation form').on('keyup',function() {
+      //console.log('validate 1');
+      validateActivateForm();
+    });
+    //$('.account-invitation form').on('submit',function(e) {
+    $('.account-invitation form').one('submit', function(e) {
+      var form = $(this);
+      e.preventDefault();
+      console.log('create user');
+      console.log('user = '+typeof user);
+      console.log('user2 = '+typeof user2);
+      if(typeof user2 != 'object') {
+        alert('Apologies, there was an error creating your account. We will reload the page and please try again.');
+        location.reload(); 
+      }
+      console.log('email: '+user2.email);
+      console.log('first: '+user2.first_name);
+      console.log('last: '+user2.last_name);
+      
+      //add recaptcha to the object
+      
+      var recaptcha = grecaptcha.getResponse();
+      
+      var raw = JSON.stringify({
+        "user":{
+          "email": user2.email,
+          "first_name": user2.first_name,
+          "last_name": user2.last_name
+        },
+        "password": btoa($('#CustomerPassword').val()),
+        "g_recaptcha_response": recaptcha,
+        "multipass_return_to": '/account'
+      });
+      
+      console.log(JSON.stringify(raw));
+      
+      getAccountAccess('/api/access/', raw)
+        .then(function(response) {
+          return response.text()
+        })
+        .then(function(result) {
+          var json = JSON.parse(result);
+          console.log(JSON.stringify(json));        
+          if(Object.keys(json).length != 0) {
+            //error check
+          }
+          form.submit();
+        })
+        .catch(function(error) {
+          console.log('error', error)
+        });
+    });
+  });
+  
+  //add cookie to confirm account created and don't fire this again
+</script>

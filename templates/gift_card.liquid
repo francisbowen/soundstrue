@@ -36,15 +36,17 @@
         <strong>{{ formatted_initial_value }}</strong>
       </div>
 
-      {%- assign code_size = gift_card.code | format_code | size -%}      
+      {%- assign code_size = gift_card.code | format_code | size -%}
       <div class="giftcard__code">
         <div class="giftcard__code__inner">
-          <div class="giftcard__code__text{% if gift_card.expired or gift_card.enabled != true %} disabled{% endif %}" id="GiftCardDigits">
-            {{ gift_card.code | format_code }}
-          </div>
+          <input type="text"
+            class="giftcard__code__text{% if gift_card.expired or gift_card.enabled != true %} disabled{% endif %}"
+            id="GiftCardDigits"
+            value="{{ gift_card.code | format_code }}"
+            aria-label="{{ 'gift_cards.issued.gift_card_code' | t }}"
+            readonly />
         </div>
       </div>
-      
     </div>
 
     <p class="text-center">

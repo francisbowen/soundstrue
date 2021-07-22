@@ -1,19 +1,7 @@
-{%- assign limit = 64 -%}
 {% paginate collection.products by limit %}
     <div class="page-width" id="Collection">
-      
-      <div class="toolbar-bottom">
-        {% include 'collection-toolbar' %}
-      </div>
-      
-      
-    {% if section.settings.layout == 'grid' or list_type == 'grid'  %}
-    {% if section.settings.grid != blank %}
-    {%- assign grid_nums = section.settings.grid -%}
-    {% else %}
-    {%- assign grid_nums = 3 -%}
-    {% endif %}
-        {% case grid_nums %}
+    {% if section.settings.layout == 'grid' %}
+        {% case section.settings.grid %}
         {% when 2 %}
         {%- assign grid_item_width = 'medium-up--one-half' -%}
         {% when 3 %}
@@ -111,11 +99,9 @@
             <p class="text-center">{{ 'collections.general.no_matches' | t }}</p>
         </div>
     {% endif %}
-    <div class="toolbar-bottom">
-        {% include 'collection-toolbar' %}
-      </div>
-    {%- comment -%}{% if paginate.pages > 1 %}
+
+    {% if paginate.pages > 1 %}
         {% include 'pagination' %}
-    {% endif %}{%- endcomment -%}
+    {% endif %}
 </div>
 {% endpaginate %}

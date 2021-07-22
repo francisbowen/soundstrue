@@ -63,7 +63,8 @@ present
       {%- assign enable_zoom = false -%}
   {% endcase %}
 
-  <div class="grid product-single{% if section.settings.enable_payment_button %} product-single--{{ section.settings.image_size }}-image{% endif %}">
+  <div class="grid product-single{% if section.settings.enable_payment_button %} product-single--{{ section.settings.image_size }}-image{% endif %}" 
+       data-matchbox-item="{% assign variants = product.variants | map: "id" | join: ' ' %}{{variants}}">
     <div class="grid__item product-single__photos {{ product_image_width }}{% if section.settings.image_size == 'full' %} product-single__photos--full{% endif %}">
       {%- assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image -%}
       {% for image in product.images %}
@@ -231,7 +232,7 @@ present
                               <input type="submit"
                                 {% if variant.requires_shipping == false and digital_items_in_cart contains variant.id %} disabled="disabled" {% endif %}
                                 value="{% unless variant.available %}{{ 'products.product.sold_out' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endunless %}"
-                                class="btn product-form__cart-submit" data-add-to-cart="" onclick="atcPin();"/>
+                                class="btn product-form__cart-submit" data-add-to-cart="" data-matchbox-addtocart="{{product.id}}" onclick="atcPin();"/>
                             </form>
                           {% endif %}
                         </div>
@@ -535,3 +536,10 @@ present
   ]
 }
 {% endschema %}
+
+
+<!-- collection.title = "Spring", "Summer", "Fall", "Winter" -->
+{% assign collection_titles = collections | map: 'title' %}
+<!-- {{ collection_titles }} -->
+
+

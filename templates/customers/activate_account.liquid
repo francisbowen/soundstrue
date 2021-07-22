@@ -1,3 +1,5 @@
+{% include 'digital-library-create-account' %}
+
 <div class="page-width text-center">
   <div class="grid">
     <div class="grid__item medium-up--one-half medium-up--push-one-quarter">
@@ -6,7 +8,9 @@
         <p>{{ 'customer.activate_account.subtext' | t }}</p>
       </div>
 
-      <div class="form-vertical">
+      <div class="form-vertical account-invitation">
+        <div class="indicate"><span class="mark">*</span> Indicates required field</div>
+
         {% form 'activate_customer_password' %}
 
           {%- if form.errors -%}
@@ -15,16 +19,70 @@
             </div>
           {%- endif -%}
 
+          {% comment 'original' %}
           <label for="CustomerPassword" class="label--hidden">{{ 'customer.activate_account.password' | t }}</label>
           <input type="password" value="" name="customer[password]" id="CustomerPassword" placeholder="{{ 'customer.activate_account.password' | t }}">
-
+          {% endcomment %}
+        
+          <div class="field required">
+            <label for="CustomerPassword">Password<span aria-label="required field"></span></label>
+            <div class="faux-input">
+            <input
+              type="password"
+              value=""
+              name="customer[password]"
+              id="CustomerPassword"
+              {% comment %}placeholder="{{ 'customer.activate_account.password' | t }}"{% endcomment %}
+              >
+            <div class="mask-toggle">show</div>
+            </div>
+          </div>
+        
+            <div class="password-details">
+              Password Requirements:
+              <ul>
+                <li id="min-length">Eight or more characters</li>
+                <li id="contains-upper">At least one uppercase letter</li>
+                <li id="contains-lower">At least one lowercase letter</li>
+                <li id="contains-number">At least one number</li>
+                <li id="contains-special">
+                  At least one special character:
+                  <p>^ $ * . [ ] { } ( ) ? " ! @ # % & / \ , > < ' : ; | _ ~ `</p>
+                </li>
+              </ul>
+            </div>
+        
+          {% comment 'original' %}
           <label for="CustomerPasswordConfirmation" class="label--hidden">{{ 'customer.activate_account.password_confirm' | t }}</label>
           <input type="password" value="" name="customer[password_confirmation]" id="CustomerPasswordConfirmation" placeholder="{{ 'customer.activate_account.password_confirm' | t }}">
+          {% endcomment %}
+        
+          <div class="field required">
+            <label for="CustomerPasswordConfirmation">Re-enter Password<span aria-label="required field"></span></label>
+            <div class="faux-input">
+            <input
+              type="password"
+              value=""
+              name="customer[password_confirmation]"
+              id="CustomerPasswordConfirmation"
+              {% comment %}placeholder="Re-enter Password"{% endcomment %}
+              >
+            <div class="mask-toggle">show</div>
+            </div>
+          </div>
+            <div id="CustomerPasswordConfirmationMessage"></div>
+            
+          <div id="recaptcha-wrapper">
+            <div class="g-recaptcha" data-sitekey="6LcA1vUUAAAAANdV0hj2ciLUSJuRJBp4LpGAyog2" data-callback="imNotARobot"></div>
+          </div>
 
-          <input type="submit" class="btn" value="{{ 'customer.activate_account.submit' | t }}">
-          <div><input type="submit" name="decline" value="{{ 'customer.activate_account.cancel' | t }}"></div>
+          <div style="text-align:center">
+            <input type="submit" class="login_btn btn activate-account-button" value="{{ 'customer.activate_account.submit' | t }}" disabled="disabled" style="display:none;">
+          </div>
+          {% comment 'remove by wade@wickcreative.com' %}<div><input type="submit" name="decline" value="{{ 'customer.activate_account.cancel' | t }}"></div>{% endcomment %}
         {% endform %}
       </div>
     </div>
   </div>
 </div>
+  

@@ -104,13 +104,16 @@
 
   {% render 'shogun-head' %}
 
-  {% include 'moengage'%}
+  {% include 'moengage'%}  
   
-  <!--  Loqate action code start  -->
-  <script>(function(n,t,i,r){var u,f;n[i]=n[i]||{},n[i].initial={accountCode:"SOUND11135",host:"SOUND11135.pcapredict.com"},n[i].on=n[i].on||function(){(n[i].onq=n[i].onq||[]).push(arguments)},u=t.createElement("script"),u.async=!0,u.src=r,f=t.getElementsByTagName("script")[0],f.parentNode.insertBefore(u,f)})(window,document,"pca","//SOUND11135.pcapredict.com/js/sensor.js")</script>
-  <!--  Loqate action code end   -->
+  <!--   begin automat ash code -->
+  {% if content_for_header contains "previewBarInjector.init();" %}
+  	<script id="automat-ash-snippet" data-client-id="soundstrue" src="https://cdn.automat-ai.com/ash-telemetry-staging/v2/snippet.js"></script>
+  {% else %}
+  	<script id="automat-ash-snippet" data-client-id="soundstrue" src="https://cdn.automat-ai.com/ash-telemetry/v2/snippet.js"></script>
+  {% endif %}
+  <!-- finish Automat ash code -->
 
-  <script>var head = document.head;var script = document.createElement('script');script.type = 'text/javascript';script.src = "https://178788.tracking.hyros.com/v1/lst/universal-script?ph=33fcc4e3b07a27f15118f722bef8214f14e45d79485a7f45c6c134f993a6b39f&tag=!hyros";head.appendChild(script);</script>
 </head>
 
 <body class="{% if template == '404' %}error-404{% else %}{{ template | replace: '.', '-' | handle }}{% endif %}"
@@ -119,6 +122,13 @@
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WM9D6LC" height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
+  <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WM9D6LC');
+  </script>
   
   <!-- Begin Recently Viewed Products -->
   {{ '//code.jquery.com/jquery-3.3.1.js' | script_tag }}
@@ -174,6 +184,14 @@
     <main class="main-content js-focus-hidden" id="MainContent" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
+    
+    <!--   begin AutomatConductor code -->
+  	{% if content_for_header contains "previewBarInjector.init();" %}
+  		<script async src="https://cdn.automat-ai.com/soundstrue/deployments/staging/index.js"></script>
+  	{% else %}
+  		<script async src="https://cdn.automat-ai.com/soundstrue/deployments/production/index.js"></script>
+  	{% endif %}
+  	<!-- finish AutomatConductor code -->
 
     {% section 'footer' %}
 
@@ -197,10 +215,11 @@
   {% include 'conversion-pixels-footer' %}
   <script src="https://cdn.attn.tv/soundstrue/dtag.js"></script>
   
-  {% render 'upsell-now', customer: customer, product: product, template: template, cart: cart %}
-  {% section 'gift-card-with-purchase' %}
+{% render 'upsell-now', customer: customer, product: product, template: template, cart: cart %}
+{% section 'gift-card-with-purchase' %}
   
-  {% include 'wam' %} 
-  
+   
+  {% section 'atc-snack-bar' %}
+
   </body>
 </html>

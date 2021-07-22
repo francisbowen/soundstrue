@@ -28,8 +28,12 @@ a.digital-account-link:hover  {text-decoration:none;}
   
   
 <p id="rc_link_container">
-<a href="https://digitallibrary.soundstrue.com/login">
-<img class="account-library" src="//cdn.shopify.com/s/files/1/0253/2822/2307/t/71/assets/library_small.png?v=14068478942144347878">
+{% if shop.url == 'https://stage1-soundstrue.myshopify.com' %}
+<a href="https://staging-ch-flat-earth-vue.digitallibrary.staging-soundstrue.com/login">
+{% else %}
+<a href="https://digitallibrary.soundstrue.com">
+{% endif %}
+<img class="account-library" src="//cdn.shopify.com/s/files/1/0253/2822/2307/t/71/assets/library_small.png?v=14068478942144347878" />
 My Library
 </a>
 </p>

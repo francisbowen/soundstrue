@@ -66,10 +66,9 @@ present
           <div class="collection-hero__image" style="background-image: url({{ collection.image | img_url: '2048x600', crop: 'top' }});"></div>
         </noscript>
       </div>
-    	
       {% if collection.title != blank and collection.image.alt != 'hide_title' %}
         <h1 class="page-title medium-down--hide">
-          <span>
+          <span role="text">
             <span class="visually-hidden">{{ 'collections.general.collection_label' | t }}: </span>
             {{ collection.title }}
           </span>
@@ -94,7 +93,7 @@ present
         <div class="section-header small--hide">
           {% if collection.title != blank %}
             <h1 class="page-title">
-              <span>
+              <span role="text">
                 <span class="visually-hidden">{{ 'collections.general.collection_label' | t }}: </span>
                 {{ collection.title }}
               </span>
@@ -135,24 +134,19 @@ present
 
       <ul class="grid grid--uniform{% if collection.products_count > 0 %} grid--view-items{% endif %}">
         {% for product in collection.products %}
-          {% assign product_hide_state = product.metafields.soundstrue.hide_from_collection %}
-          {% unless product_hide_state == 'yes' %}
-            <li class="grid__item grid__item--{{section.id}} {{ grid_item_width }}">
-              {% include 'product-card-grid', max_height: max_height %}
-              {% include 'quickview' %}
-            </li>
-          {% endunless %}
+          <li class="grid__item grid__item--{{section.id}} {{ grid_item_width }}">
+            {% include 'product-card-grid', max_height: max_height %}
+            {% include 'quickview' %}
+          </li>
+        
         {% endfor %}
       </ul>
     {% else %}
       <ul class="list-view-items">
         {% for product in collection.products %}
-          {% assign product_hide_state = product.metafields.soundstrue.hide_from_collection %}
-          {% unless product_hide_state == 'yes' %}
-            <li class="list-view-item">
-              {% include 'product-card-list', product: product %}
-            </li>
-          {% endunless %}
+          <li class="list-view-item">
+            {% include 'product-card-list', product: product %}
+          </li>
         {% else %}
 
           {% comment %}
