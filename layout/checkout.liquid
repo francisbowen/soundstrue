@@ -93,9 +93,9 @@ s.parentNode.insertBefore(b, s);})();
             <div class="checkout-progress-wrapper">
               {{ breadcrumb }}
             </div>
-            {% comment %}
+            {% if settings.display_exprss_checkout %}
             {{ alternative_payment_methods }}
-            {% endcomment %}
+            {% endif %}
           </div>
           <div class="main__content">
             <div class="go-daddy-badge">

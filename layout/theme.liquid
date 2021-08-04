@@ -220,6 +220,19 @@
   
    
   {% section 'atc-snack-bar' %}
-
+<script>
+ //testing logged in attribute
+  $(document).ready(function() {
+    //console.log('updateCartAttributes for guest checkout test');
+    //$.post('/cart.js', { attributes : { "guest_checkout": "{% if customer.id > 0 %}false{% else %}true{%endif%}" } } );
+  });
+</script>
+  <script>
+  {% if customer %}
+  window.segUserObject = {userId:"{{customer.id}}", email: "{{customer.email}}", fullName: "{{customer.first_name}} {{customer.last_name}}", isRegistered :"true", isLogin:"true"}
+  {% else %}
+  window.segUserObject = {isLogin:"false","isRegistered":"false"};
+  {% endif %}
+</script>
   </body>
 </html>

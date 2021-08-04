@@ -149,6 +149,20 @@ This file can be re-written at any time.
 <script async src="https://cdn.automat-ai.com/soundstrue/deployments/staging/index.js"></script>
 <script async src="https://cdn.automat-ai.com/soundstrue/deployments/production/index.js"></script>
 <script src="https://cdn.attn.tv/soundstrue/dtag.js"></script>
+<script>
+ //testing logged in attribute
+  $(document).ready(function() {
+    //console.log('updateCartAttributes for guest checkout test');
+    //$.post('/cart.js', { attributes : { "guest_checkout": "{% if customer.id > 0 %}false{% else %}true{%endif%}" } } );
+  });
+</script>
+<script>
+  {% if customer %}
+  window.segUserObject = {userId:"{{customer.id}}", email: "{{customer.email}}", fullName: "{{customer.first_name}} {{customer.last_name}}", isRegistered :"true", isLogin:"true"}
+  {% else %}
+  window.segUserObject = {isLogin:"false","isRegistered":"false"};
+  {% endif %}
+</script>
   <style type="text/css">
     body, html {
       width: 100% !important;

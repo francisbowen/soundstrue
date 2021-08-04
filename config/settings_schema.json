@@ -1775,5 +1775,16 @@
         "content": "Do not forget to include the snippet shipping-calculator in your cart.liquid template where you want the shipping  calculator to appear. You can get the snippet here: [shipping-calculator.liquid](https:\/\/github.com\/carolineschnapp\/shipping-calculator\/blob\/master\/shipping-calculator.liquid) ."
       }
     ]
+  },
+  {
+    "name": "Express Checkout",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "display_exprss_checkout",
+        "label": "Show express checkout options?",
+        "default": false
+      }
+    ]
   }
 ]
